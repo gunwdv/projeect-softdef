@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Sing in & Sing Up Form | Vanilla Javascript</title>
+  <link rel="stylesheet" type="text/css" href="style.css"> 
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="imgBx"><img src="images/4.jpg"></div>
+          <div class="formBx">
+            <form>
+              <h2>เข้าสู่ระบบ</h2>
+              <input type="text" placeholder="อีเมล">
+              <input type="password" placeholder="รหัสผ่าน">
+              <input type="submit" value="เข้าสู่ระบบ" >
+              <p class="singup" align ='center'>ยังไม่ได้เป็นสมาชิก? <a href="#" onclick="toggleForm();">คลิกเพื่อสมัคร</a></p>
+            </form>
+          </div>
+        </div>
+        <!-- regieter -->
+        <div class="user singupBx">
+          <div class="formBx">
+            <form>
+              <h2>ลงทะเบียน</h2>
+              <input type="text" placeholder="อีเมล">
+              <input type="password" placeholder="รหัสผ่าน">
+              <input type="password" placeholder="ยืนยันรหัสผ่าน">
+              <div class="dropdown">
+                <button class="dropbtn">สถานะ</button>
+                <div class="dropdown-content">
+                <a href="#">นักเรียน</a>
+                <a href="#">อาจารย์</a>
+                </div>
+              </div><br>
+              <input type="submit" value="ลงทะเบียน">
+              <p class="singup" align ='center'>เป็นสมาชิกแล้ว? <a href="#" onclick="toggleForm();">คลิกเพื่อเข้าสู่ระบบ</a></p>
+            </form>
+          </div>
+          <div class="imgBx"><img src=images/3.jpg></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function toggleForm(){
+        section = document.querySelector('section');
+        container = document.querySelector('.container');
+        container.classList.toggle('active');
+        section.classList.toggle('active');
+      }
+    </script>
+  </body>
+</html>
