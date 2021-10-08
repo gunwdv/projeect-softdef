@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400&display=swap');
+
 header .logo {
     cursor: pointer;
     margin-right: auto; 
@@ -12,15 +14,14 @@ header .logo {
     margin-left: 10px;
  }
  .fas{
-    font-size: 25px;
+    font-size: 28px;
     color: white;
     cursor: pointer;
     margin: 6px;
  }
  .io{
    text-align: center;
-   font-size: medium;
-   
+   font-size: medium; 
  }
  header .tabbar:hover{
     background-color: #FAB23D;
@@ -32,7 +33,7 @@ header .logo {
    display: flex;
    top: 0;
    left: 0;
-   padding: 6px 3px;
+   padding: 0 10px;
    width: 100%;
    position: absolute;
    align-items: center;
@@ -49,23 +50,20 @@ header .logo {
  }
  header .tabbar{
     display: inline-block;
-    margin-right: 10px;
-    padding: 10px 5px;
     width: 90px;
-   
+    margin-left: 10px;
  }
  header ul li{
     list-style: none;
-    margin-left: 50px;
-   
+    margin-right: 10px;
  }
  header ul li a{
     text-decoration: none;
     color: white;
     display: block;
     text-align: center;
-    margin: 0 5px;
-    font-size: 15px;
+    margin: 0;
+    font-size: 16px;
     font-weight: 500;
  }
  button {
@@ -73,20 +71,50 @@ header .logo {
    background-color: #FAB23D;
    color:  white;
    border: none;
-   padding: 10px 10px;
-   margin-top: 20px;
-   margin-right: 20px;
+   padding-left: 10px;
+   padding-right: 5px;
+   padding-top: 5px;
+   padding-bottom: 3px;
    text-align: center;
    border: none;
-   border-radius: 40px;
+   border-radius: 30px;
    font-size: 17px; 
    cursor: pointer;
-   
+   font-family: 'IBM Plex Sans Thai', sans-serif;
  }
- button:hover {
+ .btn{
+    
+    margin: 0 10px 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .dropdown {
+   position: relative;
+   display: inline-block;
+ }
+ .drop-login{
+   display: none;
+   position: absolute;
+   background-color: #f1f1f1;
+   min-width: 100px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+ }
+ .drop-login a{
+   color: black;
+   padding: 10px 5px;
+   text-decoration: none;
+   display: block;
+   font-size: 16px;
+ }
+.drop-login a:hover{background-color: #ddd}
+.dropdown:hover .drop-login {display:block;}
+ button:hover
+ {
     background-color: #fab13db4;
     color: black;
- 
+    
  }  
  header .menubar{
     display: none;
@@ -95,7 +123,7 @@ header .logo {
  @media (max-width: 895px)
  {
     header .navbar{
-      padding: 3px 2px;
+      padding: 0 10px;
       
     }
     header ul li {
@@ -115,7 +143,7 @@ header .logo {
  @media (max-width: 840px)
  {
     header .navbar{
-      padding: 2px 1px;
+      padding: 15px 10px;
  
     }
     ul .fas {
@@ -126,7 +154,7 @@ header .logo {
        margin: 2px 3px;
     }
    header .tabbar{
-      padding: 10px 0;
+      
       margin-top: 3px;
       margin-right: 5px;
       width: 90px;
@@ -138,14 +166,12 @@ header .logo {
    .logo a{
     font-size: 25px;
     } 
-    button{
-        margin-top: 9px;
-      }
+    
  }
- @media (max-width: 760px)
+ @media (max-width: 799px)
  {
     header .navbar {
-      padding: 20px 15px;
+      padding: 10px 5px;
     }
     header .menubar{
        display: block;
@@ -163,5 +189,5 @@ header .logo {
     }
     .logo a{
         font-size: 30px;
-        } 
+    } 
  }

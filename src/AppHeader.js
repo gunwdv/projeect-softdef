@@ -32,8 +32,15 @@ function AppHeader(){
                         </div>
                     </li>
                  <div className="btn" >
-                   <button>โปรไฟล์<IoMdArrowDropdown className="io"/></button>
-                   
+                   <div className="dropdown">
+                        <button>โปรไฟล์<IoMdArrowDropdown className="io"/></button>
+                   <div className="drop-login">
+                            <a href="#">หน้าของฉัน</a>
+                            <a href="#">โพสของฉัน</a>
+                            <a href="#">ตั้งค่าบัญชี</a>
+                            <a href="#">Log out</a>
+                    </div>
+                   </div>
                </div>
                   </ul> 
          <div className="menubar">

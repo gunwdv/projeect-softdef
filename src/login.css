@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400&display=swap');
 
 .form-login{
     background-color: #FAB23D;
@@ -95,10 +95,7 @@ input[type=password]{
     padding-left: 20px;
     
 }
-input[type=password]:focus,input[type=text]:focus{
-    
 
-}
 ::placeholder{
   font-size: 20px;
   font-family: 'Prompt', sans-serif;
