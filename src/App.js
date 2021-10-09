@@ -1,12 +1,11 @@
 
 import './App.css';
-import Applogin from './Applogin.js';
-
+import AppHeader from './AppHeader';
 
 function App() {
   return (
     <div className="App">
-      <Applogin />
+      <AppHeader />
     </div>
   );
 }
