@@ -7,6 +7,8 @@
     font-family: 'IBM Plex Sans Thai', sans-serif;
     
 }
+
+/* login & register */
 section
 {
     position: relative;
@@ -78,8 +80,9 @@ section .container .user .formBx h2
     letter-spacing: 2px;
     text-align: center;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     color: #FAB23D;
+
 }
 section .container .user .formBx input
 {
@@ -104,6 +107,7 @@ section .container .user .formBx input[type="submit"]
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
+    margin-bottom: 10px;
     transition: 0.5s;  
 }
 section .container .user .singupBx .formBx input[type="submit"]
@@ -151,9 +155,6 @@ section .container.active .singupBx .imgBx
 {
     top: 0;
 }
-
-
-
 section .container .singinBx .formBx
 {
     top: 0;
@@ -172,51 +173,118 @@ section .container.active .singinBx .imgBx
     top: -100%;
 }
 
-.dropbtn {
-    width: 100%;
-    padding: 10px;
-    background: #ffffff;
-    color: #646464;
-    border: none;
-    outline: none;
-    box-shadow: none;
+/* checkbox - checkmark */
+section .container .singupBx .formBx .status
+{
     font-size: 14px;
-    margin: 8px 0;
-    letter-spacing: 1px;
     font-weight: 300;
-    cursor: pointer;
-  }
-  
-  .dropdown {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0px;
+    color: #6B5C44;
+}
+section .container .student  
+{
+    display: block;
     position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content {
-    display: none;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    margin-left: 60px;
+    color: #FAB23D;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+section .container .teacher  
+{
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    margin-left: 60px;
+    color: #FAB23D;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+section .container .student input 
+{
     position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+section .container .teacher input 
+{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+section .container .student .checkmark 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #E0E0E0;
+    border-radius: 50%;
+}
+section .container .teacher .checkmark 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #E0E0E0;
+    border-radius: 50%;
+}
+section .container:hover .student input ~ .checkmark 
+{
+    background-color: #fadaa7;
+}
+section .container:hover .teacher input ~ .checkmark 
+{
+    background-color: #fadaa7;
+}
+section .container .student input:checked ~ .checkmark 
+{
     background-color: #FAB23D;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: rgb(80, 70, 70);
-    padding: 12px 10px;
-    text-decoration: none;
+}
+section .container .teacher input:checked ~ .checkmark 
+{
+    background-color: #FAB23D;
+}
+section .container .student input:checked ~ .checkmark:after 
+{
+    content: "";
+    position: absolute;
     display: block;
-  }
-  
-  .dropdown-content a:hover {background-color: #FBC56D}
-  
-  .dropdown:hover .dropdown-content {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: 240s;
+}
+section .container .teacher input:checked ~ .checkmark:after 
+{
+    content: "";
+    position: absolute;
     display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
-    background-color: #ffffff;
-  }
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition: 240s;
+}
+
+/* picture */
 @media (max-width: 991px)
 {
     section .container

@@ -29,13 +29,22 @@
               <input type="text" placeholder="อีเมล">
               <input type="password" placeholder="รหัสผ่าน">
               <input type="password" placeholder="ยืนยันรหัสผ่าน">
-              <div class="dropdown">
-                <button class="dropbtn">สถานะ</button>
-                <div class="dropdown-content">
-                <a href="#">นักเรียน</a>
-                <a href="#">อาจารย์</a>
+              
+              <p class="status">สถานะ</p>
+              <label class="container">
+                <div class="student">นักเรียน
+                  <input type="radio" checked="checked" name="radio">
+                  <span class="checkmark"></span>
                 </div>
-              </div><br>
+              </label>
+              <label class="container">
+                <div class="teacher">อาจารย์
+                  <input type="radio" name="radio">
+                  <span class="checkmark"></span>
+                </div>
+              </label>
+
+
               <input type="submit" value="ลงทะเบียน">
               <p class="singup" align ='center'>เป็นสมาชิกแล้ว? <a href="#" onclick="toggleForm();">คลิกเพื่อเข้าสู่ระบบ</a></p>
             </form>
