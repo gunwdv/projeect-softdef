@@ -34,14 +34,24 @@
                         <button>Login</button>
                     </div>
                 </ul>
-                <div class="menubar">
-                    <i class="fas fa-barsstyle font-size:48px;"><a href="#"></a></i>
-                </div>
             </div>
         </nav>
     </header>
 
+    <section>
+        <div class="posttext">
+            <i class="fas fa-clock"></i>
+            <p>โพสต์ล่าสุด</p>
+        </div>
+    </section>
 
+    <script>
+        function toggleForm() {
+            header = document.querySelector('header');
+            header.classList.toggle('active');
+            section = document.querySelector('section');
+            section.classList.toggle('active');
+        }
+    </script>
 </body>
-
 </html>
