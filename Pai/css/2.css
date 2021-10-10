@@ -105,20 +105,6 @@ header.menubar{
     display: none;
 }
 
-
-
-section .posttext {
-    position:absolute;
-    top: 100px;
-    left: 20px;
-}
-
-section .fas {
-    color: #FAB23D;
-    font-size: 30px;
-    margin: 8px 8px;
-    display: inline;
-}
 @media (max-width: 840px) {
     header .navbar {
         padding: 2px 1px;
@@ -165,10 +151,10 @@ section .fas {
         text-align: center;
     }
 
-        header .menubar:hover {
-            border-radius: 15px;
-            background-color: #fab13df1;
-        }
+    header .menubar:hover {
+        border-radius: 15px;
+        background-color: #fab13df1;
+    }
 
     header ul {
         display: none;
@@ -179,10 +165,25 @@ section .fas {
     }
 }
 
+section .posttext {
+    position: relative;
+    top: 540px;
+    left: 40px;
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+section .fas {
+    color: #FAB23D;
+    font-size: 35px;
+    margin: 8px 8px;
+    display: inline;
+}
+
 .posttext p
 {
     font-size: 25px;
-    font-weight: 600;
+    font-weight: bold;
     text-align: start;
     margin-bottom: 10px;
     display: inline;
