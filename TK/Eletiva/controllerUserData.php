@@ -43,7 +43,7 @@ $email = '';
         if (count($errors) == 0) {
             $password = md5($password_1);
 
-            $sql = "INSERT INTO users(email,password,code,status) VALUES('$email','$password','0','$status')";
+            $sql = "INSERT INTO users(email,password,status) VALUES('$email','$password','$status')";
             mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 
             $_SESSION['email'] = $email;
@@ -171,11 +171,10 @@ $email = '';
         if($password !== $cpassword){
             $errors['password'] = "Confirm password not matched!";
         }else{
-            $code = 0;
             $email = $_SESSION['email']; //getting this email using session
             //$encpass = password_hash($password, PASSWORD_BCRYPT);
             $encpass = md5($password);
-            $update_pass = "UPDATE users SET code = $code, password = '$encpass' WHERE email = '$email'";
+            $update_pass = "UPDATE users SET code = NULL, password = '$encpass' WHERE email = '$email'";
             $run_query = mysqli_query($connect, $update_pass);
             if($run_query){
                 $info = "Your password changed. Now you can login with your new password.";

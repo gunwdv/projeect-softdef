@@ -12,6 +12,11 @@ if($email == false){
     <title>Code Verification</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/forget.css"> 
+    
+    <!-- add icon link -->
+    <link rel="icon" href="images/icon.jpg" type="image/x-icon">
+    <!-- specifying a webpage icon for web clip -->
+    <link rel="apple-touch-icon" href="images/icon.jpg" />
 </head>
 <body>
     <div class="container">
@@ -42,7 +47,7 @@ if($email == false){
                     }
                     ?>
                     <div class="form-group">
-                        <input class="form-control" type="number" name="otp" placeholder="Enter code" required>
+                        <input class="form-control" name="otp" placeholder="Enter code" required>
                     </div>
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="check-reset-otp" value="Submit">

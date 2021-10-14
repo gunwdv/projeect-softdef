@@ -11,6 +11,8 @@
 
   <!-- add icon link -->
   <link rel="icon" href="images/icon.jpg" type="image/x-icon">
+  <!-- specifying a webpage icon for web clip -->
+  <link rel="apple-touch-icon" href="images/icon.jpg" />
   </head>
 
   <body>
@@ -22,8 +24,8 @@
           <div class="formBx">
             <form action="controllerUserData.php" method="post" autocomplete="">
               <h2>เข้าสู่ระบบ</h2>
-              <input type="text" placeholder="อีเมล" name="email">
-              <input type="password" placeholder="รหัสผ่าน" name="password">
+              <input class="form-control" type="email" placeholder="อีเมล" name="email">
+              <input class="form-control" type="password" placeholder="รหัสผ่าน" name="password">
               <a class="forget" href="forgot-password.php">Forget Password?<br></a>
               <input type="submit" name="login_user" value="เข้าสู่ระบบ" >
               <p class="singup" align ='center'>ยังไม่ได้เป็นสมาชิก? <a href="#" onclick="toggleForm();">คลิกเพื่อสมัคร</a></p>
@@ -34,7 +36,7 @@
         <!-- regieter -->
         <div class="user singupBx">
           <div class="formBx">
-            <form action="controllerUserData.php" method="post" name="R_form">
+            <form action="controllerUserData.php" method="post" name="R_form" autocomplete="">
               <h2>ลงทะเบียน</h2>
               <?php include('errors.php'); ?>
               <?php if (isset($_SESSION['error'])) : ?>
@@ -47,9 +49,9 @@
                   </h3>
                 </div>
                <?php endif ?>
-              <input type="text" placeholder="อีเมล" name="email">
-              <input type="password" placeholder="รหัสผ่าน" name="First_password" id="First_password" onChange="onChange()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-              <input type="password" placeholder="ยืนยันรหัสผ่าน" name="confirm_password" id="confirm_password" onChange="onChange()">
+              <input class="form-control" type="email" placeholder="อีเมล" name="email">
+              <input class="form-control" type="password" placeholder="รหัสผ่าน" name="First_password" id="First_password" onChange="onChange()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+              <input class="form-control" type="password" placeholder="ยืนยันรหัสผ่าน" name="confirm_password" id="confirm_password" onChange="onChange()">
               
               <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required -->
               <p class="I_status">สถานะ</p>

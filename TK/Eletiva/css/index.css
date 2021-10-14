@@ -315,3 +315,12 @@ a.forget , a.forget:visited{
     font-size: small;
     color: rgb(128, 128, 128);
 }
+a.forget:hover{
+    color: #FAB23D;
+}
+
+.form-control{
+    border: 2px solid #e73e49;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
