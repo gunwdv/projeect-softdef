@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2021 at 10:25 AM
+-- Generation Time: Oct 14, 2021 at 10:49 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -37,7 +37,7 @@ CREATE TABLE `users` (
   `faculty` varchar(255) DEFAULT NULL,
   `major` varchar(255) DEFAULT NULL,
   `introduce` varchar(255) DEFAULT NULL,
-  `picture` varchar(255) NOT NULL
+  `picture` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
