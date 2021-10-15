@@ -69,23 +69,23 @@ $email = '';
             array_push($errors, "Password is required");
         }
 
-        if($email == 'admin_eletiva' AND $password == 'e64b78fc3bc91bcbc7dc232ba8ec59e0'){
-            //Admin123
-            //e64b78fc3bc91bcbc7dc232ba8ec59e0
-            $_SESSION['success'] = "Your are now logged in";
-            header("location: admin.php");
-        }
-
         if (count($errors) == 0) {
             $password = md5($password);
 
             $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password' ";
             $result = mysqli_query($connect, $query);
+            $row = mysqli_fetch_assoc($result);
 
             if (mysqli_num_rows($result) == 1) {
                 $_SESSION['email'] = $email;
+                $_SESSION['status'] = $row['status'];
                 $_SESSION['success'] = "Your are now logged in";
-                header("location: index.php");
+                if($_SESSION['status'] == 2){
+                    header("location: admin.php");
+                }
+                else{
+                    header("location: index.php");
+                }
             } else {
                 array_push($errors, "Wrong Email or Password");
                 $_SESSION['error'] = "Wrong Email or Password!";

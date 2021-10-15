@@ -3,7 +3,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ELETIVA</title>
@@ -49,9 +49,9 @@
                   </h3>
                 </div>
                <?php endif ?>
-              <input class="form-control" type="email" placeholder="อีเมล" name="email" require>
+              <input class="form-control" type="email" placeholder="อีเมล" name="email">
               <input class="form-control" type="password" placeholder="รหัสผ่าน" name="First_password" id="First_password" onChange="onChange()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-              <input class="form-control" type="password" placeholder="ยืนยันรหัสผ่าน" name="confirm_password" id="confirm_password" onChange="onChange()" require>
+              <input class="form-control" type="password" placeholder="ยืนยันรหัสผ่าน" name="confirm_password" id="confirm_password" onChange="onChange()">
               
               <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required -->
               <p class="I_status">สถานะ</p>
