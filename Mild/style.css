@@ -90,9 +90,10 @@ section .container .user .formBx input
     padding: 10px;
     background: #ffffff;
     color: #FAB23D;
-    border: none;
-    outline: none;
-    box-shadow: none;
+    border: 12px;
+    border-color: #e73e49;
+    /* outline: none; */
+    /* box-shadow: none; */
     font-size: 14px;
     margin: 8px 0;
     letter-spacing: 1px;
