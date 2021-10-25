@@ -32,6 +32,8 @@ $email = '';
         $user_check_query = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
         $query = mysqli_query($connect, $user_check_query);
         $result = mysqli_fetch_assoc($query);
+        $interest = array('elective_eng1'=>0,'elective_hu'=>0,'elective_so1'=>0,'elective_sci'=>0,'elective_free'=>0,'elective_life'=>0,'elective_so2'=>0,'elective_think'=>0,'elective_manage'=>0,'elective_eng2'=>0,'elective_21'=>0,'elective_carrer'=>0,'elective_eng3'=>0);
+        //{"elective_eng1":0,"elective_hu":0,"elective_so1":0,"elective_sci":0,"elective_free":0,"elective_life":0,"elective_so2":0,"elective_think":0,"elective_manage":0,"elective_eng2":0,"elective_21":0,"elective_carrer":0,"elective_eng3":0}
 
         if ($result) { // if user exists
             if ($result['email'] === $email) {
@@ -43,7 +45,7 @@ $email = '';
         if (count($errors) == 0) {
             $password = md5($password_1);
 
-            $sql = "INSERT INTO users(email,password,status) VALUES('$email','$password','$status')";
+            $sql = "INSERT INTO users(email,password,status,interest) VALUES('$email','$password','$status',$interest)";
             mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 
             $_SESSION['email'] = $email;
