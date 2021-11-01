@@ -3,6 +3,7 @@
 * {
     font-family: 'IBM Plex Sans Thai', sans-serif;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400&display=swap');
 
 * {
@@ -76,15 +77,15 @@ header ul li {
     margin-left: 50px;
 }
 
-header ul li a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    text-align: center;
-    margin: 0 5px;
-    font-size: 15px;
-    font-weight: 500;
- }
+    header ul li a {
+        text-decoration: none;
+        color: white;
+        display: block;
+        text-align: center;
+        margin: 0 5px;
+        font-size: 15px;
+        font-weight: 500;
+    }
 
 button {
     display: block;
@@ -131,9 +132,9 @@ header.menubar {
         width: 90px;
     }
 
-    header .tabbar:hover {
-        border-radius: 100px;
-    }
+        header .tabbar:hover {
+            border-radius: 100px;
+        }
 
     .logo a {
         font-size: 25px;
@@ -156,10 +157,10 @@ header.menubar {
         text-align: center;
     }
 
-    header .menubar:hover {
-        border-radius: 15px;
-        background-color: #fab13df1;
-    }
+        header .menubar:hover {
+            border-radius: 15px;
+            background-color: #fab13df1;
+        }
 
     header ul {
         display: none;
@@ -195,6 +196,14 @@ section .posttext {
     display: inline;
 }
 
+section .banner {
+    width: 100%;
+    position: absolute;
+    top: 85px;
+    left: 0px;
+    resize: horizontal;
+}
+
 section .postbtn {
     position: relative;
     height: 90px;
@@ -206,7 +215,7 @@ section .postbtn {
     color: white;
     border-radius: 10px;
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     width: 86%;
     padding: 15px;
 }
@@ -248,7 +257,7 @@ section .postbtn p {
 .commentfa .far {
     color: white;
     font-size: 40px;
-    position:absolute;
+    position: absolute;
     right: 30px;
     top: 45px;
 }
@@ -260,4 +269,31 @@ section .commentfa h3 {
     right: 15px;
     bottom: 15px;
     font-weight: 200;
+}
+
+.blank {
+    position: absolute; 
+    top: 2030px; 
+    color:white;
+}
+
+@media (max-width: 840px) {
+    section .banner {
+        width: 100%;
+    }
+    section .posttext{
+        position: relative;
+        top: 340px;
+        margin-top: 5px;
+    }
+    section .postbtn {
+        position: relative;
+        top: 350px;
+        width: 78%;
+        margin-top: 10px;
+    }
+    .blank {
+        position: absolute;
+        top: 1800px;
+    }
 }

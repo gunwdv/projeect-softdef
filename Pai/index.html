@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/StyleSheet.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
@@ -38,7 +38,7 @@
     </header>
 
     <section>
-        <img src="Pics/Banner/dummy.png" alt="Banner" style="width:100%; position:absolute; top:85px; left:0;">
+        <img class="banner" src="Pics/Banner/home.jpg" alt="Banner" />
         <div class="posttext">
             <i class="fas fa-clock"></i>
             <p>โพสล่าสุด</p>
@@ -158,7 +158,9 @@
         </div>
     </section>
 
-    <span style="position: absolute; top: 2030px; color:white">space</span>
+    <div class="blank">
+        <span>space</span>
+    </div>
     <script>
         function toggleForm() {
             header = document.querySelector('header');
