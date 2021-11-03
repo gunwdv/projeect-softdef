@@ -323,7 +323,7 @@ section .container .teacher input:checked ~ .checkmark:after
 
 a.forget , a.forget:visited{
     text-decoration: none;
-    margin-left: 250px;
+    margin-left: 67%;
     font-size: small;
     color: rgb(202, 202, 202);
 }

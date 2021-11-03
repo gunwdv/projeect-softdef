@@ -21,6 +21,7 @@ section
     align-items: center;
     padding: 20px;
     transition: 0.5s;
+   
 }
 section .container
 {
@@ -85,7 +86,7 @@ section .container label
     padding: 8px 5px;
     width: 150px;
 } 
-section .container label a 
+section .container label a
 {
     color: #fff;
     text-decoration: none;
@@ -117,7 +118,9 @@ section .container ul li
     margin-bottom: 7px;
     display: inline-block;
 }
-
+.container{
+    overflow: scroll;
+}
 
 @media (max-width: 700px)
 {
@@ -146,3 +149,48 @@ section .container ul li
         border-radius: 100px;
     }
 }
+
+
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+.sub{
+    color:#ffffff;
+    font-size: 14px;
+
+}
+label, input{
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+.finish{
+    margin-top: -20px;
+}
+/*
+a:link , a:visited {
+  color: red;
+}
+
+
+a:hover , a:active {
+  color: hotpink;
+}
+*/
