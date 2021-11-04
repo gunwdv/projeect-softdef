@@ -50,7 +50,6 @@ $email = '';
 
             $_SESSION['email'] = $email;
             $_SESSION['success'] = "You are now logged in";
-            $_SESSION['check'] = "first login";
 
             header('location: first-select.php');
         } else {

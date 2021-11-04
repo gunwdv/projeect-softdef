@@ -1,7 +1,6 @@
 <?php
 session_start();
-//unset($_SESSION["check"]);
-
+/*
 if(!isset($_SESSION["email"])){
   $_SESSION['msg'] = "You must log in first";
   header('location: login-user.php');
@@ -12,7 +11,7 @@ if(isset($_GET["logout"])){
     unset($_SESSION["email"]);
     unset($_SESSION["status"]);
     header('location: login-user.php');
-  }
+  }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +37,7 @@ if(isset($_GET["logout"])){
         <nav>
             <div class="navbar">
                 <div class="logo">
-                    <a href="#">electiva</a>
+                    <a href="index.php">electiva</a>
                 </div>
 
                 <ul>
