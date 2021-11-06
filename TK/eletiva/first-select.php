@@ -79,7 +79,7 @@ if(isset($_GET["logout"])){
                         <i class="fas fa-chart-line"></i>
                         <p class="sub">ศิลปแห่งการจัดการ</p>
                     </label> 
-                    <input type="checkbox" class="selectS" id="myCheckbox10" name=""elective_eng2>
+                    <input type="checkbox" class="selectS" id="myCheckbox10" name="elective_eng2">
                     <label for="myCheckbox10">
                         <i class="fas fa-comments"></i>
                         <p class="sub">ภาษาและการสื่อสาร</p>

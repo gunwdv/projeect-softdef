@@ -20,6 +20,13 @@
 session_start();
 require "dbconnect.php";
 
+if(isset($_GET["logout"])){
+    session_destroy();
+    unset($_SESSION["email"]);
+    unset($_SESSION["status"]);
+    header('location: index.php');
+  }
+
 if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) {
    //echo 'Guest Mode!';
     echo'<nav>';
@@ -45,6 +52,7 @@ else{
         //echo 'Guest Mode!';
         header("location: index.php");
     }
+    
 
     if($status == 0){
         //student
@@ -61,7 +69,7 @@ else{
         echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
         echo'<li class="subitem"><a href="post_poll.php">My Post</a></li>';
         echo'<li class="subitem"><a href="setting.php">Setting</a></li>';
-        echo'<li class="subitem logoutnav"><a href="logout.php">Log Out</a></li>';
+        echo'<li class="subitem logoutnav"><a href="logout.php" onclick="myFunction()">Log Out</a></li>';
         echo'</ul>';
         echo'</li>';
         echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
@@ -70,7 +78,7 @@ else{
     }
     else if ($status == 1){
         //teacher
-        echo'<nav>';
+        echo'<nav id="navbar">';
         echo'<ul class="menu">';
         echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
         echo'<li class="item"><a href="creatpoll.php" title="Creat Poll"><i class="iconnav fas fa-edit"><span class="navTitle">Creat Poll</span></i></a></li>';
@@ -83,9 +91,19 @@ else{
         echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
         echo'<li class="subitem"><a href="post_poll.php">My Poll</a></li>';
         echo'<li class="subitem"><a href="setting.php">Setting</a></li>';
-        echo'<li class="subitem logoutnav"><a href="logout.php">Log Out</a></li>';
+        echo'<li class="subitem logoutnav"><a href="logout.php" onclick="myFunction()">Log Out</a></li>';
         echo'</ul>';
         echo'</li>';
+        echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
+        echo'</ul>';
+        echo'</nav>';
+    }
+    else if($status == 2){
+        //Admin
+        echo'<nav>';
+        echo'<ul class="menu">';
+        echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
+        echo'<li class="item"><a href="logout.php" onclick="myFunction()" title="Logout"><i class="iconnav fas fa-sign-out-alt"><span class="navTitle">Log Out</span></i></a></li>';
         echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
         echo'</ul>';
         echo'</nav>';
@@ -93,3 +111,8 @@ else{
 }
 ?>
 <script src="javascript/navbar.js"></script>
+<script>
+function myFunction() {
+  //alert("You have already logged out.!");
+}
+</script>
