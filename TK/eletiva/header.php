@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require "dbconnect.php";
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,10 +10,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/home_index.css">
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="css/category.css">
 
+    <?php if($_SESSION['status'] == 2) : ?>
+        <link rel="stylesheet" href="css/admin-home.css">
+        <link rel="stylesheet" href="css/admin-post.css">
+        <link rel="stylesheet" href="css/pop-up.css">
+    <?php elseif (isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 2) : ?>
+        <link rel="stylesheet" type="text/css" href="css/home_index.css">
+        <link rel="stylesheet" type="text/css" href="css/category.css">
+    <?php endif ?>
+    
     <!-- add icon link -->
     <link rel="icon" href="images/icon.jpg" type="image/x-icon">
     <!-- specifying a webpage icon for web clip -->
@@ -17,8 +28,6 @@
 
 </head>
 <?php
-session_start();
-require "dbconnect.php";
 
 if(isset($_GET["logout"])){
     session_destroy();
@@ -102,7 +111,7 @@ else{
         //Admin
         echo'<nav>';
         echo'<ul class="menu">';
-        echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
+        echo'<li class="logo"><a class="logonav" href="admin-home.php">ELETIVA</a></li>';
         echo'<li class="item"><a href="logout.php" onclick="myFunction()" title="Logout"><i class="iconnav fas fa-sign-out-alt"><span class="navTitle">Log Out</span></i></a></li>';
         echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
         echo'</ul>';
@@ -110,9 +119,10 @@ else{
     }
 }
 ?>
+<script type="text/javascript" src="javascript/Jquery.js"></script>
 <script src="javascript/navbar.js"></script>
 <script>
-function myFunction() {
-  //alert("You have already logged out.!");
-}
+    function myFunction() {
+    //alert("You have already logged out.!");
+    }
 </script>
