@@ -57,13 +57,13 @@
               <p class="I_status">สถานะ</p>
               <label class="container">
                 <div class="student">นักเรียน
-                  <input type="radio" checked="checked" value="0" name="status">
+                  <input type="radio" checked="checked" value="1" name="status">
                   <span class="checkmark"></span>
                 </div>
               </label>
               <label class="container">
                 <div class="teacher">อาจารย์
-                  <input type="radio" value="1" name="status">
+                  <input type="radio" value="2" name="status">
                   <span class="checkmark"></span>
                 </div>
               </label>
