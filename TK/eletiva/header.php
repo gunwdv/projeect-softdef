@@ -1,6 +1,8 @@
 <?php
     session_start();
     require "dbconnect.php";
+
+    //Guest = 0 | Student = 1 | Teacher = 2 | Admin = 3//
 ?>
 <head>
     <meta charset="UTF-8">
@@ -12,13 +14,13 @@
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
 
-    <?php if($_SESSION['status'] == 2) : ?>
+    <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 3) : ?>
+        <link rel="stylesheet" type="text/css" href="css/home_index.css">
+        <link rel="stylesheet" type="text/css" href="css/category.css">
+    <?php elseif ($_SESSION['status'] == 3) : ?>
         <link rel="stylesheet" href="css/admin-home.css">
         <link rel="stylesheet" href="css/admin-post.css">
         <link rel="stylesheet" href="css/pop-up.css">
-    <?php elseif (isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 2) : ?>
-        <link rel="stylesheet" type="text/css" href="css/home_index.css">
-        <link rel="stylesheet" type="text/css" href="css/category.css">
     <?php endif ?>
     
     <!-- add icon link -->
@@ -36,7 +38,7 @@ if(isset($_GET["logout"])){
     header('location: index.php');
   }
 
-if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) {
+if(isset($_SESSION['status']) && empty($_SESSION['status']) && $_SESSION['status'] == 0) {
    //echo 'Guest Mode!';
     echo'<nav>';
     echo'<ul class="menu">';
@@ -57,13 +59,13 @@ else{
     $result = mysqli_query($connect, $check);
 
     if(mysqli_num_rows($result) != 1){
-        $_SESSION['status'] = 3;
+        $_SESSION['status'] = 0;
         //echo 'Guest Mode!';
         header("location: index.php");
     }
     
 
-    if($status == 0){
+    if($status == 1){
         //student
         echo'<nav>';
         echo'<ul class="menu">';
@@ -85,7 +87,7 @@ else{
         echo'</ul>';
         echo'</nav>';
     }
-    else if ($status == 1){
+    else if ($status == 2){
         //teacher
         echo'<nav id="navbar">';
         echo'<ul class="menu">';
@@ -107,7 +109,7 @@ else{
         echo'</ul>';
         echo'</nav>';
     }
-    else if($status == 2){
+    else if($status == 3){
         //Admin
         echo'<nav>';
         echo'<ul class="menu">';

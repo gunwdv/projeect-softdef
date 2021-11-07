@@ -4,7 +4,7 @@ require "dbconnect.php";
 
 include "header.php";
 ?>
-
+<?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] != 3) || empty($_SESSION['status'])) : ?>
 <div class="inf">
     <div class="form_find">
     <form class="" action="/action_page.php"> 
@@ -41,3 +41,6 @@ include "header.php";
         ?>
     </div>
 </section>
+<?php else: ?>
+<?php include "logout.php"; ?>
+<?php endif ?>

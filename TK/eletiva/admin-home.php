@@ -1,14 +1,12 @@
-<title>Eletiva | Admin Home</title>
+<title>Eletiva | Admin Page</title>
 <?php
 require "dbconnect.php";
 
 include "header.php";
 ?>
+<?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) : ?>
 <body>
-   
-
     <section>
-        
         <div class="report">
             <i class="fas fa-file-alt"></i>
             <p>รายงาน</p>
@@ -55,5 +53,6 @@ include "header.php";
         </div>
     </section>
 </body>
-<script type="text/javascript" src="javascript/Jquery.js"></script>
-<script src="javascript/navbar.js"></script>
+<?php else: ?>
+<?php include "logout.php"; ?>
+<?php endif ?>

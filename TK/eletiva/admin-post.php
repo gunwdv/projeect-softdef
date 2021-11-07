@@ -1,11 +1,10 @@
-<title>Eletiva | Admin Home</title>
+<title>Eletiva | Admin Page</title>
 <?php
 require "dbconnect.php";
 
 include "header.php";
 ?>
-
-
+<?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) : ?>
 <body>
    
     <section class="main">
@@ -56,3 +55,6 @@ include "header.php";
    
 </body> 
 <script src="javascript/pop-up.js"></script>
+<?php else: ?>
+<?php include "logout.php"; ?>
+<?php endif ?>

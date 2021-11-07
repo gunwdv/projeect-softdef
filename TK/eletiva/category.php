@@ -4,6 +4,7 @@ require "dbconnect.php";
 
 include "header.php";
 ?>
+<?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] != 3) || empty($_SESSION['status'])) : ?>
 <div class="inf ">
     <div id="myBtnContainer">
         <br>
@@ -51,3 +52,6 @@ include "header.php";
     </div>
 </section>
 <script src="javascript/category.js"></script>
+<?php else: ?>
+<?php include "logout.php"; ?>
+<?php endif ?>

@@ -2,11 +2,11 @@
 <link rel="stylesheet " type="text/css " href="css/creatpost.css ">
 <?php
 //For Student
+require "dbconnect.php";
+
 include "header.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-</html>
+<?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 1) : ?>
 <body>
     <div class="container-fluid  pt-5">
         <div class="row">
@@ -74,5 +74,6 @@ include "header.php";
     </div>
 
 </body>
-
-</html>
+<?php else: ?>
+<?php include "logout.php"; ?>
+<?php endif ?>
