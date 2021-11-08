@@ -1,4 +1,7 @@
 <title>Eletiva | Admin Page</title>
+
+<link rel="stylesheet" href="css/admin-home.css">
+
 <?php
 require "dbconnect.php";
 

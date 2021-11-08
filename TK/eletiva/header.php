@@ -16,11 +16,10 @@
 
     <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 3) : ?>
         <link rel="stylesheet" type="text/css" href="css/home_index.css">
-        <link rel="stylesheet" type="text/css" href="css/category.css">
+        
     <?php elseif ($_SESSION['status'] == 3) : ?>
-        <link rel="stylesheet" href="css/admin-home.css">
-        <link rel="stylesheet" href="css/admin-post.css">
-        <link rel="stylesheet" href="css/pop-up.css">
+        
+        
     <?php endif ?>
     
     <!-- add icon link -->
