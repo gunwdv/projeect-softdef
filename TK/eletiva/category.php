@@ -1,4 +1,7 @@
 <title>Eletiva | Category</title>
+
+<link rel="stylesheet" type="text/css" href="css/category.css">
+
 <?php
 require "dbconnect.php";
 

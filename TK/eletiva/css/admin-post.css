@@ -122,6 +122,12 @@ section .btn {
     justify-content: center;
 }
 
+section .btn:hover {
+    background-color: #fab13db4;
+    color: #fff;
+    text-decoration: none;
+}
+
 section .post .user {
     display: flex;
     flex-direction:  row; 

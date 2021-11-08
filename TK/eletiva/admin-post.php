@@ -1,4 +1,8 @@
 <title>Eletiva | Admin Page</title>
+
+<link rel="stylesheet" href="css/admin-post.css">
+<link rel="stylesheet" href="css/pop-up.css">
+
 <?php
 require "dbconnect.php";
 
@@ -26,7 +30,7 @@ include "header.php";
             </div>
         </div>
 
-        <div class="btn">
+        <div class="btn" style="width: fit-content">
             <a href="#" class="cd-popup-notify" style="margin-left: 20px; margin-right: 20px;">แจ้งเตือนผู้ใช้</a>
             <a href="#" class="cd-popup-delete" style="margin-left: 20px; margin-right: 20px;">ลบโพสต์</a>
 
