@@ -30,9 +30,9 @@ include "header.php";
             </div>
         </div>
 
-        <div class="btn" style="width: fit-content">
-            <a href="#" class="cd-popup-notify" style="margin-left: 20px; margin-right: 20px;">แจ้งเตือนผู้ใช้</a>
-            <a href="#" class="cd-popup-delete" style="margin-left: 20px; margin-right: 20px;">ลบโพสต์</a>
+         <div class="btn">
+            <p class="cd-popup-notify" style="margin-left: 20px; margin-right: 20px;">แจ้งเตือนผู้ใช้</p>
+            <p class="cd-popup-delete" style="margin-left: 20px; margin-right: 20px;">ลบโพสต์</p>
 
             <div class="cd-popup" role="alert">
                 <div id="notifyConfirm" class="cd-popup-container hidden">
