@@ -35,7 +35,7 @@ if(isset($_SESSION['status']) && empty($_SESSION['status']) && $_SESSION['status
     echo'<ul class="menu">';
     echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
     echo'<li class="item"><a href="search.php" title="Search"><i class="iconnav fas fa-search"><span class="navTitle">Search</span></i></a></li>';
-    echo'<li class="item"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
+    echo'<li class="item" style="margin-bottom:15px;"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
     echo'<li class="item button"><a class="loginnav" href="login-user.php">Log In</a></li>';
     echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
     echo'</ul>';
@@ -64,7 +64,7 @@ else{
         echo'<li class="item"><a href="creatpost.php" title="Creat Post"><i class="iconnav fas fa-edit"><span class="navTitle">Creat Post</span></i></a></i></li>';
         echo'<li class="item"><a href="notify.php" title="Notification"><i class="iconnav fas fa-bell"><span class="navTitle">Notification</span><div class = "number">num</div></i></a></li>';
         echo'<li class="item"><a href="search.php" title="Search"><i class="iconnav fas fa-search"><span class="navTitle">Search</span></i></a></li>';
-        echo'<li class="item"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
+        echo'<li class="item" style="margin-bottom:15px;><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
         echo'<li class="item has-submenu">';
         echo'<a class="usernav" tabindex="0">My User</a>';
         echo'<ul class="submenu userlink">';
@@ -86,7 +86,7 @@ else{
         echo'<li class="item"><a href="creatpoll.php" title="Creat Poll"><i class="iconnav fas fa-edit"><span class="navTitle">Creat Poll</span></i></a></li>';
         echo'<li class="item"><a href="notify.php" title="Notification"><i class="iconnav fas fa-bell"><span class="navTitle">Notification</span><div class = "number">num</div></i></a></li>';
         echo'<li class="item"><a href="search.php" title="Search"><i class="iconnav fas fa-search"><span class="navTitle">Search</span></i></a></li>';
-        echo'<li class="item"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
+        echo'<li class="item" style="margin-bottom:15px;><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
         echo'<li class="item has-submenu">';
         echo'<a class="usernav" tabindex="0">My User</a>';
         echo'<ul class="submenu userlink">';
@@ -105,7 +105,7 @@ else{
         echo'<nav>';
         echo'<ul class="menu">';
         echo'<li class="logo"><a class="logonav" href="admin-home.php">ELETIVA</a></li>';
-        echo'<li class="item"><a href="logout.php" onclick="myFunction()" title="Logout"><i class="iconnav fas fa-sign-out-alt"><span class="navTitle">Log Out</span></i></a></li>';
+        echo'<li class="item" style="margin-bottom:15px;><a href="logout.php" onclick="myFunction()" title="Logout"><i class="iconnav fas fa-sign-out-alt"><span class="navTitle">Log Out</span></i></a></li>';
         echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
         echo'</ul>';
         echo'</nav>';
