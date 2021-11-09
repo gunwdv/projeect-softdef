@@ -21,6 +21,9 @@ include "header.php";
                 <button>รหัสวิชา</button>
                 <button>วิชาเลือกกลุ่ม....</button>
             </div>
+            <div class="postDetail">
+                <p>เช้าวันหนึ่งวันนั้น ผมไปเรียนว่ายน้ำครับผม เลยอยากทราบว่าวิชาเลือกเสรืที่สอนทำอาหารเรียนยากไหมครับ ถ้าผมปั่นจักรยานไม่เป็นจะเรียนได้ไหม</p>
+            </div>
             <div class="user">
                 <img class="pic" src="images/login.png" alt="user profile">
                 <div class="profile">
