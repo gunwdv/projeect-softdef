@@ -10,7 +10,7 @@ include "header.php";
 <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) : ?>
 <body>
     <section>
-        <div class="report">
+        <div class="report" >
             <i class="fas fa-file-alt"></i>
             <p>รายงาน</p>
         </div>
@@ -44,7 +44,27 @@ include "header.php";
                 <h3>num</h3>
             </div>
         </div>
-        <div class="postList" style="margin-bottom:100px;">
+        <div class="postList">
+            <i class="fas fa-chevron-circle-right"></i>
+            <a href="#">Post4โพส</a>
+            <h1>วิชาเลือกกลุ่ม....</h1>
+            <p style="">User:??? Time:???</p>
+            <div class="comment">
+                <i class="fas fa-comment-dots"></i>
+                <h3>num</h3>
+            </div>
+        </div>
+        <div class="postList">
+            <i class="fas fa-chevron-circle-right"></i>
+            <a href="#">Post4โพส</a>
+            <h1>วิชาเลือกกลุ่ม....</h1>
+            <p style="">User:??? Time:???</p>
+            <div class="comment">
+                <i class="fas fa-comment-dots"></i>
+                <h3>num</h3>
+            </div>
+        </div>
+        <div class="postList">
             <i class="fas fa-chevron-circle-right"></i>
             <a href="#">Post4โพส</a>
             <h1>วิชาเลือกกลุ่ม....</h1>

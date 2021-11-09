@@ -51,7 +51,7 @@ $email = '';
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
             $_SESSION['status'] = $status;
-            $_SESSION['success'] = "You are now logged in";
+            $_SESSION['success'] = "You are now First logged in";
     
             header('location: first-select.php');
         } else {

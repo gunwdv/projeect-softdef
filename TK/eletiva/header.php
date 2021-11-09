@@ -14,14 +14,6 @@
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
 
-    <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 3) : ?>
-        <link rel="stylesheet" type="text/css" href="css/home_index.css">
-        
-    <?php elseif ($_SESSION['status'] == 3) : ?>
-        
-        
-    <?php endif ?>
-    
     <!-- add icon link -->
     <link rel="icon" href="images/icon.jpg" type="image/x-icon">
     <!-- specifying a webpage icon for web clip -->

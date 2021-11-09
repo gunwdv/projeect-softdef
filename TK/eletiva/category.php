@@ -1,5 +1,5 @@
 <title>Eletiva | Category</title>
-
+<link rel="stylesheet" type="text/css" href="css/home_index.css">
 <link rel="stylesheet" type="text/css" href="css/category.css">
 
 <?php

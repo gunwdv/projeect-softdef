@@ -1,4 +1,5 @@
 <title>Eletiva | Notification</title>
+<link rel="stylesheet" type="text/css" href="css/home_index.css">
 <?php
 require "dbconnect.php";
 

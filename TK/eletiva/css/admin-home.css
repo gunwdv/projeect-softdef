@@ -1,19 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400&display=swap');
-*
-{
-    margin: 0; /*ระยะขอบ ผลักอัตโนมัติ*/
-    padding: 0; /*ขยายขอบด้านใน*/
+
+*{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'IBM Plex Sans Thai', sans-serif;
     
 }
-/* section
+ section
 {
     position: relative;
-    min-height: 200vh;
-    background-color: #fff;
-    display: block;
-} */
+    /*min-height: 200vh ; */
+    /*display: block;*/
+} /*
 header .navbar
 {
     background-color: #FAB23D;
@@ -49,7 +47,7 @@ header .navbar .logout .fas
 {
     color: #fff;
     font-size: 35px;
-    /* margin: 8px 8px; */
+     margin: 8px 8px; //
     margin-top: 8px;
     margin-right: 20px;
     display: inline;
@@ -59,23 +57,23 @@ header .navbar .logout .fas
 header .navbar .logout .fas:hover 
 {
     color: #000;
-}
-
+}*/
+/*
 section .banner {
     width: 100%;
     position: absolute;
     top: 85px;
     left: 0px;
     resize: horizontal;
-}
+}*/
 
 section .report 
 {
     position: relative;
-    top: 40vw;
+    /*top: 40vw;*/
     left: 40;
     margin-right: 5px;
-    margin-top: 20px;
+    margin-top: 40px;
     display: table;
 }
 
@@ -105,7 +103,7 @@ section .postList
     position: relative;
     height: 100px;
     left: 80px;
-    top: 40vw;
+    /*top: 40vw;*/
     display: block;
     cursor: pointer;
     background-color: #FAB23D;
