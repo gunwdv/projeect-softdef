@@ -18,8 +18,9 @@ include "header.php";
                 <div class="box-post">
                     <h2>เขียนโพสต์</h2>
                     <form>
+                        
                         <label for="Category" class="form-label">หมวดหมู่</label>
-                        <select class="form-select form-select-sm">
+                        <select class="form-select form-select-sm" name="category">
                             <option selected>-- เลือกหมวดหมู่ --</option>
                             <option>กลุ่มวิชาภาษา</option>
                             <option>กลุ่มวิชามนุษย์ศาสตร์</option>
@@ -41,7 +42,7 @@ include "header.php";
 
                             <div class="col-lg-6 ">
                                 <label for="subjectecode " class="form-label ">รหัสวิชา</label>
-                                <input class="form-control form-control-sm " list="codes" type="text" id="code" placeholder="" required>
+                                <input class="form-control form-control-sm " list="codes" type="text" id="code" placeholder="subject ID" name="subject_ID" required>
                                 <datalist id="codes">
                                     <option value="xxxxxx"></option>
                                     <option value="yyyyyy"></option>
@@ -49,7 +50,7 @@ include "header.php";
                             </div>
                             <div class="col-lg-6 ">
                                 <label for="subjectename " class="form-label ">ชื่อวิชา</label>
-                                <input class="form-control form-control-sm " type="text" id="subject " placeholder=" " required>
+                                <input class="form-control form-control-sm " type="text" id="subject " placeholder="subject name" name="subject_Name" required>
                             </div>
 
                             </div>
@@ -57,30 +58,30 @@ include "header.php";
                             <label class="form-check-label" for="radio0">ประเภทโพสต์</label>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label" for="inlineRadio1">
-                                <input class="form-check-input " type="radio" checked="checked"name="inlineRadioOptions" id="inlineRadio1" value="option1"> โพสต์ธรรมดา
+                                <input class="form-check-input " type="radio" checked="checked"name="post_type" id="inlineRadio1" value="1"> โพสต์ธรรมดา
                                 </label>
                             </div>
                             <div class="form-check form-check-inline"><label class="form-check-label" for="inlineRadio2">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> โพสต์รีวิว
+                                <input class="form-check-input" type="radio" name="post_type" id="inlineRadio2" value="2"> โพสต์รีวิว
                                 </label>
                             </div>
                             </div>
                             <div class="row g-2 align-items-center">
                             <div class="col-lg-auto">
-                                <label for="instructor " class="form-label">ชื่อเรื่อง</label>
+                                <label for="instructor" class="form-label">ชื่อเรื่อง</label>
                             </div>
                             <div class="col-lg-10">
-                                <input class="form-control form-control-sm " type="text" id="instructor " placeholder=" " required>
+                                <input class="form-control form-control-sm " type="text" id="instructor" name="post_topic" placeholder="topic" required>
                             </div>
                             </div>
                             <div class="details">
                                 <label for="details" class="form-label ">รายละเอียด:</label>
-                                <textarea class="form-control form-control-sm " id="details " placeholder="" rows="4" required></textarea>
+                                <textarea class="form-control form-control-sm " id="details" name="post_details" placeholder="" rows="4" required></textarea>
                             </div>
                             <div class="d-grid col-lg-6 mx-auto ">
-                                <input class="form-control button " type="submit" value="สร้างโพสต์">
+                                <input class="form-control button " type="submit" value="สร้างโพสต์" name="creat_post">
                             </div>
-                            </div>
+                        </div>
                 </form>
             </div>
 

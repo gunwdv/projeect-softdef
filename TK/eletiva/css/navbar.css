@@ -158,6 +158,9 @@
       border-color: #FAB23D;
       color: white;
     }
+    .navlast{
+      margin-bottom:15px;
+    }
   }
   /* Desktop menu */
   @media all and (min-width: 960px) {
@@ -193,6 +196,9 @@
     }
     .navTitle{
       display: none;
+    }
+    .navlast{
+      margin-bottom:0px;
     }
   }
 
@@ -280,4 +286,7 @@ background: #555;
 
 .Texthide{
   color: transparent;
+}
+.navlast{
+  margin-bottom:15px;
 }
