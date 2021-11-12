@@ -6,6 +6,8 @@
 require "dbconnect.php";
 
 include "header.php";
+
+//DB : subject
 ?>
 <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 1) : ?>
 <body>
@@ -17,8 +19,7 @@ include "header.php";
             <div class="col-lg-8 col-sm-10 ">
                 <div class="box-post">
                     <h2>เขียนโพสต์</h2>
-                    <form>
-                        
+                    <form action="controllerPostPollData.php" method="POST">                        
                         <label for="Category" class="form-label">หมวดหมู่</label>
                         <select class="form-select form-select-sm" name="category">
                             <option selected>-- เลือกหมวดหมู่ --</option>
@@ -39,18 +40,28 @@ include "header.php";
                         </select>
 
                         <div class="row ">
-
+                            <?php
+                            $category = $_POST['category'];
+                            $sqlsub = "SELECT 'ID_subject' FROM 'subject' WHERE 'Group_subject' = '$category'";
+                            $result = $connect->query($sqlsub);
+                            ?>
                             <div class="col-lg-6 ">
                                 <label for="subjectecode " class="form-label ">รหัสวิชา</label>
                                 <input class="form-control form-control-sm " list="codes" type="text" id="code" placeholder="subject ID" name="subject_ID" required>
+                                <? while($row = $result->fetch_assoc()): ?>
                                 <datalist id="codes">
-                                    <option value="xxxxxx"></option>
-                                    <option value="yyyyyy"></option>
+                                    <option value="<?php echo $row['ID_subject']; ?>"></option>
                                 </datalist>
+                                <?php endwhile ?>
                             </div>
+                            
+                            <?php 
+                            $subject_ID = $_POST['subject_ID'];
+                            $namesubject = "SELECT Name_subject FROM subject WHERE ID_subject  = '$subject_ID'";
+                            ?>
                             <div class="col-lg-6 ">
                                 <label for="subjectename " class="form-label ">ชื่อวิชา</label>
-                                <input class="form-control form-control-sm " type="text" id="subject " placeholder="subject name" name="subject_Name" required>
+                                <input class="form-control form-control-sm " type="text" id="subject " placeholder="subject name" name="subject_Name" value="<?php echo $namesubject ?>" readonly>
                             </div>
 
                             </div>

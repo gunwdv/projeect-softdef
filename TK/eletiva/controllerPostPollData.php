@@ -5,14 +5,14 @@ require "dbconnect.php";
 $errors = array();
 $email = '';
 
-if (isset($_POST['creat_post'])) {
+if (isset($_REQUEST['creat_post'])) {
     //DB: Post
-    $Group_subject = mysqli_real_escape_string($connect, $_POST["category"]); 
-    $ID_subject = mysqli_real_escape_string($connect, $_POST['subject_ID']);
-    $name_subject = mysqli_real_escape_string($connect, $_POST['subject_Name']);
-    $type_post = mysqli_real_escape_string($connect, $_POST["post_type"]);
-    $title_post = mysqli_real_escape_string($connect, $_POST["post_topic"]);
-    $msg_post = mysqli_real_escape_string($connect, $_POST["post_details"]);
+    $Group_subject = mysqli_real_escape_string($connect, $_REQUEST["category"]); 
+    $ID_subject = mysqli_real_escape_string($connect, $_REQUEST['subject_ID']);
+    $name_subject = mysqli_real_escape_string($connect, $_REQUEST['subject_Name']);
+    $type_post = mysqli_real_escape_string($connect, $_REQUEST["post_type"]);
+    $title_post = mysqli_real_escape_string($connect, $_REQUEST["post_topic"]);
+    $msg_post = mysqli_real_escape_string($connect, $_REQUEST["post_details"]);
 
     $email = $_SESSION['email'];
     $check = "SELECT ID FROM users WHERE email = '$email'";
@@ -22,18 +22,21 @@ if (isset($_POST['creat_post'])) {
         echo "ERROR";
     }
 
-    if (empty($subject_ID)) {
+    if (empty($ID_subject)) {
         array_push($errors, "Subject ID is required");
         $_SESSION['error'] = "Subject ID is required";
     }
-    if (empty($subject_Name)) {
+    if (empty($name_subject)) {
         array_push($errors, "Subject Name is required");
         $_SESSION['error'] = "Subject Name is required";
     }
-
-    if (empty($detail)) {
-        array_push($errors, "Detail Name is required");
-        $_SESSION['error'] = "Detail Name is required";
+    if (empty($title_post)) {
+        array_push($errors, "Title is required");
+        $_SESSION['error'] = "Title is required";
+    }
+    if (empty($msg_post)) {
+        array_push($errors, "Detail is required");
+        $_SESSION['error'] = "Detail is required";
     }
 
     // บันทึกข้อมูล
@@ -65,31 +68,58 @@ if (isset($_POST['creat_post'])) {
         //echo myqli_errors($connect);
     }
 }
-    if (isset($_POST['creat_poll'])) {
+    if (isset($_REQUEST['creat_poll'])) {
 
     }
-    if (isset($_POST['comment_poll'])) {
+    if (isset($_REQUEST['comment_poll'])) {
 
     }
-    if (isset($_POST['comment_poll'])) {
+    if (isset($_REQUEST['comment_poll'])) {
 
         //DB: poll
-        $Group_subject = mysqli_real_escape_string($connect, $_POST["category"]); 
-        $ID_subject = mysqli_real_escape_string($connect, $_POST['subject_ID']);
-        $name_subject = mysqli_real_escape_string($connect, $_POST['subject_Name']);
-        $type_poll = mysqli_real_escape_string($connect, $_POST["poll_type"]);
-        $title_poll = mysqli_real_escape_string($connect, $_POST["poll_topic"]);
-        $msg_poll = mysqli_real_escape_string($connect, $_POST["poll_details"]);
-        $time_poll = mysqli_real_escape_string($connect, $_POST["poll_end"]);
+        $Group_subject = mysqli_real_escape_string($connect, $_REQUEST["category"]); 
+        $ID_subject = mysqli_real_escape_string($connect, $_REQUEST['subject_ID']);
+        $name_subject = mysqli_real_escape_string($connect, $_REQUEST['subject_Name']);
+        $type_poll = mysqli_real_escape_string($connect, $_REQUEST["poll_type"]);
+        $title_poll = mysqli_real_escape_string($connect, $_REQUEST["poll_topic"]);
+        $msg_poll = mysqli_real_escape_string($connect, $_REQUEST["poll_details"]);
+        $time_poll = mysqli_real_escape_string($connect, $_REQUEST["poll_end"]);
         $user;
 
+        if (empty($ID_subject)) {
+            array_push($errors, "Subject ID is required");
+            $_SESSION['error'] = "Subject ID is required";
+        }
+        if (empty($name_subject)) {
+            array_push($errors, "Subject Name is required");
+            $_SESSION['error'] = "Subject Name is required";
+        }
+        if (empty($title_post)) {
+            array_push($errors, "Title is required");
+            $_SESSION['error'] = "Title is required";
+        }
+        if (empty($msg_post)) {
+            array_push($errors, "Detail is required");
+            $_SESSION['error'] = "Detail is required";
+        }
+
         //DB: choice
-        $msg_option = mysqli_real_escape_string($connect, $_POST["msg_option"]); 
+        $msg_option = mysqli_real_escape_string($connect, $_REQUEST["msg_option"]); 
         $pollID;
         
+        if (empty($msg_option)) {
+            array_push($errors, "msg_option is required");
+            $_SESSION['error'] = "msg_option is required";
+        }
+
         //DB: answer
-        $value_ans = mysqli_real_escape_string($connect, $_POST["value_ans"]); 
+        $value_ans = mysqli_real_escape_string($connect, $_REQUEST["value_ans"]); 
         $choiceID;
         $user;
+
+        if (empty($value_ans)) {
+            array_push($errors, "You don't choose your choice.");
+            $_SESSION['error'] = "Answer is required";
+        }
     }
 ?>
