@@ -1,5 +1,7 @@
 <title>Eletiva | Search</title>
 <link rel="stylesheet" type="text/css" href="css/home_index.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <?php
 require "dbconnect.php";
 
@@ -10,11 +12,12 @@ include "header.php";
     <div class="form_find">
     <form class="" action="/action_page.php"> 
     <i class="align_icon fa fa-search"></i>
-    <input type="text" class="searchbox A_left" placeholder="Search...  [Subject ID, Subject Name]" name="search">
+    <input type="text" class="searchbox A_left" placeholder="Search...  [Subject ID, Subject Name]" name="search_text" id="search_text">
     <button class="btn_find " type="submit">ค้นหา</button>
     <!--<button class="btn_find " type="submit"><i class="icon_find fa fa-search"></i></button>-->
     </form>
 </div>
+
 <section>
     <!-- โพสล่าสุด -->
     <div class="inf">
@@ -40,8 +43,41 @@ include "header.php";
         echo '    </div>';
         echo '</a>';
         ?>
+        <div id="result"></div>
+		</div>
     </div>
 </section>
+
+<script>
+$(document).ready(function(){
+	load_data();
+	function load_data(query)
+	{
+		$.ajax({
+			url:"fetch.php",
+			method:"post",
+			data:{query:query},
+			success:function(data)
+			{
+				$('#result').html(data);
+			}
+		});
+	}
+	
+	$('#search_text').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+			load_data(search);
+		}
+		else
+		{
+			load_data();			
+		}
+	});
+});
+</script>
+
 <?php else: ?>
 <?php include "logout.php"; ?>
 <?php endif ?>
