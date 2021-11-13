@@ -16,20 +16,30 @@ include "header.php";
         </div>
         <!-- -ข้อมูล -->
         <?php              
-        echo '<a href="#Test1" class="Content">';
-        echo '    <div class="post_btn">';
-        echo '        <div class="A_left">';
-        echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';
-        echo '            <h4 class="textC" name="Post">Post1โพส</h4>';
-        echo '            <h6 class="textS" name="subject">วิชาเลือกกลุ่ม....</h6>';
-        echo '            <br><p class="Timestamp">User:??? Time:???</p>';
-        echo '        </div>';
-        echo '        <div  class="A_right">';
-        echo '            <i class="iconcomment far fa-comment-dots"></i>';
-        echo '            <h5 class="commentN">num</h5>';
-        echo '        </div>';
-        echo '    </div>';
-        echo '</a>';
+        $query = "SELECT * FROM post";
+        $result = mysqli_query($connect, $query);
+        $i = 1;
+        //SELECT COUNT(ProductID) FROM Products WHERE ;
+        while($row =  mysqli_fetch_assoc($result)){
+            
+            echo '<a href="#Test1" class="Content">';
+            echo '    <div class="post_btn">';
+            echo '        <div class="A_left">';
+            echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';
+            echo '            <h4 class="textC" name="Post">'.$row['title_post'].'</h4>';
+            echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
+            echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
+            echo '        </div>';
+            echo '        <div  class="A_right">';
+            echo '            <i class="iconcomment far fa-comment-dots"></i>';
+            echo '            <h5 class="commentN">num</h5>';
+            echo '        </div>';
+            echo '    </div>';
+            echo '</a>';
+
+            $i++;
+        }
+        
         ?>
     </div>
 
