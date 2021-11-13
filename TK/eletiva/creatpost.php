@@ -2,6 +2,9 @@
 <link rel="stylesheet " type="text/css " href="css/creatpost.css ">
 
 <?php
+
+//error_reporting(0);
+
 //For Student
 require "dbconnect.php";
 
@@ -39,30 +42,14 @@ include "header.php";
                             <option value="กลุ่มทักษะด้านภาษาและการสื่อสาร">กลุ่มทักษะด้านภาษาและการสื่อสาร</option>
                         </select>
                         <p id="demo"></p>
-                        <?php
-                            echo "".$option;
-                            if($option != ''){
-                                $sqlsub = "SELECT 'ID_subject' FROM 'subject' WHERE 'Group_subject' = '$option'";
-                            }
-                            else{
-                                $sqlsub = "SELECT 'ID_subject' FROM 'subject'";
-                            }
-                            echo $sqlsub;
-                            $result = $connect->query($sqlsub);
-                        ?>
                         <div class="row ">
                             <div class="col-lg-6 ">
                                 <label for="subjectecode " class="form-label ">รหัสวิชา</label>
-                                <input class="form-control form-control-sm " list="codes" type="text" id="code" placeholder="subject ID" name="subject_ID" onkeyup="FuncID(this.value)" required>
-                                <?php while($row =  mysqli_fetch_assoc($result)): ?>
-                                <datalist id="codes">
-                                    <option value="<?php echo $row['ID_subject']; ?>"></option>
-                                </datalist>
-                                <?php endwhile ?>
+                                <input class="form-control form-control-sm " list="codes" type="text" id="subject_ID" placeholder="subject ID" name="subject_ID" required>
                             </div>
                             <div class="col-lg-6 ">
                                 <label for="subjectename" class="form-label ">ชื่อวิชา</label>
-                                <input class="form-control form-control-sm " type="text" id="subjectename" placeholder="subject name" name="subject_Name" readonly>
+                                <input class="form-control form-control-sm " type="text" id="subjectename" placeholder="subject name" name="subject_Name" readonly >
                             </div>
 
                             </div>
@@ -101,7 +88,6 @@ include "header.php";
 
         <div class="col-lg-2 col-sm-1"></div>
     </div>
-
 </body>
 <?php else: ?>
 <?php include "logout.php"; ?>
@@ -110,35 +96,37 @@ include "header.php";
     function FuncGroup(sel) {
     var Group_subject = sel.options[sel.selectedIndex].value; 
     //หรือ document.getElementById("category").value;
-    //document.getElementById("demo").innerHTML = "You selected: " + x;
-    if (Group_subject.length > 0 ) { 
-     $.ajax({
-            type: "POST",
-            url: "fetch_state.php",
-            data: "Group_subject="+Group_subject,
-            cache: false,
-            /*
-            beforeSend: function () { 
-                $('#output1').html('<img src="loader.gif" alt="" width="24" height="24">');
-            },
-            success: function(html) {    
-                $("#output1").html( html );
-            }*/
-        });
+    document.getElementById("demo").innerHTML = "You selected: " + x;
     } 
-    function FuncID(str) {
-    var ID_subject = sel.options[sel.selectedIndex].value; 
-    if (str.length == 0) { 
-        document.getElementById("subjectename").innerHTML = "";
-        return;
-    }
-    if (str.length == 8) { 
-        <?php 
-            $namesub = "SELECT Name_subject FROM subject WHERE ID_subject = $subject_ID";
-        ?>
-        document.getElementById("subjectename").innerHTML = <?php echo $namesub;?>;
-    return;
-  }
+    
+</script>
 
-    }
+<script>
+$(document).ready(function(){
+	load_data();
+	function load_data(query)
+	{
+		$.ajax({
+			url:"fetch_creatpost.php",
+			method:"post",
+			data:{query:query},
+			success:function(data)
+			{		
+                document.getElementById("subjectename").value = data;
+			}
+		});
+	}
+	
+	$('#subject_ID').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+			load_data(search);
+		}
+		else
+		{
+			load_data();			
+		}
+	});
+});
 </script>

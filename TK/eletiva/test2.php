@@ -6,7 +6,7 @@
 
     $query = "SELECT * FROM subject";
     $result = mysqli_query($connect, $query);
-$row = mysqli_fetch_assoc($result);
+
    // echo $row['Name_subject'];
     while($row =  mysqli_fetch_assoc($result)){
         echo $row['Name_subject'];
