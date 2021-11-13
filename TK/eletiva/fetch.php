@@ -5,7 +5,7 @@ if(isset($_POST["query"]))
 {
 	$search = mysqli_real_escape_string($connect, $_POST["query"]);
 	$query = "
-	SELECT * FROM tbl_customer 
+	SELECT * FROM post 
 	WHERE CustomerName LIKE '%".$search."%'
 	OR Address LIKE '%".$search."%' 
 	OR City LIKE '%".$search."%' 
@@ -16,9 +16,10 @@ if(isset($_POST["query"]))
 else
 {
 	$query = "
-	SELECT * FROM tbl_customer ORDER BY CustomerID";
+	SELECT * FROM post ORDER BY CustomerID";
 }
 $result = mysqli_query($connect, $query);
+/*
 if(mysqli_num_rows($result) > 0)
 {
 	$output .= '<div class="table-responsive">
@@ -47,5 +48,5 @@ if(mysqli_num_rows($result) > 0)
 else
 {
 	echo 'Data Not Found';
-}
+}*/
 ?>

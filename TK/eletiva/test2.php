@@ -14,6 +14,7 @@
     }
     $test = "gdsgdf";
     
+        //SELECT COUNT(ProductID) FROM Products WHERE ;
     ?>
 <script>
 
