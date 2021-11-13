@@ -19,72 +19,50 @@ include "header.php";
             <div class="col-lg-8 col-sm-10 ">
                 <div class="box-post">
                     <h2>เขียนโพสต์</h2>
-                    <form action="creatpost.php" method="POST"> <!-- controllerPostPollData.php -->
-                        <label for="Category" class="form-label" onChange="showState(this);" id="category">หมวดหมู่</label>
-                        <?php
-                            //$selected = "-- เลือกหมวดหมู่ --";
-                            $options = array('-- เลือกหมวดหมู่ --','กลุ่มวิชาภาษา', 'กลุ่มวิชามนุษย์ศาสตร์', 'กลุ่มวิชาสังคมศาสตร์', 'กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์', 'วิชาเลือกเสรี',                             'กลุ่มคุณค่าแห่งชีวิต','กลุ่มวิถีแห่งสังคม','กลุ่มศาสตร์แห่งการคิด','กลุ่มภาษาและการสื่อสาร','กลุ่มศิลปแห่งการจัดการ','กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21','กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ','กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ','กลุ่มทักษะด้านภาษาและการสื่อสาร');
-                            echo "<select>";
-                            foreach($options as $option){
-                                if($selected == $option) {
-                                    echo "<option selected='selected' value='$option'>$option</option>";
-                                }
-                                else {
-                                    echo "<option value='$option'>$option</option>";
-                                }
-                            }
-                            echo "</select>";
-                        ?>
-                        <!--
-                        <select class="form-select form-select-sm" name="category" onclick="function()">
+                    <form method="POST"> <!-- controllerPostPollData.php-->
+                        <label for="Category" class="form-label">หมวดหมู่</label>
+                        <select class="form-select form-select-sm" name="category" onchange="FuncGroup()" id="category">
                             <option selected value="">-- เลือกหมวดหมู่ --</option>
-                            <option value='$row["กลุ่มวิชาภาษา"]'>กลุ่มวิชาภาษา</option>
-                            <option value='$row["กลุ่มวิชามนุษย์ศาสตร์"]'>กลุ่มวิชามนุษย์ศาสตร์</option>
-                            <option value='$row["กลุ่มวิชาสังคมศาสตร์"]'>กลุ่มวิชาสังคมศาสตร์</option>
-                            <option value='$row["กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์"]'>กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</option>
-                            <option value='$row["วิชาเลือกเสรี"]'>วิชาเลือกเสรี</option>
-                            <option value='$row["กลุ่มคุณค่าแห่งชีวิต"]'>กลุ่มคุณค่าแห่งชีวิต</option>
-                            <option value='$row["กลุ่มวิถีแห่งสังคม"]'>กลุ่มวิถีแห่งสังคม</option>
-                            <option value='$row["กลุ่มศาสตร์แห่งการคิด"]'>กลุ่มศาสตร์แห่งการคิด</option>
-                            <option value='$row["กลุ่มภาษาและการสื่อสาร"]'>กลุ่มภาษาและการสื่อสาร</option>
-                            <option value='$row["กลุ่มศิลปแห่งการจัดการ"]'>กลุ่มศิลปแห่งการจัดการ</option>
-                            <option value='$row["กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21"]'>กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21</option>
-                            <option value='$row["กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ"]'>กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ</option>
-                            <option value='$row["กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ"]'>กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ</option>
-                            <option value='$row["กลุ่มทักษะด้านภาษาและการสื่อสาร"]'>กลุ่มทักษะด้านภาษาและการสื่อสาร</option>
+                            <option value="กลุ่มวิชาภาษา">กลุ่มวิชาภาษา</option>
+                            <option value="กลุ่มวิชามนุษย์ศาสตร์">กลุ่มวิชามนุษย์ศาสตร์</option>
+                            <option value="กลุ่มวิชาสังคมศาสตร์">กลุ่มวิชาสังคมศาสตร์</option>
+                            <option value="กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์">กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</option>
+                            <option value="วิชาเลือกเสรี">วิชาเลือกเสรี</option>
+                            <option value="กลุ่มคุณค่าแห่งชีวิต">กลุ่มคุณค่าแห่งชีวิต</option>
+                            <option value="กลุ่มวิถีแห่งสังคม">กลุ่มวิถีแห่งสังคม</option>
+                            <option value="กลุ่มศาสตร์แห่งการคิด">กลุ่มศาสตร์แห่งการคิด</option>
+                            <option value="กลุ่มภาษาและการสื่อสาร">กลุ่มภาษาและการสื่อสาร</option>
+                            <option value="กลุ่มศิลปแห่งการจัดการ">กลุ่มศิลปแห่งการจัดการ</option>
+                            <option value="กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21">กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21</option>
+                            <option value="กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ">กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ</option>
+                            <option value="กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ">กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ</option>
+                            <option value="กลุ่มทักษะด้านภาษาและการสื่อสาร">กลุ่มทักษะด้านภาษาและการสื่อสาร</option>
                         </select>
-                            -->
-                        <div class="row ">
-                            <?php
-                            /*
-                            if($option != '-- เลือกหมวดหมู่ --'){
+                        <p id="demo"></p>
+                        <?php
+                            echo "".$option;
+                            if($option != ''){
                                 $sqlsub = "SELECT 'ID_subject' FROM 'subject' WHERE 'Group_subject' = '$option'";
                             }
                             else{
-                                $sqlsub = "SELECT 'ID_subject' FROM 'subject' WHERE 1";
+                                $sqlsub = "SELECT 'ID_subject' FROM 'subject'";
                             }
-                            $sqlsub = "SELECT 'ID_subject' FROM 'subject' WHERE 1";
+                            echo $sqlsub;
                             $result = $connect->query($sqlsub);
-                            */
-                            ?>
+                        ?>
+                        <div class="row ">
                             <div class="col-lg-6 ">
                                 <label for="subjectecode " class="form-label ">รหัสวิชา</label>
-                                <input class="form-control form-control-sm " list="codes" type="text" id="code" placeholder="subject ID" name="subject_ID" required>
+                                <input class="form-control form-control-sm " list="codes" type="text" id="code" placeholder="subject ID" name="subject_ID" onkeyup="FuncID(this.value)" required>
                                 <?php while($row =  mysqli_fetch_assoc($result)): ?>
                                 <datalist id="codes">
                                     <option value="<?php echo $row['ID_subject']; ?>"></option>
                                 </datalist>
                                 <?php endwhile ?>
                             </div>
-                            
-                            <?php 
-                            echo $row['ID_subject'];
-                            $subject_ID = $row['ID_subject'];
-                            $namesubject = "SELECT Name_subject FROM subject WHERE ID_subject = $subject_ID";
-                            ?>
                             <div class="col-lg-6 ">
-                                <label for="subjectename " class="form-label ">ชื่อวิชา</label>
-                                <input class="form-control form-control-sm " type="text" id="subject " placeholder="subject name" name="subject_Name" value="<?php echo $row['namesubject'] ?>" readonly>
+                                <label for="subjectename" class="form-label ">ชื่อวิชา</label>
+                                <input class="form-control form-control-sm " type="text" id="subjectename" placeholder="subject name" name="subject_Name" readonly>
                             </div>
 
                             </div>
@@ -129,22 +107,38 @@ include "header.php";
 <?php include "logout.php"; ?>
 <?php endif ?>
 <script>
-function showState(sel) {
-    var country_id = sel.options[sel.selectedIndex].value;  
-    $("#category").html( "" );
-    if (ID_subject.length > 0 ) { 
+    function FuncGroup(sel) {
+    var Group_subject = sel.options[sel.selectedIndex].value; 
+    //หรือ document.getElementById("category").value;
+    //document.getElementById("demo").innerHTML = "You selected: " + x;
+    if (Group_subject.length > 0 ) { 
      $.ajax({
             type: "POST",
-            url: "creatpost.php",
-            data: "ID_subject="+ID_subject,
+            url: "fetch_state.php",
+            data: "Group_subject="+Group_subject,
             cache: false,
+            /*
             beforeSend: function () { 
-                $('#category').html('<img src="loader.gif" alt="" width="24" height="24">');
+                $('#output1').html('<img src="loader.gif" alt="" width="24" height="24">');
             },
             success: function(html) {    
-                $("#category").html( html );
-            }
+                $("#output1").html( html );
+            }*/
         });
     } 
-}
+    function FuncID(str) {
+    var ID_subject = sel.options[sel.selectedIndex].value; 
+    if (str.length == 0) { 
+        document.getElementById("subjectename").innerHTML = "";
+        return;
+    }
+    if (str.length == 8) { 
+        <?php 
+            $namesub = "SELECT Name_subject FROM subject WHERE ID_subject = $subject_ID";
+        ?>
+        document.getElementById("subjectename").innerHTML = <?php echo $namesub;?>;
+    return;
+  }
+
+    }
 </script>
