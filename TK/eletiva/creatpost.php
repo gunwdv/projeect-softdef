@@ -24,7 +24,7 @@ include "header.php";
                     <h2>เขียนโพสต์</h2>
                     <form method="POST"> <!-- controllerPostPollData.php-->
                         <label for="Category" class="form-label">หมวดหมู่</label>
-                        <select class="form-select form-select-sm" name="category" onchange="FuncGroup()" id="category">
+                        <select class="form-select form-select-sm" name="category" onchange="FuncGroup(this)" id="category">
                             <option selected value="">-- เลือกหมวดหมู่ --</option>
                             <option value="กลุ่มวิชาภาษา">กลุ่มวิชาภาษา</option>
                             <option value="กลุ่มวิชามนุษย์ศาสตร์">กลุ่มวิชามนุษย์ศาสตร์</option>
@@ -41,7 +41,7 @@ include "header.php";
                             <option value="กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ">กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ</option>
                             <option value="กลุ่มทักษะด้านภาษาและการสื่อสาร">กลุ่มทักษะด้านภาษาและการสื่อสาร</option>
                         </select>
-                        <p id="demo"></p>
+                        <!--<p id="demo"></p>-->
                         <div class="row ">
                             <div class="col-lg-6 ">
                                 <label for="subjectecode " class="form-label ">รหัสวิชา</label>
