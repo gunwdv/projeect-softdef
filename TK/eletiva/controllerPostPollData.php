@@ -3,7 +3,6 @@
 session_start();
 require "dbconnect.php";
 $errors = array();
-$email = '';
 
 if (isset($_REQUEST['creat_post'])) {
     //DB: Post

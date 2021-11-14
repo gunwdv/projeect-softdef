@@ -88,7 +88,7 @@ include "header.php";
     $result = mysqli_query($connect, $query);
     while($row =  mysqli_fetch_assoc($result)){
         
-        echo '<a href="#Test1" class="Content">';
+        echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
         echo '    <div class="post_btn">';
         echo '        <div class="A_left">';
         echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';

@@ -172,3 +172,8 @@ section .postList .comment h3
     bottom: 20px;
     font-weight: 200;
 }
+a.Content{
+    cursor: pointer;
+    text-decoration: none;
+    background-color: crimson;
+}

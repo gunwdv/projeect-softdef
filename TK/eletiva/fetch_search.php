@@ -26,7 +26,7 @@ if(mysqli_num_rows($result) > 0)
 {
 	while($row = mysqli_fetch_array($result))
 	{
-		$output .=  '<a href="#Test1" class="Content">
+		$output .=  '<a href="post.php?id='.$row['ID_post'].'" class="Content">
 					    <div class="post_btn">
 					        <div class="A_left">
 					            <i class="icon_next fas fa-chevron-circle-right"></i>

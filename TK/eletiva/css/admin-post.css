@@ -176,3 +176,10 @@ section .post .user .pic{
     }
 } 
 
+button.btnlink{
+    /*<button class="btnlink" id="notdel">*/
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    width: 100%;
+}

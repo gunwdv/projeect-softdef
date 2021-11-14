@@ -8,58 +8,62 @@ require "dbconnect.php";
 
 include "header.php";
 ?>
-<?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) : ?>
+<?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3 && $_GET['id']) : ?>
 <body>
-   
     <section class="main">
         <div class="post">
-            <div class="postName">
-                <i class="fas fa-pen"></i>
-                <p>Post1โพส</p>
-            </div>
-            <div class="btnPost" style="margin-left: 47px;">
-                <button>รหัสวิชา</button>
-                <button>วิชาเลือกกลุ่ม....</button>
-            </div>
-            <div class="postDetail">
-                <p>เช้าวันหนึ่งวันนั้น ผมไปเรียนว่ายน้ำครับผม เลยอยากทราบว่าวิชาเลือกเสรืที่สอนทำอาหารเรียนยากไหมครับ ถ้าผมปั่นจักรยานไม่เป็นจะเรียนได้ไหม</p>
-            </div>
-            <div class="user">
-                <img class="pic" src="images/login.png" alt="user profile">
-                <div class="profile">
-                    <a href="#">User:???</a>
-                    <p>Time:???</p>
-                </div>
-            </div>
+            <?php
+                $x = $_GET['id'];
+                $query = "SELECT * FROM post WHERE ID_post = '$x'";
+                $result = mysqli_query($connect, $query);
+                while($row =  mysqli_fetch_assoc($result)){
+                    echo '<div class="postName">';
+                    echo '<i class="fas fa-pen"></i>';
+                    echo '<p>'.$row['title_post'].'</p>';
+                    echo '</div>';
+                    echo '<div class="btnPost" style="margin-left: 47px;">';
+                    echo '<button>'.$row['ID_subject'].'</button>';
+                    echo '<button>'.$row['Group_subject'].'</button>';
+                    echo '</div>';
+                    echo '<div class="postDetail">';
+                    echo '<p>'.$row['msg_post'].'</p>';
+                    echo '</div>';
+                    echo '<div class="user">';
+                    echo '<img class="pic" src="images/login.png" alt="user profile">';
+                    echo '<div class="profile">';
+                    echo '<a href="#">User:'.$row['create_by'].'</a>';
+                    echo '<p>Time:'.$row['time_post'].'</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';   
+                }
+            ?>
         </div>
-
+        <form action="controllernotify.php" method="POST">
          <div class="btn">
             <p class="cd-popup-notify" style="margin-left: 20px; margin-right: 20px;">แจ้งเตือนผู้ใช้</p>
             <p class="cd-popup-delete" style="margin-left: 20px; margin-right: 20px;">ลบโพสต์</p>
-
             <div class="cd-popup" role="alert">
                 <div id="notifyConfirm" class="cd-popup-container hidden">
                     <p>ต้องการแจ้งเตือนผู้ใช้หรือไม่?</p>
                     <ul class="cd-buttons">
-                        <li><a class="yes" href="#">ต้องการ</a></li>
-                        <li><a href="#">ไม่ต้องการ</a></li>
+                        <li><a class="yes" href="#"><button class="btnlink" name="yesnotify">ต้องการ</button></a></li>
+                        <li><a href="#" id="notnotify">ไม่ต้องการ</a></li>
                     </ul>
                     <a href="#" class="cd-popup-close img-replace">Close</a>
                 </div>
                 <div id="deleteConfirm" class="cd-popup-container hidden">
                     <p>ต้องการลบโพสต์หรือไม่?</p>
                     <ul class="cd-buttons">
-                        <li><a class="yes" href="#">ต้องการ</a></li>
-                        <li><a href="#">ไม่ต้องการ</a></li>
+                        <li><a class="yes" href="#"><button class="btnlink" name="yesdel">ต้องการ</button></a></li>
+                        <li><a href="#" id="notdel">ไม่ต้องการ</a></li>
                     </ul>
                     <a href="#" class="cd-popup-close img-replace">Close</a>
                 </div>
             </div>
         </div>
-
+        </form>
     </section>
-
-   
 </body> 
 <script src="javascript/pop-up.js"></script>
 <?php else: ?>
