@@ -43,17 +43,14 @@ body {
     height: 35px;
 }
 
-.title .badge {
+.badge {
     background-color: #b8b6b6;
     font-size: 12.5px;
-}
-
-#code {
-    margin-left: 30px;
-}
-
-#category {
-    margin-left: 10px;
+    margin-right: 5px;
+    border: none;
+    outline: none;
+    color: white;
+    display: block;
 }
 
 .post-item {
