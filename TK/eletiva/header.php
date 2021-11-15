@@ -50,6 +50,7 @@ else{
     $status = $_SESSION['status'];
     $check = "SELECT email,password,status FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
     $result = mysqli_query($connect, $check);
+    $row = mysqli_fetch_assoc($result);
 
     if(mysqli_num_rows($result) != 1){
         $_SESSION['status'] = 0;

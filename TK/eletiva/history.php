@@ -4,6 +4,14 @@ require "dbconnect.php";
 
 require('inc_header.php');
 include "header.php";
+
+    $check = "SELECT ID FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
+    $result = mysqli_query($connect, $check);
+    $row = mysqli_fetch_assoc($result);
+    $iduser = $row['ID'];
+
+    $queryA = "SELECT * FROM post WHERE create_by = '$iduser'";
+    $resultbulid = mysqli_query($connect, $queryA);
 ?>
 <body>
     <div class="">
@@ -19,80 +27,42 @@ include "header.php";
             <div class="tab-content" id="tabHistory-Content">
               <div class="tab-pane fade show active" id="pills-create" role="tabpanel" aria-labelledby="pills-create-tab">
                   <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
+                  <?php
+                      while($row = mysqli_fetch_assoc($resultbulid)){
+                        echo'<li class="list-group-item">';
+                        echo'  <div class="row">';
+                        echo'     <div class="col-sm-9">';
+                        echo'         <a href="post.php?id='.$row['ID_post'].'"><i class="fas fa-chevron-circle-right"></i>'.$row['title_post'].'</a>';
+                        echo'    </div> ';
+                        echo'    <div class="col-sm-3 text-md-end">'.$row['time_post'].'</div> ';
+                        echo'</div>';
+                        echo'</li>';
+                      }                        
+                      ?>
                   </ul>
               </div>
               <div class="tab-pane fade" id="pills-answer" role="tabpanel" aria-labelledby="pills-answer-tab">
                   <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <a href=""><i class="fas fa-chevron-circle-right"></i> แนะนำวิชาเลือกหมวดภาษาหน่อยค่ะ</a>
-                            </div> 
-                            <div class="col-sm-3 text-md-end">
-                                9/3/2021
-                            </div> 
-                        </div>
-                      </li>
+                      <?php
+                        $queryB = "SELECT from_post FROM comment WHERE create_by = '$iduser'";
+                        $x = mysqli_query($connect, $queryB);
+                        while($row = mysqli_fetch_assoc($x)){
+                            //เช็คว่าเขียนโพสไหน แล้วนำมาเช็คชื่อเรื่อง
+                            $y = $row["from_post"];
+                            $queryC = "SELECT * FROM post WHERE ID_post = '$y'";
+                            $resultans = mysqli_query($connect, $queryC);
+                            if($row = mysqli_fetch_assoc($resultans)){
+                                echo'<li class="list-group-item">';
+                                echo'  <div class="row">';
+                                echo'     <div class="col-sm-9">';
+                                echo'         <a href="post.php?id='.$row['ID_post'].'"><i class="fas fa-chevron-circle-right"></i>'.$row['title_post'].'</a>';
+                                echo'    </div> ';
+                                echo'    <div class="col-sm-3 text-md-end">'.$row['time_post'].'</div> ';
+                                echo'</div>';
+                                echo'</li>';
+                            }
+                      }             
+                      ?>
                   </ul>
               </div>
             </div>
