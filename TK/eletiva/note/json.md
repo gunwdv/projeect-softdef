@@ -1,0 +1,2 @@
+
+{"elective_eng1":"0","elective_hu":"0","elective_so1":"0","elective_sci":"0","elective_free":"0","elective_life":"0","elective_so2":"0","elective_think":"0","elective_manage":"1","elective_eng2":"0","elective_21":"0","elective_carrer":"0","elective_leader":"1","elective_eng3":"1"}

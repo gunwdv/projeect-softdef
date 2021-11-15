@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=yIoHwj3AsCM&ab_channel=RaddyTheBrand
+https://raddy.co.uk/blog/show-selected-option-value-from-array-mysql-db-using-php/
+https://www.youtube.com/watch?v=ygzfmRjVaV0&ab_channel=WebsiteGeek
+https://programmingfields.com/dropdown-selection-filter-in-php-using-jquery-ajax/
+https://aarafacademy.com/multiple-dropdown-jquery-ajax-php/

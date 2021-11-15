@@ -1,0 +1,202 @@
+                @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400&display=swap');
+                * {
+                    font-family: 'IBM Plex Sans Thai', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                body {
+                    width: 100vw;
+                    min-width: 100vh;
+                }
+                
+                .vote-box .title-head {
+                    font-size: 20px;
+                    color: #FAB23D;
+                }
+                
+                .vote-box {
+                    border-radius: 15px;
+                    background-color: #3B3F46;
+                    box-shadow: 5px 5px 2px rgb(177, 177, 177);
+                    padding: 15px 15px 10px 25px;
+                    position: relative;
+                }
+                
+                .fa-ellipsis-h {
+                    color: white;
+                    padding: 3px;
+                    border-radius: 50%;
+                    text-align: center;
+                    font-size: 18px;
+                    float: right;
+                }
+                
+                .fa-poll {
+                    margin-right: 6.5px;
+                    font-size: 24px;
+                }
+                
+                .avatar {
+                    vertical-align: middle;
+                    width: 35px;
+                    height: 35px;
+                }
+                
+                .title {
+                    position: relative;
+                }
+                
+                .badge {
+                    background-color: #b8b6b6;
+                    font-size: 12.5px;
+                    margin-right: 5px;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    display: block;
+                }
+                
+                .fa-ellipsis-h:hover {
+                    background-color: rgba(131, 131, 131, 0.679);
+                }
+                
+                .dropdown-menu a:hover {
+                    background-color: #FAB23D;
+                    color: white;
+                }
+                
+                .dropdown-menu a {
+                    color: #FAB23D;
+                }
+                
+                .profile {
+                    margin-top: 50px;
+                }
+                
+                strong {
+                    margin-left: 10px;
+                    font-size: 11px;
+                    color: white;
+                    letter-spacing: 0.8px;
+                }
+                
+                #time {
+                    margin-left: 15px;
+                    font-size: 11px;
+                    color: white;
+                    letter-spacing: 0.8px;
+                }
+                
+                .vote-poll {
+                    margin-top: 20px;
+                    border: 2px solid #FAB23D;
+                    padding: 0 20px;
+                }
+                
+                .form-check-label {
+                    font-size: 18px;
+                }
+                
+                .form-check {
+                    margin: 10px 0;
+                    padding: 10px;
+                }
+                
+                input[type=radio] {
+                    border: 2px solid #FAB23D;
+                    outline: none;
+                    margin-right: 14px;
+                }
+                
+                input[type=radio]:checked {
+                    background-color: #FAB23D;
+                    border: 2px solid #FAB23D;
+                }
+                
+                .bar {
+                    height: 22px;
+                    background-color: #FAB23D;
+                    float: right;
+                    border-radius: 10px;
+                    font-size: 15px;
+                    float: right;
+                    color: white;
+                }
+                
+                #like {
+                    width: 68%;
+                }
+                
+                #dontlike {
+                    width: 22%;
+                }
+                
+                .like,
+                .dontlike {
+                    font-size: 15px;
+                    float: right;
+                    color: white;
+                    margin-right: 20px;
+                }
+                
+                #staticBackdrop .modal-body {
+                    background-color: #d2d2d297;
+                    font-size: 16px;
+                }
+                
+                button.btn {
+                    color: white;
+                    background-color: #FAB23D;
+                    border: 2px solid #FAB23D;
+                    border-radius: 20px;
+                    margin-left: 15px;
+                }
+                
+                button.btn:hover,
+                button.btn:active {
+                    color: #FAB23D;
+                    background-color: white;
+                    border: 2px solid #FAB23D;
+                }
+                
+                #needLabel {
+                    margin: 52.5px;
+                }
+                
+                #need .modal-body {
+                    background-color: #d2d2d297;
+                    font-size: 16px;
+                }
+                
+                @media (max-width: 654px) {
+                    .col-lg-6 {
+                        max-width: 330px;
+                        max-height: 210px;
+                    }
+                    .vote-box .title-head {
+                        font-size: 15px;
+                        color: #FAB23D;
+                    }
+                    .vote-box {
+                        padding: 10px 15px 10px 20px;
+                    }
+                    .vote-poll {
+                        max-width: 654px;
+                    }
+                    .bar-1 {
+                        width: 78%;
+                        height: 22px;
+                        background-color: #FAB23D;
+                        float: right;
+                        border-radius: 10px;
+                    }
+                    .bar-2 {
+                        width: 22%;
+                        height: 22px;
+                        background-color: #FAB23D;
+                        float: right;
+                        border-radius: 10px;
+                    }
+                }
