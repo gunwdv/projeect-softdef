@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="css/home_index.css">
 <?php
 require "dbconnect.php";
-
+error_reporting(0);
 include "header.php";
 ?>
 <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 3) : ?>

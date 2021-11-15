@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="css/home_index.css">
 <?php
 require "dbconnect.php";
-
+error_reporting(0);
 $output = '';
 if(isset($_POST["queryS"]))
 {

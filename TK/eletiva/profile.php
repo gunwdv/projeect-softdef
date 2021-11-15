@@ -1,7 +1,7 @@
 <title>Eletiva |</title>
 <?php
 require "dbconnect.php";
-
+error_reporting(0);
 include "inc_header.php";
 include "header.php";
 $email = $_SESSION["email"];
@@ -10,10 +10,17 @@ $query = "SELECT * FROM users WHERE email = '$email'";
 $result = mysqli_query($connect, $query);
 $row = mysqli_fetch_assoc($result);
 $name = $row["name"];
-$faculty = $row["faculty"];
+$sex = $row["sex"];
 $major = $row["major"];
-$img = (empty($row['picture'])) ? 'images/avatar.jpg' : $row["picture"];
+$img = (empty($row['picture'])) ? 'avatar.jpg' : $row["picture"];
 $introduce = $row["introduce"];
+
+$query = "SELECT * FROM education WHERE major = '$major'";
+$result = mysqli_query($connect, $query);
+$row = mysqli_fetch_assoc($result);
+$faculty = $row["faculty"];
+
+//echo "emaill : $email <br>major : $major <br> introduce : $introduce <br>faculty : $faculty <br>img : $img <br> introduce : $name <br> sex : $sex";
 ?>
 <body>
     <div class="">
@@ -23,7 +30,7 @@ $introduce = $row["introduce"];
                 หน้าของฉัน
               </div>
               <div class="card-body">
-                  <form action="controllerProfile.php" method="post" id="form" enctype="multipart/form-data">
+                  <form action="controllerProfile.php" method="post" id="change_info" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-sm-3 text-center">
                             <div class="box-browse">
@@ -49,31 +56,90 @@ $introduce = $row["introduce"];
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">เพศ</label>
                                 <div class="col-sm-10">
-                                  <select class="form-select" name="sex">
-                                      <option value="N">ไม่ระบุ</option>
-                                      <option value="M">ชาย</option>
-                                      <option value="F">หญิง</option>
-                                  </select>
+                                <select class="form-select" name="sex">
+                                      <option value="<?php echo $sex ?>"><?php 
+                                      if ($sex=='M'){
+                                        $sex_value = "ผู้ชาย";
+                                      } 
+                                      else if ($sex=='F'){
+                                        $sex_value = "ผู้หญิง";
+                                      }
+                                      else{
+                                        $sex_value = "ไม่ระบุ";
+                                      }
+                                      echo  $sex_value;
+                                      ?>
+                                      </option>                                       
+                                      <?php
+                                      $sex_Resuut = array('','M','F');
+                                      for($x = 0; $x < 3; $x++)
+                                      {  
+                                        if ($sex=='M'&&$sex_Resuut[$x]=='M'){
+                                            continue;
+                                        } 
+                                        else if ($sex=='F'&&$sex_Resuut[$x]=='F'){
+                                            continue;
+                                        }
+                                        else if ($sex==''&&$sex_Resuut[$x]==''){
+                                            continue;
+                                        }
+                                        if ($sex_Resuut[$x]=='M'){
+                                          $sex_value2 = "ผู้ชาย";
+                                        }                                         
+                                        else if ($sex_Resuut[$x]=='F'){
+                                          $sex_value2 = "ผู้หญิง";
+                                        }                                        
+                                        else if ($sex_Resuut[$x]==''){
+                                          $sex_value2 = "ไม่ระบุ";
+                                        }
+                                      ?>                                      
+                                      <option value="<?php echo $sex_Resuut[$x]; ?>"><?php echo $sex_value2;?></option>
+                                      <?php
+                                      }
+                                      ?> 
+                                  </select>                                
                                 </div>
                             </div>
+                            
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">คณะ</label>
                                 <div class="col-sm-10">
-                                  <select class="form-select" name="faculty">
-                                      <option>วิศวกรรมศาสตร์</option>
-                                      <option>สถาปัตยกรรมศาสตร์</option>
-                                      <option>วิทยาศาสตร์</option>
-                                  </select>
+                                <input type="text" name="faculty" value="<?php if ($faculty == null) 
+                                {
+                                  echo "ไม่ระบุ";                                                      
+                                } 
+                                else {
+                                  echo $faculty; 
+                                }?>
+                                " class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">ภาควิชา</label>
                                 <div class="col-sm-10">
                                   <select class="form-select" name="major">
-                                      <option>วิศวกรรมคอมพิวเตอร์</option>
-                                      <option></option>
-                                      <option></option>
-                                  </select>
+                                        <option value="">
+                                          <?php if ($major == null) 
+                                          {
+                                            echo "ไม่ระบุ";                                                      
+                                          } 
+                                          else {
+                                            echo $major; 
+                                          }?></option>
+                                        <?php
+                                        $major_SQL = "SELECT major FROM education";
+                                        $major_Query = mysqli_query($connect,$major_SQL);
+                                        while($major_Resuut = mysqli_fetch_assoc($major_Query))
+                                        {
+                                            if($major_Resuut["major"]==$major){
+                                                continue;
+                                            }
+                                        ?>
+                                        <option value="<?php echo $major_Resuut["major"]; ?>"><?php echo $major_Resuut["major"]; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -99,7 +165,7 @@ $introduce = $row["introduce"];
                 หมวดหมู่ที่สนใจ
               </div>
               <div class="card-body">
-                  <form action="controllerProfile.php" method="post" id="form" enctype="multipart/form-data">
+                  <form action="controllerProfile.php" method="post" id="form2" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-sm-6">
                             <div class="form-check mb-2">

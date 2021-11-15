@@ -31,46 +31,18 @@ if(isset($_POST['select_finish'])){
         echo"ERROR";
     }
 }
+
 if (isset($_POST['change_info'])) {
 
-    $name = mysqli_real_escape_string($connect, $_POST['name']);
-    $faculty = mysqli_real_escape_string($connect, $_POST['faculty']);
+    $sex = mysqli_real_escape_string($connect, $_POST['sex']);    
     $major = mysqli_real_escape_string($connect, $_POST['major']);
     $introduce = mysqli_real_escape_string($connect, $_POST['introduce']);
-
-    $E[0] = (empty($_POST['elective_eng1'])) ? 0 : 1;
-    $E[1] = (empty($_POST['elective_hu'])) ? 0 : 1;
-    $E[2] = (empty($_POST['elective_so1'])) ? 0 : 1;
-    $E[3] = (empty($_POST['elective_sci'])) ? 0 : 1;
-    $E[4] = (empty($_POST['elective_free'])) ? 0 : 1;
-    $E[5] = (empty($_POST['elective_life'])) ? 0 : 1;
-    $E[6] = (empty($_POST['elective_so2'])) ? 0 : 1;
-    $E[7] = (empty($_POST['elective_think'])) ? 0 : 1;
-    $E[8] = (empty($_POST['elective_manage'])) ? 0 : 1;
-    $E[9] = (empty($_POST['elective_eng2'])) ? 0 : 1;
-    $E[10] = (empty($_POST['elective_21'])) ? 0 : 1;
-    $E[11] = (empty($_POST['elective_carrer'])) ? 0 : 1;
-    $E[12] = (empty($_POST['elective_leader'])) ? 0 : 1;
-    $E[13] = (empty($_POST['elective_eng3'])) ? 0 : 1;
-    
-    $interest = "{\"elective_eng1\":\"$E[0]\",\"elective_hu\":\"$E[1]\",\"elective_so1\":\"$E[2]\",\"elective_sci\":\"$E[3]\",\"elective_free\":\"$E[4]\",\"elective_life\":\"$E[5]\",\"elective_so2\":\"$E[6]\",\"elective_think\":\"$E[7]\",\"elective_manage\":\"$E[8]\",\"elective_eng2\":\"$E[9]\",\"elective_21\":\"$E[10]\",\"elective_carrer\":\"$E[11]\",\"elective_leader\":\"$E[12]\",\"elective_eng3\":\"$E[13]\"}";
+      
     $email = $_SESSION["email"];
 
-    //echo "emaill : $email <br>name : $name <br>faculty : $faculty <br>major : $major <br> introduce : $introduce <br> interest : $interest";
+    //echo "emaill : $email <br>major : $major <br> introduce : $introduce <br> sex : $sex <br>";
     
-    $query = "UPDATE users ";
-    if ($name == null) {
-        $query .= "SET name = NULL,";
-    } 
-    else {
-        $query .= "SET name = '$name',";
-    }
-    if ($faculty == null) {
-        $query .= "faculty = NULL,";
-    } 
-    else {
-        $query .= "faculty = '$faculty',";
-    }
+    $query = "UPDATE users SET ";  
     if ($major == null) {
         $query .= "major = NULL,";
     } 
@@ -81,16 +53,17 @@ if (isset($_POST['change_info'])) {
         $query .= "introduce = NULL,";
     } 
     else {
-        $query .= "introduce='$introduce',";
-    }
-    if ($interest == null) {
-        $query .= "interest = NULL,";
+        $query .= "introduce = '$introduce',";
+    }    
+    if ($sex == null) {
+        $query .= "sex = NULL";
     } 
     else {
-        $query .= "interest='$interest'";
-    }
+        $query .= "sex = '$sex'";
+    } 
+    $query .= " WHERE email = '$email'";
 
-    $query .= "WHERE email = '$email'";
+    //echo "query : $query";
 
     $result = mysqli_query($connect, $query);
 
@@ -98,7 +71,7 @@ if (isset($_POST['change_info'])) {
         if (move_uploaded_file($_FILES["filUpload"]["tmp_name"], "myfile/" . $email . "_" . $_FILES["filUpload"]["name"])) {
 
             //*** Delete Old File ***//
-            if ($_POST["hdnOldFile"] != 'test.jpg') {
+            if ($_POST["hdnOldFile"] != 'avatar.jpg') {
                 @unlink("myfile/" . $_POST["hdnOldFile"]);
             }
 
