@@ -84,6 +84,7 @@ $email = '';
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 $_SESSION['status'] = $row['status'];
+                $_SESSION['ID'] = $row['ID'];
                 $_SESSION['success'] = "Your are now logged in";
                 if($_SESSION['status'] == 3){
                     header("location: admin-home.php");
