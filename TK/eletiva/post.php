@@ -8,8 +8,10 @@ include "header.php";
 if ($_GET['id']){
     //echo $_GET['id'];
     $x = $_GET['id'];
-    $query = "SELECT * FROM post WHERE ID_post = '$x'";
-    $resultpost = mysqli_query($connect, $query);
+    $queryP = "SELECT * FROM post WHERE ID_post = '$x'";
+    $resultpost = mysqli_query($connect, $queryP);
+    $queryC = "SELECT * FROM comment WHERE from_post = '$x'";
+    $resultcom = mysqli_query($connect, $queryC);
 }
 ?>
 <?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] != 3) || empty($_SESSION['status'])) : ?>
@@ -31,12 +33,12 @@ if ($_GET['id']){
                         <?php 
                         while($row = mysqli_fetch_assoc($resultpost)){
                             echo '<p class="title"><i class="fas fa-pen"></i>'.$row["title_post"].'
-                            <span class="badge rounded-pill " id="code">'.$row["ID_subject"].'</span><span class="badge rounded-pill" id="category">'.$row["Group_subject"].'</span>
+                            <br><span class="badge rounded-pill " id="code">'.$row["ID_subject"].'</span><span class="badge rounded-pill" id="category">'.$row["Group_subject"].'</span>
                             </p>';
                             echo '<p class="post-item">'.$row["msg_post"].'</p>';
                             echo '<div class="d-flex align-items-center ">';
                             echo '  <div class="d-inline ">';
-                            echo '  <img src=".../Jan/image/avatar.png " alt="Avatar" class="avatar">';
+                            echo '  <img src="images/avatar.jpg" alt="Avatar" class="avatar">';
                             echo '</div>';
                             echo '<div class="d-inline col-sm-6">';
                             echo '  <strong>'.$row["create_by"].'</strong>';
@@ -58,47 +60,50 @@ if ($_GET['id']){
         </div>
 
         <!-- โพสต์ comment โพสต์รีวิว -->
-
-        <div class="row ">
-
-            <div class="col-lg-4 col-sm-3"></div>
-            <div class="col-lg-4 col-sm-7">
-                <div class="comment-review">
-                    <div class="comment-box">
-                        <i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li>
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>
-                            <li><a class="dropdown-item " href="#">ลบโพสต์</a></li>
-                        </ul>
-                        <div class="d-flex align-items-center ">
-                            <div class="d-inline ">
-                                <img src="/Jan/image/avatar2.png " alt="Avatar" class="avatar">
-                            </div>
-                            <div class="d-inline ">
-                                <strong>กัปตันอเมริกา</strong>
-                                <span class="d-block" id="time">20 นาที ที่ผ่านมา</span>
-                            </div>
-                        </div>
-                        <div class="d-block text-start ">
-                            <p class="comment">อาจารย์ใจดีนะ แต่งานเยอะไปหน่อย</p>
-                        </div>
-                        <!--
-                        <div class="star-review ">
-                            <span class="heading">คะแนน</span>
-                            <span class="fa fa-star checked "></span>
-                            <span class="fa fa-star checked "></span>
-                            <span class="fa fa-star checked "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                        </div>
-                        -->
-                    </div>
-                    <div class="col-lg-2 col-sm-2"></div>
-                </div>
-            </div>
-
+        <?php 
+        while($row = mysqli_fetch_assoc($resultcom)){
+            echo '<div class="row ">';
+            //echo '<div class="col-lg-4 col-sm-3"></div>'; //*
+            echo '<div class="col-lg-3 col-sm-2"></div>';
+            echo '<div class="col-lg-5 col-sm-8">'; //*
+            //echo '<div class="col-lg-4 col-sm-7">';
+            echo '<div class="comment-review">';
+            echo '<div class="comment-box">';
+            echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
+            echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
+            echo '<li>';
+            echo '<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>';
+            echo '<li><a class="dropdown-item " href="#">ลบโพสต์</a></li>';
+            echo '</ul>';
+            echo'<div class="d-flex align-items-center ">';
+            echo    '<div class="d-inline ">';
+            echo        '<img src="images/avatar.jpg" alt="Avatar" class="avatar">';
+            echo    '</div>';
+            echo    '<div class="d-inline ">';
+            echo        '<strong>'.$row["create_by"].'</strong>';
+            echo        '<span class="d-block" id="time">'.$row["time_comment"].'</span>';
+            echo    '</div>';
+            echo'</div>';
+            echo'<div class="d-block text-start ">';
+            echo    '<p class="comment">'.$row["msg_comment"].'</p>';
+            echo'</div>';
+            echo '</div>';
+            echo '<div class="col-lg-2 col-sm-2"></div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+        ?>
+        <!--
+        <div class="star-review ">
+            <span class="heading">คะแนน</span>
+            <span class="fa fa-star checked "></span>
+            <span class="fa fa-star checked "></span>
+            <span class="fa fa-star checked "></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star "></span>
         </div>
+        -->
         <!-- modal box -->
         <!-- modal comment รีวิว -->
         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

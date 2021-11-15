@@ -25,8 +25,11 @@ $img = (empty($row['picture'])) ? 'test.jpg' : $row["picture"];
 $introduce = $row["introduce"];
 
 ?>
+<div>
 
+</div>
     <form action="editprofile.php" method="post" id="form" enctype="multipart/form-data">
+
         <label>เมล</label><input type="email" value="<?php echo $email ?>" readonly><br>
         <label>ชื่อ</label><input type="text" placeholder="ชื่อ" name="name" value="<?php echo $name ?>"><br>
         <label>คณะ</label><input type="text" placeholder="คณะ" name="faculty" value="<?php echo $faculty ?>"><br>
