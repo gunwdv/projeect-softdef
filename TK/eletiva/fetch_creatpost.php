@@ -7,8 +7,9 @@ if(isset($_POST["query"]))
 	$search = mysqli_real_escape_string($connect, $_POST["query"]);
 	$query = "
 	SELECT * FROM subject 
-	WHERE ID_subject LIKE '%".$search."%'
+	WHERE ID_subject = $search
 	";
+	//WHERE ID_subject LIKE '%".$search."%'
 }
 
 $result = mysqli_query($connect, $query);

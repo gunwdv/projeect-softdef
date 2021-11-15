@@ -31,7 +31,7 @@ if(isset($_GET["logout"])){
         <div class="container">
             <h2>เลือกกลุ่มวิชาเลือกที่คุณสนใจ</h2>
             <p class="skip"><a href="index.php">ข้าม>></a></p>
-            <form action="editprofile.php" method="post">
+            <form action="controllerProfile.php" method="post">
             <ul>
                 <li>
                     <input type="checkbox" class="selectS" id="myCheckbox1" name="elective_eng1">

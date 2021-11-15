@@ -71,7 +71,7 @@ else{
         echo'<a class="usernav" tabindex="0">My User</a>';
         echo'<ul class="submenu userlink">';
         echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
-        echo'<li class="subitem"><a href="post_poll.php">My Post</a></li>';
+        echo'<li class="subitem"><a href="history.php">My Post</a></li>';
         echo'<li class="subitem"><a href="setting.php">Setting</a></li>';
         echo'<li class="subitem logoutnav"><a href="logout.php" onclick="myFunction()">Log Out</a></li>';
         echo'</ul>';
@@ -93,7 +93,7 @@ else{
         echo'<a class="usernav" tabindex="0">My User</a>';
         echo'<ul class="submenu userlink">';
         echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
-        echo'<li class="subitem"><a href="post_poll.php">My Poll</a></li>';
+        echo'<li class="subitem"><a href="history.php">My Poll</a></li>';
         echo'<li class="subitem"><a href="setting.php">Setting</a></li>';
         echo'<li class="subitem logoutnav"><a href="logout.php" onclick="myFunction()">Log Out</a></li>';
         echo'</ul>';
