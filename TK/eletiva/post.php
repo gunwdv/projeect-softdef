@@ -47,7 +47,7 @@ if ($_GET['id']){
                             if(($_SESSION['status'] == 1) || ($_SESSION['status'] == 2)){
                             echo '<div class="d-grid col-lg-5 col-md-5 col-sm-4 float-end">';
                             echo '  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">แสดงความคิดเห็น</button>';
-                            echo '  <i class="fas fa-plus-circle" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>';
+                            echo '  <i class="fas fa-comment-dots" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>';
                             echo '</div>';
                             }
                             echo '</div>';

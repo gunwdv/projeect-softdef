@@ -204,7 +204,7 @@ button.btn:active {
     font-size: 16px;
 }
 
-.d-grid .fa-plus-circle {
+.d-grid .fa-comment-dots {
     display: none;
 }
 /*
@@ -224,7 +224,7 @@ button.btn:active {
     .d-grid button {
         display: none;
     }
-    .d-grid .fa-plus-circle {
+    .d-grid .fa-comment-dots {
         display: block;
         color: #FAB23D;
         font-size: 20px;
