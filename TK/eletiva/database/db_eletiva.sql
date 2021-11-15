@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 09:35 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.8
+-- Generation Time: Nov 15, 2021 at 11:25 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,6 +73,14 @@ CREATE TABLE `education` (
   `major` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `education`
+--
+
+INSERT INTO `education` (`faculty`, `major`) VALUES
+('วิศวกรรมศาสตร์', 'วิศวกรรมคอมพิวเตอร์'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมไฟฟ้า');
+
 -- --------------------------------------------------------
 
 --
@@ -81,7 +89,7 @@ CREATE TABLE `education` (
 
 CREATE TABLE `interest` (
   `Group_subject` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ID_user` bigint(20) UNSIGNED NOT NULL
+  `ID` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -136,7 +144,7 @@ INSERT INTO `post` (`ID_post`, `Group_subject`, `ID_subject`, `name_subject`, `t
 --
 
 CREATE TABLE `study` (
-  `ID_user` bigint(20) UNSIGNED NOT NULL,
+  `ID` bigint(20) UNSIGNED NOT NULL,
   `major` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -287,48 +295,24 @@ CREATE TABLE `users` (
   `code` mediumint(50) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `faculty` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `major` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `introduce` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `picture` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `interest` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `sex` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `faculty`, `major`, `introduce`, `picture`, `interest`) VALUES
-(0, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, 3, NULL, NULL, NULL, NULL, NULL, '{\"elective_eng1\":\"0\",\"elective_hu\":\"0\",\"elective_so1\":\"0\",\"elective_sci\":\"0\",\"elective_free\":\"0\",\"elective_life\":\"0\",\"elective_so2\":\"0\",\"elective_think\":\"0\",\"elective_manage\":\"1\",\"elective_eng2\":\"0\",\"elective_21\":\"0\",\"elective_carrer\":\"0\",\"elective_leader\":\"1\",\"elective_eng3\":\"1\"}'),
-(1, 'teacher', '8d788385431273d11e8b43bb78f3aa41', NULL, 2, NULL, NULL, NULL, NULL, NULL, '{\"elective_eng1\":\"0\",\"elective_hu\":\"0\",\"elective_so1\":\"0\",\"elective_sci\":\"0\",\"elective_free\":\"0\",\"elective_life\":\"0\",\"elective_so2\":\"0\",\"elective_think\":\"0\",\"elective_manage\":\"1\",\"elective_eng2\":\"0\",\"elective_21\":\"0\",\"elective_carrer\":\"0\",\"elective_leader\":\"1\",\"elective_eng3\":\"1\"}'),
-(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, NULL, NULL, NULL, NULL, '{\"elective_eng1\":\"0\",\"elective_hu\":\"0\",\"elective_so1\":\"0\",\"elective_sci\":\"0\",\"elective_free\":\"0\",\"elective_life\":\"0\",\"elective_so2\":\"0\",\"elective_think\":\"0\",\"elective_manage\":\"1\",\"elective_eng2\":\"0\",\"elective_21\":\"0\",\"elective_carrer\":\"0\",\"elective_leader\":\"1\",\"elective_eng3\":\"1\"}');
+INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `major`, `introduce`, `picture`, `sex`) VALUES
+(0, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, 3, NULL, NULL, NULL, NULL, NULL),
+(1, 'teacher', '8d788385431273d11e8b43bb78f3aa41', NULL, 2, NULL, NULL, NULL, NULL, NULL),
+(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `answer`
---
-ALTER TABLE `answer`
-  ADD PRIMARY KEY (`ID_ans`),
-  ADD KEY `from_choice` (`from_choice`,`create_by`),
-  ADD KEY `ans_2` (`create_by`);
-
---
--- Indexes for table `choice`
---
-ALTER TABLE `choice`
-  ADD PRIMARY KEY (`ID_option`),
-  ADD KEY `from_poll` (`from_poll`);
-
---
--- Indexes for table `comment`
---
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`ID_comment`),
-  ADD KEY `create_by` (`create_by`,`from_post`),
-  ADD KEY `comment_2` (`from_post`);
 
 --
 -- Indexes for table `education`
@@ -337,44 +321,20 @@ ALTER TABLE `education`
   ADD PRIMARY KEY (`major`);
 
 --
--- Indexes for table `interest`
---
-ALTER TABLE `interest`
-  ADD UNIQUE KEY `Group_subject` (`Group_subject`,`ID_user`),
-  ADD UNIQUE KEY `ID_user` (`ID_user`);
-
---
--- Indexes for table `poll`
---
-ALTER TABLE `poll`
-  ADD PRIMARY KEY (`ID_poll`),
-  ADD KEY `ID_subject` (`ID_subject`,`Group_subject`,`name_subject`),
-  ADD KEY `create_by` (`create_by`),
-  ADD KEY `poll_2` (`name_subject`),
-  ADD KEY `poll_3` (`Group_subject`);
-
---
--- Indexes for table `post`
---
-ALTER TABLE `post`
-  ADD PRIMARY KEY (`ID_post`),
-  ADD UNIQUE KEY `ID_subject` (`ID_subject`),
-  ADD KEY `post_2` (`name_subject`),
-  ADD KEY `post_4` (`create_by`),
-  ADD KEY `Group_subject` (`Group_subject`);
-
---
 -- Indexes for table `study`
 --
 ALTER TABLE `study`
-  ADD UNIQUE KEY `ID` (`ID_user`,`major`),
-  ADD UNIQUE KEY `ID_user` (`ID_user`),
+  ADD UNIQUE KEY `ID` (`ID`,`major`),
+  ADD UNIQUE KEY `ID_user` (`ID`),
   ADD KEY `study_major` (`major`);
 
 --
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
+  ADD PRIMARY KEY (`ID_subject`),
+  ADD UNIQUE KEY `ID_subject_2` (`ID_subject`),
+  ADD UNIQUE KEY `ID_subject_3` (`ID_subject`),
   ADD KEY `Group_subject` (`Group_subject`),
   ADD KEY `Name_subject_2` (`Name_subject`),
   ADD KEY `ID_subject` (`ID_subject`);
@@ -392,90 +352,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `answer`
---
-ALTER TABLE `answer`
-  MODIFY `ID_ans` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `comment`
---
-ALTER TABLE `comment`
-  MODIFY `ID_comment` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `poll`
---
-ALTER TABLE `poll`
-  MODIFY `ID_poll` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `post`
---
-ALTER TABLE `post`
-  MODIFY `ID_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `answer`
---
-ALTER TABLE `answer`
-  ADD CONSTRAINT `ans_1` FOREIGN KEY (`from_choice`) REFERENCES `choice` (`ID_option`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ans_2` FOREIGN KEY (`create_by`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `choice`
---
-ALTER TABLE `choice`
-  ADD CONSTRAINT `choice_1` FOREIGN KEY (`from_poll`) REFERENCES `poll` (`ID_poll`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `comment`
---
-ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_1` FOREIGN KEY (`create_by`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `comment_2` FOREIGN KEY (`from_post`) REFERENCES `post` (`ID_post`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `interest`
---
-ALTER TABLE `interest`
-  ADD CONSTRAINT `inter_group` FOREIGN KEY (`Group_subject`) REFERENCES `subject` (`Group_subject`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `inter_user` FOREIGN KEY (`ID_user`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `poll`
---
-ALTER TABLE `poll`
-  ADD CONSTRAINT `poll_1` FOREIGN KEY (`ID_subject`) REFERENCES `subject` (`ID_subject`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `poll_2` FOREIGN KEY (`name_subject`) REFERENCES `subject` (`Name_subject`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `poll_3` FOREIGN KEY (`Group_subject`) REFERENCES `subject` (`Group_subject`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `poll_4` FOREIGN KEY (`create_by`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `post`
---
-ALTER TABLE `post`
-  ADD CONSTRAINT `post_1` FOREIGN KEY (`ID_subject`) REFERENCES `subject` (`ID_subject`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_2` FOREIGN KEY (`name_subject`) REFERENCES `subject` (`Name_subject`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_3` FOREIGN KEY (`Group_subject`) REFERENCES `subject` (`Group_subject`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_4` FOREIGN KEY (`create_by`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `study`
---
-ALTER TABLE `study`
-  ADD CONSTRAINT `study_major` FOREIGN KEY (`major`) REFERENCES `education` (`major`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `study_user` FOREIGN KEY (`ID_user`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
