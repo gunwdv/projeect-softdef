@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2021 at 11:25 PM
+-- Generation Time: Nov 16, 2021 at 07:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -308,7 +308,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `major`, `introduce`, `picture`, `sex`) VALUES
 (0, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, 3, NULL, NULL, NULL, NULL, NULL),
 (1, 'teacher', '8d788385431273d11e8b43bb78f3aa41', NULL, 2, NULL, NULL, NULL, NULL, NULL),
-(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, NULL, NULL, NULL, NULL);
+(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, 'วิศวกรรมคอมพิวเตอร์', '01', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -355,7 +355,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

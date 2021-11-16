@@ -1,4 +1,4 @@
-<title>Eletiva |</title>
+<title>Eletiva | Profile</title>
 <?php
 require "dbconnect.php";
 error_reporting(0);
