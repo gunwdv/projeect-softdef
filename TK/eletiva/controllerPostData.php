@@ -71,6 +71,7 @@ if (isset($_REQUEST['yesnotify'])) {
     header("location: post.php?id='.$from_post.'");
 }
 if (isset($_REQUEST['yesdel'])) {
+    //Admin ---> user
     $postdel = $_SESSION['postnow'];
     $msg_comment = 'โพสของคุณถูกลบ';
 
