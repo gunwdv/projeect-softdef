@@ -48,7 +48,7 @@ else{
     $email = $_SESSION['email'];
     $password = $_SESSION['password'];
     $status = $_SESSION['status'];
-    $check = "SELECT email,password,status FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
+    $check = "SELECT ID,email,password,status FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
     $result = mysqli_query($connect, $check);
     $row = mysqli_fetch_assoc($result);
 
@@ -57,15 +57,19 @@ else{
         //echo 'Guest Mode!';
         header("location: index.php");
     }
-    
 
-    if($status == 1){
+    $ID = $row['ID'];
+    $countN = "SELECT COUNT(ID_notify) FROM notify WHERE status_notify='1' AND to_ID='$ID'";
+    $nof = mysqli_query($connect, $countN);
+    $row = mysqli_fetch_array($nof);
+
+    if($status == 1 || $status == 2){
         //student
         echo'<nav>';
         echo'<ul class="menu">';
         echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
         echo'<li class="item"><a href="creatpost.php" title="Creat Post"><i class="iconnav fas fa-edit"><span class="navTitle">Creat Post</span></i></a></i></li>';
-        echo'<li class="item"><a href="notify.php" title="Notification"><i class="iconnav fas fa-bell"><span class="navTitle">Notification</span><div class = "number">num</div></i></a></li>';
+        echo'<li class="item"><a href="notify.php" title="Notification"><i class="iconnav fas fa-bell"><span class="navTitle">Notification</span><div class = "number">'.$row["COUNT(ID_notify)"].'</div></i></a></li>';
         echo'<li class="item"><a href="search.php" title="Search"><i class="iconnav fas fa-search"><span class="navTitle">Search</span></i></a></li>';
         echo'<li class="item navlast"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
         echo'<li class="item has-submenu">';
@@ -73,28 +77,6 @@ else{
         echo'<ul class="submenu userlink">';
         echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
         echo'<li class="subitem"><a href="history.php">My Post</a></li>';
-        echo'<li class="subitem"><a href="setting.php">Setting</a></li>';
-        echo'<li class="subitem logoutnav"><a href="logout.php" onclick="myFunction()">Log Out</a></li>';
-        echo'</ul>';
-        echo'</li>';
-        echo'<li class="toggle"><a class="icontog" href="#"><i class="icontog fas fa-bars"></i></a></li>';
-        echo'</ul>';
-        echo'</nav>';
-    }
-    else if ($status == 2){
-        //teacher
-        echo'<nav id="navbar">';
-        echo'<ul class="menu">';
-        echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
-        echo'<li class="item"><a href="creatpoll.php" title="Creat Poll"><i class="iconnav fas fa-edit"><span class="navTitle">Creat Poll</span></i></a></li>';
-        echo'<li class="item"><a href="notify.php" title="Notification"><i class="iconnav fas fa-bell"><span class="navTitle">Notification</span><div class = "number">num</div></i></a></li>';
-        echo'<li class="item"><a href="search.php" title="Search"><i class="iconnav fas fa-search"><span class="navTitle">Search</span></i></a></li>';
-        echo'<li class="item navlast"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
-        echo'<li class="item has-submenu">';
-        echo'<a class="usernav" tabindex="0">My User</a>';
-        echo'<ul class="submenu userlink">';
-        echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
-        echo'<li class="subitem"><a href="history.php">My Poll</a></li>';
         echo'<li class="subitem"><a href="setting.php">Setting</a></li>';
         echo'<li class="subitem logoutnav"><a href="logout.php" onclick="myFunction()">Log Out</a></li>';
         echo'</ul>';

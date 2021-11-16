@@ -93,8 +93,10 @@ $email = '';
 
         if (count($errors) == 0) {
             $password = md5($password_1);
+            $x = explode("@", $email);
+            $name = $x[0];
 
-            $sql = "INSERT INTO users(email,password,status) VALUES('$email','$password','$status')";
+            $sql = "INSERT INTO users(email,password,status,name) VALUES('$email','$password','$status','$name')";
             mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 
             $_SESSION['email'] = $email;

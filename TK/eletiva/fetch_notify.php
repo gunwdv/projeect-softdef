@@ -9,7 +9,7 @@ if(isset($_POST["query"]))
 	SELECT * FROM subject 
 	WHERE ID_subject = $search
 	";
-	//WHERE ID_subject LIKE '%".$search."%'
+	//SELECT COUNT(ID_notify) FROM notify;
 }
 
 $result = mysqli_query($connect, $query);
@@ -17,12 +17,8 @@ if(mysqli_num_rows($result) > 0)
 {
 	$row = mysqli_fetch_array($result);
 	
-		$output = $row["Name_subject"];
-	
+		$output = $row["COUNT(ID_notify)"];
+		//echo $row['COUNT(*)'];
 	echo $output;
-}
-else
-{
-	echo '<br> Data Not Found';
 }
 ?>

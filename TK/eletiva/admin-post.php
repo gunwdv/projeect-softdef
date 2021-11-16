@@ -13,6 +13,7 @@ include "header.php";
     <section class="main">
         <div class="post">
             <?php
+                $_SESSION['postnow']  = $_GET['id'];
                 $x = $_GET['id'];
                 $query = "SELECT * FROM post WHERE ID_post = '$x'";
                 $result = mysqli_query($connect, $query);
@@ -39,7 +40,7 @@ include "header.php";
                 }
             ?>
         </div>
-        <form action="controllernotify.php" method="POST">
+        <form action="controllerPostData.php" method="POST">
          <div class="btn">
             <p class="cd-popup-notify" style="margin-left: 20px; margin-right: 20px;">แจ้งเตือนผู้ใช้</p>
             <p class="cd-popup-delete" style="margin-left: 20px; margin-right: 20px;">ลบโพสต์</p>

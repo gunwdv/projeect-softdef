@@ -1,4 +1,4 @@
-<title>Eletiva | </title>
+<title>Eletiva | Post</title>
 <link rel="stylesheet " type="text/css " href="css/post-reveiw.css ">
 
 <?php
@@ -8,6 +8,7 @@ include "header.php";
 if ($_GET['id']){
     //echo $_GET['id'];
     $x = $_GET['id'];
+    $_SESSION['postnow']  = $_GET['id'];
     $queryP = "SELECT * FROM post WHERE ID_post = '$x'";
     $resultpost = mysqli_query($connect, $queryP);
     $queryC = "SELECT * FROM comment WHERE from_post = '$x'";
@@ -113,23 +114,25 @@ if ($_GET['id']){
                         <h5 class="modal-title " id="exampleModalLabel">แสดงความคิดเห็น</h5>
                         <button type="button " class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body ">
-
-                        <textarea class="form-control form-control-sm " id="comment-item" placeholder=" " rows="5" required> </textarea>
-                        <!--
-                        <div class="review-choose float-end ">
-                            <span class="heading">ให้คะแนน</span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
+                    <form method="POST" action="controllerPostData.php">
+                        <div class="modal-body ">
+                            <textarea class="form-control form-control-sm " id="comment-item" placeholder="แสดงความคิดเห็น" name='msg_comment' rows="5" required> </textarea>
+                            <input type="text" style="display:none;" name="from_post" value="<?php echo $x; ?>">
+                            <!--
+                            <div class="review-choose float-end ">
+                                <span class="heading">ให้คะแนน</span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                            </div>
+                            -->
                         </div>
-                        -->
-                    </div>
-                    <div class="modal-footer ">
-                        <button type="button">ส่งความคิดเห็น</button>
-                    </div>
+                        <div class="modal-footer ">
+                            <button type="button" name="comment_post">ส่งความคิดเห็น</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -140,6 +143,7 @@ if ($_GET['id']){
                     <div class="modal-body ">
                         <p class="modal-title text-center mx-5 my-2 " id="staticBackdropLabel">เนื่องจากโพสต์ดังกล่าวมีการใช้ถ้อยคำที่ไม่สุภาพ และไม่ให้เกียรติซึ่งกันและกัน เพื่อรักษาบรรยากาศของเว็บไซต์ ข้าพเจ้าจึงขอให้มีการตรวจสอบโพสต์ดังกล่าว</p>
                         <p class="text-center">ต้องการรายงานโพสต์นี้ใช่หรือไม่</p>
+                        <form method="POST" action="controllerPostData.php">
                         <div class="row">
                             <div class=" col-lg-3 col-sm-3"></div>
                             <div class=" col-lg-6 col-sm-6">
@@ -148,6 +152,7 @@ if ($_GET['id']){
                             </div>
                             <div class=" col-lg-3 col-sm-3"></div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -156,6 +161,7 @@ if ($_GET['id']){
         <div class="modal fade " id="need" data-bs-keyboard="false" tabindex="-1" aria-labelledby="needLabel" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered ">
                 <div class="modal-content ">
+                <form method="POST" action="controllerPostData.php">
                     <div class="modal-body ">
                         <p class="modal-title text-center" id="needLabel">โพสต์นี้ถูกรายงานแล้ว</p>
                         <div class="row">
@@ -166,6 +172,7 @@ if ($_GET['id']){
                             <div class=" col-lg-4 "></div>
                         </div>
                     </div>
+    </form>
                 </div>
             </div>
         </div>
