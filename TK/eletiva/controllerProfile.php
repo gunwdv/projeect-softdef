@@ -22,8 +22,8 @@ if(isset($_POST['interest_info']) OR isset($_POST['select_finish'])){
     $elective_leader = $_POST['elective_leader'];    
     $elective_eng3 = $_POST['elective_eng3'];  
 
-    echo "กลุ่มภาษา : $elective_eng1 <br>กลุ่มมนุษย์ศาสตร์ : $elective_hu <br>กลุ่มสังคมศาสตร์ : $elective_so1 <br>กลุ่มวิทยาศาสตร์ฯ : $elective_sci <br>กลุ่มวิชาเลือกเสรี : $elective_free <br>กลุ่มคุณค่าแห่งชีวิต : $elective_life <br>กลุ่มวิถีแห่งสังคม : $elective_so2 <br>";
-    echo "ศาสตร์แห่งการคิด : $elective_think <br>ศิลปแห่งการจัดการ : $elective_manage <br>ภาษาและการสื่อสาร : $elective_eng2 <br>กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21 : $elective_21 <br>ทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ : $elective_carrer <br>ทักษะด้านการจัดการและภาวะความเป็นผู้นำ : $elective_leader <br>กลุ่มทักษะด้านภาษาและการสื่อสาร : $elective_eng3 <br>";
+    //echo "กลุ่มภาษา : $elective_eng1 <br>กลุ่มมนุษย์ศาสตร์ : $elective_hu <br>กลุ่มสังคมศาสตร์ : $elective_so1 <br>กลุ่มวิทยาศาสตร์ฯ : $elective_sci <br>กลุ่มวิชาเลือกเสรี : $elective_free <br>กลุ่มคุณค่าแห่งชีวิต : $elective_life <br>กลุ่มวิถีแห่งสังคม : $elective_so2 <br>";
+    //echo "ศาสตร์แห่งการคิด : $elective_think <br>ศิลปแห่งการจัดการ : $elective_manage <br>ภาษาและการสื่อสาร : $elective_eng2 <br>กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21 : $elective_21 <br>ทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ : $elective_carrer <br>ทักษะด้านการจัดการและภาวะความเป็นผู้นำ : $elective_leader <br>กลุ่มทักษะด้านภาษาและการสื่อสาร : $elective_eng3 <br>";
         
         if($elective_eng1=="on"){      
             $elective_eng1 = 0;      

@@ -107,7 +107,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">เพศ</label>
                                 <div class="col-sm-10">
-                                <select class="form-select" name="sex">
+                                <select class="form-select" name="sex" placeholder="แนะนำตัว">
                                       <option value="<?php echo $sex ?>"><?php 
                                       if ($sex=='M'){
                                         $sex_value = "ผู้ชาย";
@@ -162,7 +162,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">ภาควิชา</label>
                                 <div class="col-sm-10">
                                   <select class="form-select" name="major">
-                                        <option value="">
+                                        <option value="<?php echo $major; ?>">
                                           <?php if ($major == null) 
                                           {
                                             echo "ไม่ระบุ";                                                      
@@ -189,7 +189,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">แนะนำตัว</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="3" class="form-control" id="inputEmail3" placeholder="แนะนำตัว" name="introduce" value="<?php echo $introduce ?>"></textarea>
+                                    <textarea rows="3" class="form-control" id="inputEmail3" placeholder="แนะนำตัว" name="introduce" ><?php echo $introduce ?></textarea>
                                 </div>
                             </div>
                             <div class="row mb-3">
