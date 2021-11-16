@@ -4,6 +4,55 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 session_start();
 require "dbconnect.php";
+$ID = $_SESSION["ID"];
+$query3 = "SELECT Group_subject FROM interest WHERE ID = '$ID'";
+$result3 = mysqli_query($connect, $query3);
+while($row3_Resuut = mysqli_fetch_assoc($result3))
+{
+  if($row3_Resuut["Group_subject"]==0){
+    $elective_eng1 = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==1){
+    $elective_hu = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==2){  
+    $elective_so1 = "on";   
+  }
+  if($row3_Resuut["Group_subject"]==3){  
+    $elective_sci = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==4){ 
+    $elective_free = "on";     
+  }
+  if($row3_Resuut["Group_subject"]==5){
+    $elective_life = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==6){ 
+    $elective_so2 = "on";   
+  }
+  if($row3_Resuut["Group_subject"]==7){  
+    $elective_think = "on";   
+  }
+  if($row3_Resuut["Group_subject"]==8){ 
+    $elective_manage = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==9){ 
+    $elective_eng2 = "on";  
+  }
+  if($row3_Resuut["Group_subject"]==10){
+    $elective_21 = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==11){  
+    $elective_carrer = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==12){
+    $elective_leader = "on";    
+  }
+  if($row3_Resuut["Group_subject"]==13){ 
+    $elective_eng3 = "on";    
+  }                        
+}
+
 $errors = array();
 $email = '';
 
@@ -90,7 +139,12 @@ $email = '';
                     header("location: admin-home.php");
                 }
                 else{
-                    header("location: index.php");
+                    if($elective_eng1 == "" && $elective_hu == "" && $elective_so1 == "" && $elective_sci == "" && $elective_free == "" && $elective_life == "" && $elective_so2 == "" && $elective_think == "" && $elective_manage == "" && $elective_eng2 == "" && $elective_21 == "" && $elective_carrer == "" && $elective_leader == "" && $elective_eng3 == ""){
+                        header("location: first-select.php");
+                    }
+                    else{
+                        header("location: index.php");
+                    }
                 }
             } else {
                 array_push($errors, "Wrong Email or Password");
