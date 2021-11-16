@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2021 at 07:34 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Nov 17, 2021 at 12:04 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,43 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `answer`
---
-
-CREATE TABLE `answer` (
-  `ID_ans` int(11) NOT NULL,
-  `value_ans` int(11) NOT NULL,
-  `time_ans` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `from_choice` int(11) NOT NULL,
-  `create_by` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `choice`
---
-
-CREATE TABLE `choice` (
-  `ID_option` int(11) NOT NULL,
-  `msg_option` int(11) NOT NULL,
-  `from_poll` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
   `ID_comment` int(11) NOT NULL,
   `msg_comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `rate` int(5) NOT NULL,
+  `rate` int(5) DEFAULT NULL,
   `time_comment` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `create_by` bigint(20) UNSIGNED NOT NULL,
   `from_post` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`ID_comment`, `msg_comment`, `rate`, `time_comment`, `create_by`, `from_post`) VALUES
+(1, 'fgfahafharthmdsdgasfag', NULL, '2021-11-15 05:12:36', 2, 1),
+(2, 'gdgfhgjdkyjtery', NULL, '2021-11-15 05:12:36', 2, 2),
+(3, 'fgfshfdjsewgb', NULL, '2021-11-15 05:12:58', 2, 1),
+(4, 'gdgfhgjdkyjtery', NULL, '2021-11-15 05:12:42', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -78,8 +62,63 @@ CREATE TABLE `education` (
 --
 
 INSERT INTO `education` (`faculty`, `major`) VALUES
+('﻿คณะ', 'ภาควิชา'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมการวัดและควบคุม'),
 ('วิศวกรรมศาสตร์', 'วิศวกรรมคอมพิวเตอร์'),
-('วิศวกรรมศาสตร์', 'วิศวกรรมไฟฟ้า');
+('วิศวกรรมศาสตร์', 'วิศวกรรมเครื่องกล'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมเคมี'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมไฟฟ้า'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมอุตสาหการ'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมอาหาร'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมอิเล็กทรอนิกส์'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมโทรคมนาคม'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมโยธา'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมชีวการแพทย์'),
+('วิศวกรรมศาสตร์', 'วิศวกรรมเกษตร'),
+('สถาปัตยกรรมศาสตร์', 'สถาปัตยกรรม'),
+('สถาปัตยกรรมศาสตร์', 'สถาปัตยกรรมภายใน'),
+('สถาปัตยกรรมศาสตร์', 'ศิลปอุตสาหกรรม'),
+('สถาปัตยกรรมศาสตร์', 'นิเทศศิลป์'),
+('สถาปัตยกรรมศาสตร์', 'วิจิตรศิลป์'),
+('สถาปัตยกรรมศาสตร์', 'ศิลปกรรม'),
+('ครุศาสตร์อุตสาหกรรมและเทคโนโลยี', 'ครุศาสตร์สถาปัตยกรรม'),
+('ครุศาสตร์อุตสาหกรรมและเทคโนโลยี', 'ครุศาสตร์วิศวกรรม'),
+('ครุศาสตร์อุตสาหกรรมและเทคโนโลยี', 'ครุศาสตร์เกษตร'),
+('ครุศาสตร์อุตสาหกรรมและเทคโนโลยี', 'ภาษาและสังคม'),
+('เทคโนโลยีการเกษตร', 'วิทยาศาสตร์การประมง'),
+('เทคโนโลยีการเกษตร', 'เทคโนโลยีการผลิตพืช'),
+('เทคโนโลยีการเกษตร', 'เทคโนโลยีการผลิตสัตว์'),
+('เทคโนโลยีการเกษตร', 'เทคนิคเกษตร'),
+('เทคโนโลยีการเกษตร', 'ปฐพีวิทยา'),
+('เทคโนโลยีการเกษตร', 'เทคโนโลยีการจัดการศัตรูพืช'),
+('เทคโนโลยีการเกษตร', 'นวัตกรรมการสื่อสารและพัฒนาการเกษตร'),
+('วิทยาศาสตร์', 'คณิตศาสตร์'),
+('วิทยาศาสตร์', 'วิทยาการคอมพิวเตอร์'),
+('วิทยาศาสตร์', 'เคมี'),
+('วิทยาศาสตร์', 'ชีววิทยา'),
+('วิทยาศาสตร์', 'ฟิสิกส์'),
+('วิทยาศาสตร์', 'สถิติ'),
+('อุตสาหกรรมอาหาร', 'อุตสาหกรรมอาหาร'),
+('เทคโนโลยีสารสนเทศ', 'เทคโนโลยีสารสนเทศ'),
+('วิทยาลัยนานาชาติ', 'วิศวกรรมซอฟต์แวร์'),
+('วิทยาลัยนานาชาติ', 'การจัดการวิศวกรรมและเทคโนโลยี'),
+('วิทยาลัยนาโนเทคโนโลยีพระจอมเกล้าลาดกระบัง', 'นาโนวิทยาและนาโนเทคโนโลยี'),
+('วิทยาลัยนวัตกรรมการผลิตขั้นสูง', 'วิศวกรรมระบบการผลิต'),
+('การบริหารและจัดการ', 'บริหารธุรกิจเกษตร'),
+('การบริหารและจัดการ', 'บริหารธุรกิจ'),
+('การบริหารและจัดการ', 'เศรษฐศาสตร์ธุรกิจและการจัดการ'),
+('วิทยาลัยอุตสาหกรรมการบินนานาชาติ', 'วิศวกรรมเครื่องกล'),
+('วิทยาลัยอุตสาหกรรมการบินนานาชาติ', 'วิศวกรรมการบิน'),
+('วิทยาลัยอุตสาหกรรมการบินนานาชาติ', 'นวัตกรรมการจัดการอุตสาหกรรมการบินและการบริการ'),
+('ศิลปศาสตร์', 'ศิลปศาสตร์ประยุกต์'),
+('ศิลปศาสตร์', 'ภาษา'),
+('ศิลปศาสตร์', 'มนุษยศาสตร์และสังคมศาสตร์'),
+('แพทยศาสตร์', 'แพทยศาสตร์นานาชาติ'),
+('วิทยาลัยวิศวกรรมสังคีต', 'วิศวกรรมดนตรีและสื่อประสม'),
+('วิทยาเขตชุมพรเขตรอุดมศักดิ์', 'เทคโนโลยีการเกษตร'),
+('วิทยาเขตชุมพรเขตรอุดมศักดิ์', 'วิศวกรรมศาสตร์'),
+('วิทยาเขตชุมพรเขตรอุดมศักดิ์', 'พื้นฐานทั่วไป'),
+('ทันตแพทยศาสตร์', 'Dentistry');
 
 -- --------------------------------------------------------
 
@@ -95,21 +134,25 @@ CREATE TABLE `interest` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `poll`
+-- Table structure for table `notify`
 --
 
-CREATE TABLE `poll` (
-  `ID_poll` int(11) NOT NULL,
-  `Group_subject` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ID_subject` int(11) NOT NULL,
-  `name_subject` varchar(75) COLLATE utf8_unicode_ci NOT NULL,
-  `type_poll` int(11) NOT NULL,
-  `title_poll` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `msg_poll` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pollend` datetime NOT NULL,
-  `time_poll` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `create_by` bigint(20) UNSIGNED NOT NULL
+CREATE TABLE `notify` (
+  `ID_notify` int(11) NOT NULL,
+  `msg_notify` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `creat_by` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `from_post` int(11) NOT NULL,
+  `status_notify` int(11) NOT NULL,
+  `time_notify` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `to_ID` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `notify`
+--
+
+INSERT INTO `notify` (`ID_notify`, `msg_notify`, `creat_by`, `from_post`, `status_notify`, `time_notify`, `to_ID`) VALUES
+(1, 'rcytvuhbjlnjijk;', 'admin', 1, 0, '2021-11-16 22:35:47', 1);
 
 -- --------------------------------------------------------
 
@@ -134,8 +177,9 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`ID_post`, `Group_subject`, `ID_subject`, `name_subject`, `type_post`, `title_post`, `msg_post`, `time_post`, `create_by`) VALUES
-(1, 'กลุ่มภาษาและการสื่อสาร', 90201003, 'ENGLISH FOR ACADEMIC PURPOSES', 1, 'test', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-12 16:08:13', 2),
-(2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-12 18:52:21', 2);
+(1, 'กลุ่มภาษาและการสื่อสาร', 90201003, 'ENGLISH FOR ACADEMIC PURPOSES', 1, 'test1', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-15 21:27:55', 2),
+(2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test2', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-15 21:27:55', 2),
+(7, 'กลุ่มภาษาและการสื่อสาร', 90106003, 'ARTS OF EMOTION DEVELOPMENT', 2, 'test', 'fd8oiawegfjiaslJFol', '2021-11-13 18:52:21', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +188,7 @@ INSERT INTO `post` (`ID_post`, `Group_subject`, `ID_subject`, `name_subject`, `t
 --
 
 CREATE TABLE `study` (
-  `ID` bigint(20) UNSIGNED NOT NULL,
+  `ID_user` bigint(20) UNSIGNED NOT NULL,
   `major` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -294,47 +338,77 @@ CREATE TABLE `users` (
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `code` mediumint(50) DEFAULT NULL,
   `status` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `faculty` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `major` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `introduce` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `picture` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `sex` varchar(1) DEFAULT NULL
+  `interest` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `major`, `introduce`, `picture`, `sex`) VALUES
-(0, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, 3, NULL, NULL, NULL, NULL, NULL),
-(1, 'teacher', '8d788385431273d11e8b43bb78f3aa41', NULL, 2, NULL, NULL, NULL, NULL, NULL),
-(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, 'วิศวกรรมคอมพิวเตอร์', '01', NULL, NULL);
+INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `faculty`, `major`, `introduce`, `picture`, `interest`) VALUES
+(0, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, 3, NULL, NULL, NULL, NULL, NULL, '{\"elective_eng1\":\"0\",\"elective_hu\":\"0\",\"elective_so1\":\"0\",\"elective_sci\":\"0\",\"elective_free\":\"0\",\"elective_life\":\"0\",\"elective_so2\":\"0\",\"elective_think\":\"0\",\"elective_manage\":\"1\",\"elective_eng2\":\"0\",\"elective_21\":\"0\",\"elective_carrer\":\"0\",\"elective_leader\":\"1\",\"elective_eng3\":\"1\"}'),
+(1, 'teacher', '8d788385431273d11e8b43bb78f3aa41', NULL, 2, NULL, NULL, NULL, NULL, NULL, '{\"elective_eng1\":\"0\",\"elective_hu\":\"0\",\"elective_so1\":\"0\",\"elective_sci\":\"0\",\"elective_free\":\"0\",\"elective_life\":\"0\",\"elective_so2\":\"0\",\"elective_think\":\"0\",\"elective_manage\":\"1\",\"elective_eng2\":\"0\",\"elective_21\":\"0\",\"elective_carrer\":\"0\",\"elective_leader\":\"1\",\"elective_eng3\":\"1\"}'),
+(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, NULL, NULL, NULL, NULL, '{\"elective_eng1\":\"0\",\"elective_hu\":\"0\",\"elective_so1\":\"0\",\"elective_sci\":\"0\",\"elective_free\":\"0\",\"elective_life\":\"0\",\"elective_so2\":\"0\",\"elective_think\":\"0\",\"elective_manage\":\"1\",\"elective_eng2\":\"0\",\"elective_21\":\"0\",\"elective_carrer\":\"0\",\"elective_leader\":\"1\",\"elective_eng3\":\"1\"}');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`ID_comment`),
+  ADD KEY `create_by` (`create_by`,`from_post`),
+  ADD KEY `comment_2` (`from_post`);
+
+--
 -- Indexes for table `education`
 --
 ALTER TABLE `education`
-  ADD PRIMARY KEY (`major`);
+  ADD KEY `major` (`major`);
+
+--
+-- Indexes for table `interest`
+--
+ALTER TABLE `interest`
+  ADD UNIQUE KEY `Group_subject` (`Group_subject`,`ID`),
+  ADD UNIQUE KEY `ID_user` (`ID`);
+
+--
+-- Indexes for table `notify`
+--
+ALTER TABLE `notify`
+  ADD PRIMARY KEY (`ID_notify`),
+  ADD KEY `ID` (`to_ID`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`ID_post`),
+  ADD UNIQUE KEY `ID_subject` (`ID_subject`),
+  ADD KEY `post_2` (`name_subject`),
+  ADD KEY `post_4` (`create_by`),
+  ADD KEY `Group_subject` (`Group_subject`);
 
 --
 -- Indexes for table `study`
 --
 ALTER TABLE `study`
-  ADD UNIQUE KEY `ID` (`ID`,`major`),
-  ADD UNIQUE KEY `ID_user` (`ID`),
+  ADD UNIQUE KEY `ID` (`ID_user`,`major`),
+  ADD UNIQUE KEY `ID_user` (`ID_user`),
   ADD KEY `study_major` (`major`);
 
 --
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
-  ADD PRIMARY KEY (`ID_subject`),
-  ADD UNIQUE KEY `ID_subject_2` (`ID_subject`),
-  ADD UNIQUE KEY `ID_subject_3` (`ID_subject`),
   ADD KEY `Group_subject` (`Group_subject`),
   ADD KEY `Name_subject_2` (`Name_subject`),
   ADD KEY `ID_subject` (`ID_subject`);
@@ -352,10 +426,68 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `ID_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `notify`
+--
+ALTER TABLE `notify`
+  MODIFY `ID_notify` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `post`
+--
+ALTER TABLE `post`
+  MODIFY `ID_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_1` FOREIGN KEY (`create_by`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_2` FOREIGN KEY (`from_post`) REFERENCES `post` (`ID_post`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `interest`
+--
+ALTER TABLE `interest`
+  ADD CONSTRAINT `inter_group` FOREIGN KEY (`Group_subject`) REFERENCES `subject` (`Group_subject`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inter_user` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `notify`
+--
+ALTER TABLE `notify`
+  ADD CONSTRAINT `n1` FOREIGN KEY (`to_ID`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `post_1` FOREIGN KEY (`ID_subject`) REFERENCES `subject` (`ID_subject`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_2` FOREIGN KEY (`name_subject`) REFERENCES `subject` (`Name_subject`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_3` FOREIGN KEY (`Group_subject`) REFERENCES `subject` (`Group_subject`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_4` FOREIGN KEY (`create_by`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `study`
+--
+ALTER TABLE `study`
+  ADD CONSTRAINT `study_major` FOREIGN KEY (`major`) REFERENCES `education` (`major`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `study_user` FOREIGN KEY (`ID_user`) REFERENCES `users` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
