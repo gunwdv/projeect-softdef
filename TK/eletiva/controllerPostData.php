@@ -87,6 +87,7 @@ if (isset($_REQUEST['yesdel'])) {
     mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
     header('location: admin-home.php');
 }
+
 if(isset($_REQUEST['delpageN'])){
    //echo $_REQUEST['delpageN'];
    $postdel = $_REQUEST['delpageN'];
@@ -94,19 +95,29 @@ if(isset($_REQUEST['delpageN'])){
    $sql = "DELETE FROM notify WHERE ID_notify='$postdel'";
    mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 }
+
 if(isset($_REQUEST['del_C'])){
-    //Post Comment
+    
 }
-if(isset($_REQUEST['del_P'])){
-    //Post Post
+
+if(isset($_REQUEST['del_P_id'])){
+
+    $del_P_id = $_REQUEST['del_P_id'];
+
+
+    $sql = "DELETE FROM post WHERE ID_post='$del_P_id'";
+    mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql    
+
+    header("location: index.php");
     }
-if(isset($_REQUEST['report_P'])){
+
+if(isset($_REQUEST['report_P_id'])){
     //POst Report
-    $from_post = $_SESSION['postnow'];
+    $report_P = $_REQUEST['report_P_id'];
 
-    $sql = "UPDATE post SET report = '1' WHERE $ID_post='$from_post'";
-        mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
+    $sql = "UPDATE post SET report = '1' WHERE ID_post='$report_P'";
+    mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 
-    header("location: post.php?id='.$from_post.'");
+    header("location: post.php?id=$report_P");
 }
 ?>

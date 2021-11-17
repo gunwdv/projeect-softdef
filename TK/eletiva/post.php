@@ -3,7 +3,7 @@
 
 <?php
 require "dbconnect.php";
-
+error_reporting(0);
 include "header.php";
 if ($_GET['id']){
     //echo $_GET['id'];
@@ -18,8 +18,8 @@ if ($_GET['id']){
     $resultcom = mysqli_query($connect, $queryC);    
     
     $queryU = "SELECT * FROM users WHERE ID = '$IDpost'";
-    $result = mysqli_query($connect, $queryU);
-    $rowUser = mysqli_fetch_assoc($result);
+    $resultU = mysqli_query($connect, $queryU);
+    $rowUser = mysqli_fetch_assoc($resultU);
     $name = (empty($rowUser['name'])) ? 'ไม่ระบุ' : $rowUser["name"];
     $sex = $rowUser["sex"];
     $major = $rowUser["major"];
@@ -79,6 +79,15 @@ if ($_GET['id']){
         <!-- โพสต์ comment โพสต์รีวิว -->
         <?php 
         while($row = mysqli_fetch_assoc($resultcom)){
+            $IDuser = $row["create_by"];
+            $querycU = "SELECT * FROM users WHERE ID = '.$IDuser.'";
+            $resultcU = mysqli_query($connect, $querycU);
+            $rowcUser = mysqli_fetch_assoc($resultcU);
+            $name = (empty($rowcUser['name'])) ? 'ไม่ระบุ' : $rowUser["name"];
+            $sex = $rowcUser["sex"];
+            $major = $rowcUser["major"];
+            $img = (empty($rowcUser['picture'])) ? 'avatar.jpg' : $rowcUser["picture"];
+            $introduce = $rowcUser["introduce"];
             echo '<div class="row ">';
             //echo '<div class="col-lg-4 col-sm-3"></div>'; //*
             echo '<div class="col-lg-3 col-sm-2"></div>';
@@ -92,10 +101,10 @@ if ($_GET['id']){
             echo '</ul>';
             echo'<div class="d-flex align-items-center ">';
             echo    '<div class="d-inline ">';
-            echo        '<img src="images/avatar.jpg" alt="Avatar" class="avatar">';
+            echo        '<img src="myfile/'.$img.'" alt="Avatar" class="avatar">';
             echo    '</div>';
             echo    '<div class="d-inline ">';
-            echo        '<strong>'.$row["create_by"].'</strong>';
+            echo        '<strong>'.$name.'</strong>';
             echo        '<span class="d-block" id="time">'.$row["time_comment"].'</span>';
             echo    '</div>';
             echo'</div>';
@@ -160,8 +169,8 @@ if ($_GET['id']){
                         <div class="row">
                             <div class=" col-lg-3 col-sm-3"></div>
                             <div class=" col-lg-6 col-sm-6">
-                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" data-bs-target="#need">ต้องการ</button>
-                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal" name="report_P">ไม่ต้องการ</button>
+                                <a href="controllerPostData.php?report_P_id=<?php echo $x ?>"><button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" data-bs-target="#need" name="report_P">ต้องการ</button></a>
+                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal">ไม่ต้องการ</button>
                             </div>
                             <div class=" col-lg-3 col-sm-3"></div>
                         </div>
@@ -169,26 +178,7 @@ if ($_GET['id']){
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- modal รายงานโพสต์แล้ว -->
-        <div class="modal fade " id="need" data-bs-keyboard="false" tabindex="-1" aria-labelledby="needLabel" aria-hidden="true">
-            <div class=" modal-dialog modal-dialog-centered ">
-                <div class="modal-content ">
-                
-                    <div class="modal-body ">
-                        <p class="modal-title text-center" id="needLabel">โพสต์นี้ถูกรายงานแล้ว</p>
-                        <div class="row">
-                            <div class=" col-lg-4 "></div>
-                            <div class=" col-lg-4 ">
-                                <button type="button" class="btn text-center ">กลับหน้าหลัก</button>
-                            </div>
-                            <div class=" col-lg-4 "></div>
-                        </div>
-                    </div>
- 
-                </div>
-            </div>
-        </div>
+        </div>        
         <!-- modal P ลบ -->
         <div class="modal fade " id="modaldel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modaldel" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered ">
@@ -198,8 +188,8 @@ if ($_GET['id']){
                         <div class="row">
                             <div class=" col-lg-3 col-sm-3"></div>
                             <div class=" col-lg-6 col-sm-6">
-                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal">ต้องการ</button>
-                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal" name="del_P">ไม่ต้องการ</button>
+                                <a href="controllerPostData.php?del_P_id=<?php echo $x ?>"><button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" name="del_P">ต้องการ</button></a>
+                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal">ไม่ต้องการ</button>
                             </div>
                             <div class=" col-lg-3 col-sm-3"></div>
                         </div>
@@ -207,6 +197,7 @@ if ($_GET['id']){
                 </div>
             </div>
         </div>
+        
         <!-- modal C ลบ -->
         <div class="modal fade " id="modaldel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="C_del" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered ">
@@ -216,8 +207,8 @@ if ($_GET['id']){
                         <div class="row">
                             <div class=" col-lg-3 col-sm-3"></div>
                             <div class=" col-lg-6 col-sm-6">
-                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal">ต้องการ</button>
-                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal" name="del_C">ไม่ต้องการ</button>
+                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" name="del_C">ต้องการ</button>
+                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal">ไม่ต้องการ</button>
                             </div>
                             <div class=" col-lg-3 col-sm-3"></div>
                         </div>
