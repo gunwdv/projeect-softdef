@@ -207,7 +207,7 @@ if ($_GET['id']){
                         <div class="row">
                             <div class=" col-lg-3 col-sm-3"></div>
                             <div class=" col-lg-6 col-sm-6">
-                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" name="del_C">ต้องการ</button>
+                                <a href="controllerPostData.php?del_C_id=<?php echo $x ?>"><button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" name="del_C">ต้องการ</button></a>
                                 <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal">ไม่ต้องการ</button>
                             </div>
                             <div class=" col-lg-3 col-sm-3"></div>

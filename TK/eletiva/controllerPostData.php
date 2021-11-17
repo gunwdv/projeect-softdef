@@ -96,14 +96,28 @@ if(isset($_REQUEST['delpageN'])){
    mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 }
 
-if(isset($_REQUEST['del_C'])){
-    
+if(isset($_REQUEST['del_C_id'])){
+    $del_c_id = $_REQUEST['del_c_id'];
+    $IDpost = $_SESSION['postnow'];
+
+    $Sql = "DELETE FROM comment WHERE ID_comment='$del_c_id'";
+    mysqli_query($connect,$Sql); // สั่งรันคำสั่ง sql    
+
+    header("location: post.php?id=$IDpost");
 }
 
 if(isset($_REQUEST['del_P_id'])){
 
     $del_P_id = $_REQUEST['del_P_id'];
 
+    $SQL = "SELECT ID_comment FROM comment WHERE from_post='$del_P_id'";
+    $Query = mysqli_query($connect,$SQL);
+    while($Resuut = mysqli_fetch_assoc($Query))
+    {
+        $del_c_id = $Resuut['ID_comment'];
+        $Sql = "DELETE FROM comment WHERE ID_comment='$del_c_id'";
+        mysqli_query($connect,$Sql); // สั่งรันคำสั่ง sql    
+    }
 
     $sql = "DELETE FROM post WHERE ID_post='$del_P_id'";
     mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql    

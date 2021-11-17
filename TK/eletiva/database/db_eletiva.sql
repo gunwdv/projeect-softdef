@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 01:33 AM
+-- Generation Time: Nov 17, 2021 at 03:18 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,32 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_eletiva`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `answer`
---
-
-CREATE TABLE `answer` (
-  `ID_ans` int(11) NOT NULL,
-  `value_ans` int(11) NOT NULL,
-  `time_ans` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `from_choice` int(11) NOT NULL,
-  `create_by` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `choice`
---
-
-CREATE TABLE `choice` (
-  `ID_option` int(11) NOT NULL,
-  `msg_option` int(11) NOT NULL,
-  `from_poll` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -173,25 +147,6 @@ INSERT INTO `notify` (`ID_notify`, `msg_notify`, `creat_by`, `from_post`, `statu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `poll`
---
-
-CREATE TABLE `poll` (
-  `ID_poll` int(11) NOT NULL,
-  `Group_subject` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ID_subject` int(11) NOT NULL,
-  `name_subject` varchar(75) COLLATE utf8_unicode_ci NOT NULL,
-  `type_poll` int(11) NOT NULL,
-  `title_poll` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `msg_poll` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pollend` datetime NOT NULL,
-  `time_poll` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `create_by` bigint(20) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `post`
 --
 
@@ -217,17 +172,6 @@ INSERT INTO `post` (`ID_post`, `Group_subject`, `ID_subject`, `name_subject`, `t
 (2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test2', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-15 21:27:55', 2, 0),
 (7, 'กลุ่มภาษาและการสื่อสาร', 90106003, 'ARTS OF EMOTION DEVELOPMENT', 2, 'test', 'fd8oiawegfjiaslJFol', '2021-11-17 00:29:54', 1, 1),
 (8, 'กลุ่มคุณค่าแห่งชีวิต', 90591011, 'IMAGINATIVE ART', 1, 'asdasd', 'sdfg', '2021-11-17 00:32:53', 2, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `study`
---
-
-CREATE TABLE `study` (
-  `ID` bigint(20) UNSIGNED NOT NULL,
-  `major` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -417,14 +361,6 @@ ALTER TABLE `post`
   ADD KEY `post_2` (`name_subject`),
   ADD KEY `post_4` (`create_by`),
   ADD KEY `Group_subject` (`Group_subject`);
-
---
--- Indexes for table `study`
---
-ALTER TABLE `study`
-  ADD UNIQUE KEY `ID` (`ID`,`major`),
-  ADD UNIQUE KEY `ID_user` (`ID`),
-  ADD KEY `study_major` (`major`);
 
 --
 -- Indexes for table `subject`
