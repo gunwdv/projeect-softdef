@@ -27,7 +27,7 @@ if (isset($_REQUEST['creat_post'])) {
     }
 
     if (count($errors) == 0) {
-        $sql = "INSERT INTO post(Group_subject,ID_subject,name_subject,type_post,title_post,msg_post,create_by) VALUES('$Group_subject','$ID_subject','$name_subject','$type_post','$title_post','$msg_post','$create_by')";
+        $sql = "INSERT INTO post(Group_subject,ID_subject,name_subject,type_post,title_post,msg_post,create_by,	report) VALUES('$Group_subject','$ID_subject','$name_subject','$type_post','$title_post','$msg_post','$create_by','0')";
         mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 
         header('location: index.php');
@@ -93,5 +93,20 @@ if(isset($_REQUEST['delpageN'])){
 
    $sql = "DELETE FROM notify WHERE ID_notify='$postdel'";
    mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
+}
+if(isset($_REQUEST['del_C'])){
+    //Post Comment
+}
+if(isset($_REQUEST['del_P'])){
+    //Post Post
+    }
+if(isset($_REQUEST['report_P'])){
+    //POst Report
+    $from_post = $_SESSION['postnow'];
+
+    $sql = "UPDATE post SET report = '1' WHERE $ID_post='$from_post'";
+        mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
+
+    header("location: post.php?id='.$from_post.'");
 }
 ?>
