@@ -29,7 +29,7 @@ if ($_GET['id']){
                         <i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li> <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>
-                            <li><a class="dropdown-item" href="#">ลบโพสต์</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldel">ลบโพสต์</a></li>
                         </ul>
                         <?php 
                         while($row = mysqli_fetch_assoc($resultpost)){
@@ -72,9 +72,7 @@ if ($_GET['id']){
             echo '<div class="comment-box">';
             echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
             echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
-            echo '<li>';
-            echo '<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>';
-            echo '<li><a class="dropdown-item " href="#">ลบโพสต์</a></li>';
+            echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#C_del">ลบโพสต์</a></li>';
             echo '</ul>';
             echo'<div class="d-flex align-items-center ">';
             echo    '<div class="d-inline ">';
@@ -106,6 +104,7 @@ if ($_GET['id']){
         </div>
         -->
         <!-- modal box -->
+        <form method="POST" action="controllerPostData.php">
         <!-- modal comment รีวิว -->
         <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered ">
@@ -114,7 +113,6 @@ if ($_GET['id']){
                         <h5 class="modal-title " id="exampleModalLabel">แสดงความคิดเห็น</h5>
                         <button type="button " class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method="POST" action="controllerPostData.php">
                         <div class="modal-body ">
                             <textarea class="form-control form-control-sm " id="comment-item" placeholder="แสดงความคิดเห็น" name='msg_comment' rows="5" required> </textarea>
                             <input type="text" style="display:none;" name="comment_post" value="<?php echo $x; ?>">
@@ -132,7 +130,6 @@ if ($_GET['id']){
                         <div class="modal-footer ">
                             <button type="button" name="comment_post">ส่งความคิดเห็น</button>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -148,7 +145,7 @@ if ($_GET['id']){
                             <div class=" col-lg-3 col-sm-3"></div>
                             <div class=" col-lg-6 col-sm-6">
                                 <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" data-bs-target="#need">ต้องการ</button>
-                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal">ไม่ต้องการ</button>
+                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal" name="report_P">ไม่ต้องการ</button>
                             </div>
                             <div class=" col-lg-3 col-sm-3"></div>
                         </div>
@@ -161,7 +158,7 @@ if ($_GET['id']){
         <div class="modal fade " id="need" data-bs-keyboard="false" tabindex="-1" aria-labelledby="needLabel" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered ">
                 <div class="modal-content ">
-                <form method="POST" action="controllerPostData.php">
+                
                     <div class="modal-body ">
                         <p class="modal-title text-center" id="needLabel">โพสต์นี้ถูกรายงานแล้ว</p>
                         <div class="row">
@@ -172,10 +169,47 @@ if ($_GET['id']){
                             <div class=" col-lg-4 "></div>
                         </div>
                     </div>
-    </form>
+ 
                 </div>
             </div>
         </div>
+        <!-- modal P ลบ -->
+        <div class="modal fade " id="modaldel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modaldel" aria-hidden="true">
+            <div class=" modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-body ">
+                        <p class="text-center">ต้องการลบโพสต์นี้ใช่หรือไม่</p>
+                        <div class="row">
+                            <div class=" col-lg-3 col-sm-3"></div>
+                            <div class=" col-lg-6 col-sm-6">
+                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal">ต้องการ</button>
+                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal" name="del_P">ไม่ต้องการ</button>
+                            </div>
+                            <div class=" col-lg-3 col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal C ลบ -->
+        <div class="modal fade " id="modaldel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="C_del" aria-hidden="true">
+            <div class=" modal-dialog modal-dialog-centered ">
+                <div class="modal-content">
+                    <div class="modal-body ">
+                        <p class="text-center">ต้องการลบโพสต์นี้ใช่หรือไม่</p>
+                        <div class="row">
+                            <div class=" col-lg-3 col-sm-3"></div>
+                            <div class=" col-lg-6 col-sm-6">
+                                <button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal">ต้องการ</button>
+                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal" name="del_C">ไม่ต้องการ</button>
+                            </div>
+                            <div class=" col-lg-3 col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
     </div>
 </body>
 <?php else: ?>

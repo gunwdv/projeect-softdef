@@ -70,7 +70,7 @@ include "header.php";
                             </div>
                             <div class="details">
                                 <label for="details" class="form-label ">รายละเอียด:</label>
-                                <textarea class="form-control form-control-sm " id="details" name="post_details" placeholder="รายละเอียด" rows="4" cols="50" pattern="^[]{10,255}" 
+                                <textarea class="form-control form-control-sm " id="details" name="post_details" placeholder="รายละเอียด" rows="4" cols="50" pattern="^[@#$%^*+\\]{10,255}" 
                                 title="Users can type the information they want to post. which consists of Thai, English, numbers, special symbols (. : - / ? = ( ) & ' !) and spaces 10 -255 characters long" required></textarea>
                             </div>
                             <div class="d-grid col-lg-6 mx-auto ">
