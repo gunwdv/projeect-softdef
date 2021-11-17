@@ -48,18 +48,18 @@ include "header.php";
                 <div id="notifyConfirm" class="cd-popup-container hidden">
                     <p>ต้องการแจ้งเตือนผู้ใช้หรือไม่?</p>
                     <ul class="cd-buttons">
-                        <li><a class="yes" href="#"><button class="btnlink" name="yesnotify">ต้องการ</button></a></li>
-                        <li><a href="#" id="notnotify">ไม่ต้องการ</a></li>
+                        <li><a href="controllerPostData.php?notify_id=<?php echo $x?>" class="yes" ><button type="button" class="btnlink" name="yesnotify">ต้องการ</button></a></li>
+                        <li><a id="notnotify">ไม่ต้องการ</a></li>
                     </ul>
-                    <a href="#" class="cd-popup-close img-replace">Close</a>
+                    <a class="cd-popup-close img-replace">Close</a>
                 </div>
                 <div id="deleteConfirm" class="cd-popup-container hidden">
                     <p>ต้องการลบโพสต์หรือไม่?</p>
                     <ul class="cd-buttons">
-                        <li><a class="yes" href="#"><button class="btnlink" name="yesdel">ต้องการ</button></a></li>
-                        <li><a href="#" id="notdel">ไม่ต้องการ</a></li>
+                        <li><a href="controllerPostData.php?del_P_id=<?php echo $x?>" class="yes" ><button type="button" class="btnlink" name="del_P_id">ต้องการ</button></a></li>
+                        <li><a id="notdel">ไม่ต้องการ</a></li>
                     </ul>
-                    <a href="#" class="cd-popup-close img-replace">Close</a>
+                    <a class="cd-popup-close img-replace">Close</a>
                 </div>
             </div>
         </div>
