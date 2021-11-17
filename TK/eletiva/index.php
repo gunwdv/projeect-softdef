@@ -15,15 +15,16 @@ include "header.php";
         <?php              
         $query = "SELECT * FROM post WHERE type_post='3' ORDER BY time_post DESC";
         $result = mysqli_query($connect, $query);
-        $i = 1;
         //"SELECT COUNT(ID_comment) FROM comment WHERE create_by = $";
-        if($row['COUNT(*)'] > 0){
+    
             echo'<div class="posttext">';
             echo'<i class="fas fa-clock"></i>';
             echo'<p class="mainC">โพสจากอาจารย์</p>';
             echo'</div>';
             while($row =  mysqli_fetch_assoc($result)){
-                
+                $x = $row['ID_post'];
+                $findCA = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
+                $y = mysqli_query($connect, $findCA);
                 echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
                 echo '    <div class="post_btn">';
                 echo '        <div class="A_left">';
@@ -32,19 +33,16 @@ include "header.php";
                 echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
                 echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
+                if($n =  mysqli_fetch_assoc($y)){
                 echo '        <div  class="A_right">';
                 echo '            <i class="iconcomment far fa-comment-dots"></i>';
-                echo '            <h5 class="commentN">num</h5>';
+                echo '            <h5 class="commentN">'.$n['COUNT(ID_comment)'].'</h5>';
                 echo '        </div>';
+                }
                 echo '    </div>';
                 echo '</a>';
-                /*
-                if($i > 5){
-                    break;
-                }
-                $i++;
-               */
-            }
+                
+            
         }
         ?>
     </div>
@@ -55,13 +53,16 @@ include "header.php";
         <?php              
         $query = "SELECT * FROM post WHERE type_post='1' ORDER BY time_post DESC";
         $result = mysqli_query($connect, $query);
-        $i = 1;
-        if($row['COUNT(*)'] > 0){
+ 
             echo'<div class="posttext">';
             echo'<i class="fas fa-star"></i>';
             echo'<p class="mainC">โพสธรรมดา</p>';
             echo'</div>';
             while($row =  mysqli_fetch_assoc($result)){
+                $x = $row['ID_post'];
+                $findCB = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
+                $y = mysqli_query($connect, $findCB);
+    
                 
                 echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
                 echo '    <div class="post_btn">';
@@ -71,14 +72,15 @@ include "header.php";
                 echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
                 echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
+                if($n =  mysqli_fetch_assoc($y)){
                 echo '        <div  class="A_right">';
                 echo '            <i class="iconcomment far fa-comment-dots"></i>';
-                echo '            <h5 class="commentN">num</h5>';
+                echo '            <h5 class="commentN">'.$n['COUNT(ID_comment)'].'</h5>';
                 echo '        </div>';
+                }
                 echo '    </div>';
                 echo '</a>';
-
-            }
+     
         }
         ?>
     </div>
@@ -90,13 +92,15 @@ include "header.php";
         <?php              
         $query = "SELECT * FROM post WHERE type_post='2' ORDER BY time_post DESC";
         $result = mysqli_query($connect, $query);
-        $i = 1;
-        if($row['COUNT(*)'] > 0){
             echo'<div class="posttext">';
             echo'<i class="fas fa-bookmark"></i>';
             echo'<p class="mainC">โพสรีวิว</p>';
             echo'</div>';
             while($row =  mysqli_fetch_assoc($result)){
+                $x = $row['ID_post'];
+                $findCC = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
+                $y = mysqli_query($connect, $findCC);
+    
                 
                 echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
                 echo '    <div class="post_btn">';
@@ -106,13 +110,15 @@ include "header.php";
                 echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
                 echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
+                if($n =  mysqli_fetch_assoc($y)){
                 echo '        <div  class="A_right">';
                 echo '            <i class="iconcomment far fa-comment-dots"></i>';
-                echo '            <h5 class="commentN">num</h5>';
+                echo '            <h5 class="commentN">'.$n['COUNT(ID_comment)'].'</h5>';
                 echo '        </div>';
+                }
                 echo '    </div>';
                 echo '</a>';
-            }
+       
         }
         ?>
     </div>
