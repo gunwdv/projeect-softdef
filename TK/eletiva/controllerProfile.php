@@ -323,4 +323,27 @@ if (isset($_POST['change_info'])) {
     }
 
 }
+
+if (isset($_POST['change_name'])) {
+
+    $name= mysqli_real_escape_string($connect, $_POST['name']);  
+      
+    $email = $_SESSION["email"];
+
+    //echo "emaill : $email <br>major : $major <br> introduce : $introduce <br> sex : $sex <br>";
+    
+    $query = "UPDATE users SET name = '$name' WHERE email ='$email'"; 
+
+    //echo "query : $query";
+
+    mysqli_query($connect, $query);
+    
+    if(count($errors) == 0){         
+        header('location: profile.php?error=1');
+    }
+    else{
+        header('location: profile.php?error=2');
+    }
+
+}
 ?>

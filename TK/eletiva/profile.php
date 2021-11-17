@@ -292,7 +292,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
 <!-- Modal -->
 <div class="modal fade" id="changeUserNameModal" tabindex="-1" aria-labelledby="changeUserNameModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form>  
+    <form action="controllerProfile.php" method="post" id="change_name" enctype="multipart/form-data">  
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="changeUserNameModalLabel">เปลี่ยนชื่อนามแฝง</h5>
@@ -308,7 +308,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">ยกเลิก</button>
-            <button type="button" class="btn btn-success">บันทึกการแก้ไข</button>
+            <button type="summit" class="btn btn-success" name="change_name">บันทึกการแก้ไข</button>
           </div>
         </div>
     </form>
