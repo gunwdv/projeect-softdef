@@ -19,7 +19,12 @@ include "header.php";
         <div class="boxn">
         <form method="POST" action="controllerPostData.php">
             <?php
-            $query = "SELECT * FROM notify";
+            $check = "SELECT ID FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
+            $result = mysqli_query($connect, $check);
+            $row = mysqli_fetch_assoc($result);
+            $ID = $row['ID'];
+            
+            $query = "SELECT * FROM notify WHERE to_ID = '$ID'";
             $result = mysqli_query($connect, $query);
 
             while($row =  mysqli_fetch_assoc($result)){

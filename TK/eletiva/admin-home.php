@@ -15,7 +15,7 @@ include "header.php";
     font-weight: bold;
 }
 
-a:hover.swPage {
+a.swPage:hover {
     text-decoration: none;
     color: red;
 }

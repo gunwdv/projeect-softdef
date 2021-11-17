@@ -49,6 +49,7 @@ else{
     $check = "SELECT ID,email,password,status FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
     $result = mysqli_query($connect, $check);
     $row = mysqli_fetch_assoc($result);
+    $ID = $row['ID'];
 
     if(mysqli_num_rows($result) != 1){
         $_SESSION['status'] = 0;
@@ -56,10 +57,10 @@ else{
         header("location: index.php");
     }
 
-    $ID = $row['ID'];
-    $countN = "SELECT COUNT(ID_notify) FROM notify WHERE status_notify='1' AND to_ID='$ID'";
-    $nof = mysqli_query($connect, $countN);
-    $row = mysqli_fetch_array($nof);
+    $rt = "SELECT COUNT(*) AS 'count' FROM notify WHERE status_notify='1' AND to_ID='$ID'";
+    $l = mysqli_query($connect, $rt);
+    $m = mysqli_fetch_assoc($l);
+    $count = $m['count'];
 
     if($status == 1 || $status == 2){
         //student + teacher
@@ -68,9 +69,10 @@ else{
         echo'<li class="logo"><a class="logonav" href="index.php">ELETIVA</a></li>';
         echo'<li class="item"><a href="creatpost.php" title="Creat Post"><i class="iconnav fas fa-edit"><span class="navTitle">Creat Post</span></i></a></i></li>';
         echo'<li class="item"><a href="notify.php" title="Notification"><i class="iconnav fas fa-bell"><span class="navTitle">Notification</span>';
-        if($row["COUNT(ID_notify)"] > 0){
+        
+        if($count > 0){
             echo'<div class = "number">';
-            echo $row["COUNT(ID_notify)"];
+            echo $count;
             echo'</div>';
         }
         echo'</i></a></li>';

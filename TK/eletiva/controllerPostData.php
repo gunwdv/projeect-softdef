@@ -90,6 +90,8 @@ if(isset($_REQUEST['delpageN'])){
 
    $sql = "DELETE FROM notify WHERE ID_notify='$postdel'";
    mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
+
+   header("location: notify.php");
 }
 
 if(isset($_REQUEST['del_C_id'])){

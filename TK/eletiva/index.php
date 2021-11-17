@@ -15,7 +15,7 @@ include "header.php";
     font-weight: bold;
 }
 
-a:hover.swPage {
+a.swPage:hover {
     text-decoration: none;
     color: red;
 }
@@ -27,16 +27,17 @@ a:hover.swPage {
 <section>
     <?php if($_SESSION['status'] != 3): ?>
         <img class="banner" src="images/home.png" alt="Banner">
-
-    <!-- โพสล่าสุด -->
-    <div class="inf">
-            <?php else: ?>
+       <?php else: ?>
         <div style="padding: 10px;   padding-bottom: 1px;    width: 100%;    background: rgb(255, 231, 125);    margin-bottom: 30px">
             <a href="admin-home.php" class="swPage swp">
                 <p class="swp">-- GO to Admin Page --</p>
             </a>
             </div>
-    <?php endif ?>
+        <?php endif ?>
+    <!-- โพสล่าสุด -->
+    <div class="inf">
+     
+    
         <!-- -ข้อมูล -->
         <?php              
         $query = "SELECT * FROM post WHERE type_post='3' ORDER BY time_post DESC";
