@@ -97,10 +97,10 @@ if(isset($_REQUEST['delpageN'])){
 }
 
 if(isset($_REQUEST['del_C_id'])){
-    $del_c_id = $_REQUEST['del_c_id'];
+    $del_C_id = $_REQUEST['del_C_id'];
     $IDpost = $_SESSION['postnow'];
 
-    $Sql = "DELETE FROM comment WHERE ID_comment='$del_c_id'";
+    $Sql = "DELETE FROM comment WHERE ID_comment='$del_C_id'";
     mysqli_query($connect,$Sql); // สั่งรันคำสั่ง sql    
 
     header("location: post.php?id=$IDpost");

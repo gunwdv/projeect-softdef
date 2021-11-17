@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 03:18 AM
+-- Generation Time: Nov 17, 2021 at 03:20 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -30,11 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `comment` (
   `ID_comment` int(11) NOT NULL,
   `msg_comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `rate` int(5) NOT NULL,
+  `rate` int(5) DEFAULT NULL,
   `time_comment` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `create_by` bigint(20) UNSIGNED NOT NULL,
   `from_post` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`ID_comment`, `msg_comment`, `rate`, `time_comment`, `create_by`, `from_post`) VALUES
+(1, 'fgfahafharthmdsdgasfag', NULL, '2021-11-15 05:12:36', 2, 1),
+(2, 'gdgfhgjdkyjtery', NULL, '2021-11-15 05:12:36', 2, 2),
+(3, 'fgfshfdjsewgb', NULL, '2021-11-15 05:12:58', 2, 1),
+(4, 'gdgfhgjdkyjtery', NULL, '2021-11-15 05:12:42', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -340,6 +350,14 @@ INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `major
 --
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`ID_comment`),
+  ADD KEY `create_by` (`create_by`,`from_post`),
+  ADD KEY `comment_2` (`from_post`);
+
+--
 -- Indexes for table `education`
 --
 ALTER TABLE `education`
@@ -384,6 +402,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `ID_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `notify`

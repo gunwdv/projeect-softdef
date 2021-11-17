@@ -80,6 +80,7 @@ if ($_GET['id']){
         <?php 
         while($row = mysqli_fetch_assoc($resultcom)){
             $IDuser = $row["create_by"];
+            $IDcomment = $row["ID_comment"];
             $querycU = "SELECT * FROM users WHERE ID = '.$IDuser.'";
             $resultcU = mysqli_query($connect, $querycU);
             $rowcUser = mysqli_fetch_assoc($resultcU);
@@ -97,7 +98,7 @@ if ($_GET['id']){
             echo '<div class="comment-box">';
             echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
             echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
-            echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#C_del">ลบโพสต์</a></li>';
+            echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#C_del" href="controllerPostData.php?del_C_id='.$IDcomment.'">ลบโพสต์</a></li>';
             echo '</ul>';
             echo'<div class="d-flex align-items-center ">';
             echo    '<div class="d-inline ">';
@@ -115,7 +116,7 @@ if ($_GET['id']){
             echo '<div class="col-lg-2 col-sm-2"></div>';
             echo '</div>';
             echo '</div>';
-            echo '</div>';
+            echo '</div>';        
         }
         ?>
         <!--
@@ -197,25 +198,7 @@ if ($_GET['id']){
                 </div>
             </div>
         </div>
-        
-        <!-- modal C ลบ -->
-        <div class="modal fade " id="modaldel" data-bs-keyboard="false" tabindex="-1" aria-labelledby="C_del" aria-hidden="true">
-            <div class=" modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                    <div class="modal-body ">
-                        <p class="text-center">ต้องการลบโพสต์นี้ใช่หรือไม่</p>
-                        <div class="row">
-                            <div class=" col-lg-3 col-sm-3"></div>
-                            <div class=" col-lg-6 col-sm-6">
-                                <a href="controllerPostData.php?del_C_id=<?php echo $x ?>"><button type="button" class="btn text-center float-start" id="yes" data-bs-toggle="modal" name="del_C">ต้องการ</button></a>
-                                <button type="button" class="btn text-center float-end " id="no" data-bs-dismiss="modal">ไม่ต้องการ</button>
-                            </div>
-                            <div class=" col-lg-3 col-sm-3"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                
         </form>
     </div>
 </body>
