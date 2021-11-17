@@ -32,6 +32,11 @@ if ($_GET['id']){
 }
 ?>
 <?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] != 3) || empty($_SESSION['status'])) : ?>
+    <style>
+        .badge{
+            color:black;
+        }
+    </style>
 <body class="post">
     <div class="container-fluid mt-5">
         <!-- หน้าโพสต์รีวิว -->
