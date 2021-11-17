@@ -32,7 +32,7 @@ include "header.php";
                         echo'<li class="list-group-item">';
                         echo'  <div class="row">';
                         echo'     <div class="col-sm-9">';
-                        echo'         <a href="post.php?id='.$row['ID_post'].'"><i class="fas fa-chevron-circle-right"></i>'.$row['title_post'].'</a>';
+                        echo'         <a href="post.php?id='.$row['ID_post'].'"><i class="fas fa-chevron-circle-right" style="margin-right"></i>'.$row['title_post'].'</a>';
                         echo'    </div> ';
                         echo'    <div class="col-sm-3 text-md-end">'.$row['time_post'].'</div> ';
                         echo'</div>';

@@ -6,6 +6,11 @@ require('inc_header.php');
 include "header.php";
 ?>
 <?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && (($_SESSION['status'] == 1) || $_SESSION['status'] == 2))) : ?>
+<style>
+  .BO{
+    border: 2px solid black;
+  }
+</style>
 <body>
     <div class="">
         <div class="container py-4">
@@ -18,7 +23,7 @@ include "header.php";
                       <div class="row">
                         <div class="col-sm-2 px-0 borderAccNav">
                             <nav class="nav nav-pill flex-column" id="accountNav">
-                              <a class="nav-link active" aria-current="page" href="setting.php">บัญชี</a>
+                              <a class="nav-link active" aria-current="page" href="setting.php" style="color:white;">บัญชี</a>
                             </nav>
                         </div>
                         <div class="col-sm-10 pt-2">
@@ -32,12 +37,12 @@ include "header.php";
                                 <div class="row mb-3">
                                     <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">รหัสผ่าน</label>
                                     <div class="col-sm-10">
-                                      <p><a href="new-password.php">changed password</a></p>
+                                      <p class="form-control-plaintext text-white"><a href="new-password.php">changed password</a></p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-12 text-center py-3">
-                                      <button class="btn btn-orange">บันทึกข้อมูล</button>
+                                      <button class="btn btn-orange BO">บันทึกข้อมูล</button>
                                     </div>
                                 </div>
                             </div>

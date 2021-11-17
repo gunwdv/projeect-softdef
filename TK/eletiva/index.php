@@ -25,13 +25,19 @@ include "header.php";
                 $x = $row['ID_post'];
                 $findCA = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
                 $y = mysqli_query($connect, $findCA);
+                $z = $row['create_by'];
+                $queryU = "SELECT * FROM users WHERE ID = '$z'";
+                $ua = mysqli_query($connect, $queryU);
+                $rowUser = mysqli_fetch_assoc($ua);
+                $name = (empty($rowUser['name'])) ? 'ไม่ระบุ' : $rowUser["name"];
+
                 echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
                 echo '    <div class="post_btn">';
                 echo '        <div class="A_left">';
                 echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';
                 echo '            <h4 class="textC" name="Post">'.$row['title_post'].'</h4>';
-                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
-                echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
+                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].' : '.$row['ID_subject'].'</h6>';
+                echo '            <br><p class="Timestamp">User:'.$name.' Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
                 if($n =  mysqli_fetch_assoc($y)){
                 echo '        <div  class="A_right">';
@@ -41,8 +47,6 @@ include "header.php";
                 }
                 echo '    </div>';
                 echo '</a>';
-                
-            
         }
         ?>
     </div>
@@ -62,15 +66,19 @@ include "header.php";
                 $x = $row['ID_post'];
                 $findCB = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
                 $y = mysqli_query($connect, $findCB);
-    
+                $z = $row['create_by'];
+                $queryU = "SELECT * FROM users WHERE ID = '$z'";
+                $ub = mysqli_query($connect, $queryU);
+                $rowUser = mysqli_fetch_assoc($ub);
+                $name = (empty($rowUser['name'])) ? 'ไม่ระบุ' : $rowUser["name"];
                 
                 echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
                 echo '    <div class="post_btn">';
                 echo '        <div class="A_left">';
                 echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';
                 echo '            <h4 class="textC" name="Post">'.$row['title_post'].'</h4>';
-                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
-                echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
+                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].' : '.$row['ID_subject'].'</h6>';
+                echo '            <br><p class="Timestamp">User:'.$name.' Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
                 if($n =  mysqli_fetch_assoc($y)){
                 echo '        <div  class="A_right">';
@@ -100,17 +108,22 @@ include "header.php";
                 $x = $row['ID_post'];
                 $findCC = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
                 $y = mysqli_query($connect, $findCC);
-    
-                
+                $z = $row['create_by'];
+                $queryU = "SELECT * FROM users WHERE ID = '$z'";
+                $uc = mysqli_query($connect, $queryU);
+                $rowUser = mysqli_fetch_assoc($uc);
+                $name = (empty($rowUser['name'])) ? 'ไม่ระบุ' : $rowUser["name"];
+
                 echo '<a href="post.php?id='.$row['ID_post'].'" class="Content">';
                 echo '    <div class="post_btn">';
                 echo '        <div class="A_left">';
                 echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';
                 echo '            <h4 class="textC" name="Post">'.$row['title_post'].'</h4>';
-                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
-                echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
+                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].' : '.$row['ID_subject'].'</h6>';
+                echo '            <br><p class="Timestamp">User:'.$name;
+                echo'  Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
-                if($n =  mysqli_fetch_assoc($y)){
+                if($n = mysqli_fetch_assoc($y)){
                 echo '        <div  class="A_right">';
                 echo '            <i class="iconcomment far fa-comment-dots"></i>';
                 echo '            <h5 class="commentN">'.$n['COUNT(ID_comment)'].'</h5>';
@@ -118,7 +131,6 @@ include "header.php";
                 }
                 echo '    </div>';
                 echo '</a>';
-       
         }
         ?>
     </div>

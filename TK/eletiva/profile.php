@@ -73,6 +73,11 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
       
 //echo "emaill : $email <br>major : $major <br> introduce : $introduce <br>faculty : $faculty <br>img : $img <br> introduce : $name <br> sex : $sex";
 ?>
+<style>
+  .BO{
+    border: 2px solid black;
+  }
+</style>
 <body>
     <div class="">
         <div class="container py-4">
@@ -195,7 +200,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">&nbsp;</label>
                                 <div class="col-sm-10 text-center">
-                                  <button class="btn btn-orange" name="change_info">บันทึกข้อมูล</button>
+                                  <button class="btn btn-orange BO" name="change_info">บันทึกข้อมูล</button>
                                 </div>
                             </div>
                         </div>  
@@ -273,7 +278,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
                         </div>
                         <div class="col-sm-12 text-center">
                             <hr>
-                            <button type="submit" class="btn btn-orange" name="interest_info">บันทึกข้อมูล</button>  
+                            <button type="submit" class="btn btn-orange BO" name="interest_info">บันทึกข้อมูล</button>  
                         </div>  
                       </div>
                   </form>
