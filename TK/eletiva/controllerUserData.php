@@ -7,6 +7,22 @@ require "dbconnect.php";
 $ID = $_SESSION["ID"];
 $query3 = "SELECT Group_subject FROM interest WHERE ID = '$ID'";
 $result3 = mysqli_query($connect, $query3);
+
+    $elective_eng1 = NULL;    
+    $elective_hu = NULL;    
+    $elective_so1 = NULL;   
+    $elective_sci = NULL;    
+    $elective_free = NULL;     
+    $elective_life = NULL;    
+    $elective_so2 = NULL;   
+    $elective_think = NULL;   
+    $elective_manage = NULL;    
+    $elective_eng2 = NULL;  
+    $elective_21 = NULL;     
+    $elective_carrer = NULL; 
+    $elective_leader = NULL;
+    $elective_eng3 = NULL;
+
 while($row3_Resuut = mysqli_fetch_assoc($result3))
 {
   if($row3_Resuut["Group_subject"]==0){
@@ -53,6 +69,9 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
   }                        
 }
 
+//echo "กลุ่มภาษา : $elective_eng1 <br>กลุ่มมนุษย์ศาสตร์ : $elective_hu <br>กลุ่มสังคมศาสตร์ : $elective_so1 <br>กลุ่มวิทยาศาสตร์ฯ : $elective_sci <br>กลุ่มวิชาเลือกเสรี : $elective_free <br>กลุ่มคุณค่าแห่งชีวิต : $elective_life <br>กลุ่มวิถีแห่งสังคม : $elective_so2 <br>";
+//echo "ศาสตร์แห่งการคิด : $elective_think <br>ศิลปแห่งการจัดการ : $elective_manage <br>ภาษาและการสื่อสาร : $elective_eng2 <br>กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21 : $elective_21 <br>ทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ : $elective_carrer <br>ทักษะด้านการจัดการและภาวะความเป็นผู้นำ : $elective_leader <br>กลุ่มทักษะด้านภาษาและการสื่อสาร : $elective_eng3 <br>";
+  
 $errors = array();
 $email = '';
 
@@ -81,9 +100,7 @@ $email = '';
         $user_check_query = "SELECT * FROM users WHERE email = '$email' LIMIT 1";
         $query = mysqli_query($connect, $user_check_query);
         $result = mysqli_fetch_assoc($query);
-        //$interest = array('elective_eng1'=>0,'elective_hu'=>0,'elective_so1'=>0,'elective_sci'=>0,'elective_free'=>0,'elective_life'=>0,'elective_so2'=>0,'elective_think'=>0,'elective_manage'=>0,'elective_eng2'=>0,'elective_21'=>0,'elective_carrer'=>0,'elective_eng3'=>0);
-        //{"elective_eng1":0,"elective_hu":0,"elective_so1":0,"elective_sci":0,"elective_free":0,"elective_life":0,"elective_so2":0,"elective_think":0,"elective_manage":0,"elective_eng2":0,"elective_21":0,"elective_carrer":0,"elective_eng3":0}
-
+    
         if ($result) { // if user exists
             if ($result['email'] === $email) {
                 array_push($errors, "email already exists");
@@ -141,7 +158,7 @@ $email = '';
                     header("location: admin-home.php");
                 }
                 else{
-                    if($elective_eng1 == "" && $elective_hu == "" && $elective_so1 == "" && $elective_sci == "" && $elective_free == "" && $elective_life == "" && $elective_so2 == "" && $elective_think == "" && $elective_manage == "" && $elective_eng2 == "" && $elective_21 == "" && $elective_carrer == "" && $elective_leader == "" && $elective_eng3 == ""){
+                    if($elective_eng1 == NULL && $elective_hu == NULL && $elective_so1 == NULL && $elective_sci == NULL && $elective_free == NULL && $elective_life == NULL && $elective_so2 == NULL && $elective_think == NULL && $elective_manage == NULL && $elective_eng2 == NULL && $elective_21 == NULL && $elective_carrer == NULL && $elective_leader == NULL && $elective_eng3 == NULL){
                         header("location: first-select.php");
                     }
                     else{
@@ -214,7 +231,7 @@ $email = '';
 
     //if user click check reset otp button
     if(isset($_POST['check-reset-otp'])){
-        $_SESSION['info'] = "";
+        $_SESSION['info'] = NULL;
         $otp_code = mysqli_real_escape_string($connect, $_POST['otp']);
         $check_code = "SELECT * FROM users WHERE code = $otp_code";
         $code_res = mysqli_query($connect, $check_code);
@@ -233,7 +250,7 @@ $email = '';
 
     //if user click change password button
     if(isset($_POST['change-password'])){
-        $_SESSION['info'] = "";
+        $_SESSION['info'] = NULL;
         
         $password = mysqli_real_escape_string($connect, $_POST['password']);
         $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);

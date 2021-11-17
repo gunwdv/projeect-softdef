@@ -24,15 +24,15 @@ a:hover.swPage {
     text-align: center;
 }
 </style>
-<section>
-        <br>
+<section>  
+     <div style="padding: 10px;   padding-bottom: 1px;    width: 100%;    background: rgb(255, 231, 125);    margin-bottom: 30px">
+            <a href="index.php" class="swPage swp">
+                <p class="swp">-- GO to User Page --</p>
+            </a>
+            </div>     
         <!-- โพสล่าสุด -->
         <div class="inf">
-            <div style="padding: 10px;   padding-bottom: 1px;    width: 100%;    background: rgb(255, 231, 125);    margin-bottom: 30px">
-            <a href="#" class="swPage swp">
-                <p class="swp">-- GO to Userpage --</p>
-            </a>
-            </div>
+            
             
         <div class="posttext">
             <i class="fas fa-file-alt"></i>

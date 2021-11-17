@@ -5,12 +5,38 @@ require "dbconnect.php";
 error_reporting(0);
 include "header.php";
 ?>
-<?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) || $_SESSION['status'] != 3) : ?>
+<?php if(isset($_SESSION['status']) || empty($_SESSION['status'])): ?>
+    <style>
+    a.swPage {
+    width: 100%;
+    height: auto;
+    background-color: wheat;
+    color: black;
+    font-weight: bold;
+}
+
+a:hover.swPage {
+    text-decoration: none;
+    color: red;
+}
+
+.swp {
+    text-align: center;
+}
+</style>
 <section>
-    <img class="banner" src="images/home.png" alt="Banner">
+    <?php if($_SESSION['status'] != 3): ?>
+        <img class="banner" src="images/home.png" alt="Banner">
+
     <!-- โพสล่าสุด -->
     <div class="inf">
-        
+            <?php else: ?>
+        <div style="padding: 10px;   padding-bottom: 1px;    width: 100%;    background: rgb(255, 231, 125);    margin-bottom: 30px">
+            <a href="admin-home.php" class="swPage swp">
+                <p class="swp">-- GO to Admin Page --</p>
+            </a>
+            </div>
+    <?php endif ?>
         <!-- -ข้อมูล -->
         <?php              
         $query = "SELECT * FROM post WHERE type_post='3' ORDER BY time_post DESC";
