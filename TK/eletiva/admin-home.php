@@ -16,7 +16,7 @@ include "header.php";
         </div>
         <!-- -ข้อมูล -->
         <?php              
-        $query = "SELECT * FROM post";
+        $query = "SELECT * FROM post WHERE report='1'";
         $result = mysqli_query($connect, $query);
         while($row =  mysqli_fetch_assoc($result)){
             
