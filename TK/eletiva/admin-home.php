@@ -6,10 +6,34 @@ require "dbconnect.php";
 include "header.php";
 ?>
 <?php if(isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] == 3) : ?>
+<style>
+    a.swPage {
+    width: 100%;
+    height: auto;
+    background-color: wheat;
+    color: black;
+    font-weight: bold;
+}
+
+a:hover.swPage {
+    text-decoration: none;
+    color: red;
+}
+
+.swp {
+    text-align: center;
+}
+</style>
 <section>
         <br>
         <!-- โพสล่าสุด -->
         <div class="inf">
+            <div style="padding: 10px;   padding-bottom: 1px;    width: 100%;    background: rgb(255, 231, 125);    margin-bottom: 30px">
+            <a href="#" class="swPage swp">
+                <p class="swp">-- GO to Userpage --</p>
+            </a>
+            </div>
+            
         <div class="posttext">
             <i class="fas fa-file-alt"></i>
             <p class="mainC">รายงาน</p>

@@ -77,6 +77,9 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
   .BO{
     border: 2px solid black;
   }
+  .form-check-label{
+    margin-top:7px;
+  }
 </style>
 <body>
     <div class="">
@@ -96,7 +99,7 @@ while($row3_Resuut = mysqli_fetch_assoc($result3))
                                 <input type="hidden" name="hdnOldFile" value="<?php echo $img; ?>">
                             </div>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-7">
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label fw-normal text-white">ชื่อผู้ใช้</label>
                                 <div class="col-sm-10">
