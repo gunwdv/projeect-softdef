@@ -42,13 +42,15 @@ if ($_GET['id']){
                         <i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li> <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>
-                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldel">ลบโพสต์</a></li>
+                            <?php if ($_SESSION['ID']==$IDpost OR ($_SESSION['status'] == 3)){
+                            echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldel">ลบโพสต์</a></li>';
+                            }
+                            ?>
                         </ul>
                         <?php 
                         $queryP = "SELECT * FROM post WHERE ID_post = '$x'";
                         $resultpost = mysqli_query($connect, $queryP);
                         while($row = mysqli_fetch_assoc($resultpost)){
-
                             echo '<p class="title"><i class="fas fa-pen"></i>'.$row["title_post"].'
                             <br><span class="badge rounded-pill " id="code">'.$row["ID_subject"].'</span><span class="badge rounded-pill" id="category">'.$row["Group_subject"].'</span>
                             </p>';
@@ -96,10 +98,12 @@ if ($_GET['id']){
             //echo '<div class="col-lg-4 col-sm-7">';
             echo '<div class="comment-review">';
             echo '<div class="comment-box">';
-            echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
-            echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
-            echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#C_del" href="controllerPostData.php?del_C_id='.$IDcomment.'">ลบโพสต์</a></li>';
-            echo '</ul>';
+            if ($_SESSION['ID']==$IDuser OR $_SESSION['ID']==$IDpost OR ($_SESSION['status'] == 3)){
+                echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
+                echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
+                echo '<li><a class="dropdown-item" href="controllerPostData.php?del_C_id='.$IDcomment.'">ลบโพสต์</a></li>';
+                echo '</ul>';
+            }
             echo'<div class="d-flex align-items-center ">';
             echo    '<div class="d-inline ">';
             echo        '<img src="myfile/'.$img.'" alt="Avatar" class="avatar">';

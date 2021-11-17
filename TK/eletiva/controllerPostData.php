@@ -103,7 +103,7 @@ if(isset($_REQUEST['del_C_id'])){
     $Sql = "DELETE FROM comment WHERE ID_comment='$del_C_id'";
     mysqli_query($connect,$Sql); // สั่งรันคำสั่ง sql    
 
-    header("location: post.php?id=$IDpost");
+    //header("location: post.php?id=$IDpost");
 }
 
 if(isset($_REQUEST['del_P_id'])){
