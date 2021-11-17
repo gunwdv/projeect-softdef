@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 04:02 AM
+-- Generation Time: Nov 17, 2021 at 07:23 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -44,7 +44,11 @@ INSERT INTO `comment` (`ID_comment`, `msg_comment`, `rate`, `time_comment`, `cre
 (1, 'fgfahafharthmdsdgasfag', NULL, '2021-11-15 05:12:36', 2, 1),
 (2, 'dsafsdfsdf', NULL, '2021-11-17 03:01:58', 3, 2),
 (3, 'fgfshfdjsewgb', NULL, '2021-11-17 03:02:25', 3, 1),
-(4, 'dfgdfgdfgdfgdfg', NULL, '2021-11-17 03:02:21', 2, 2);
+(4, 'dfgdfgdfgdfgdfg', NULL, '2021-11-17 03:02:21', 2, 2),
+(6, 'dfgdfgsdfsdf', NULL, '2021-11-17 03:36:57', 2, 2),
+(7, 'sdfsdfsd', NULL, '2021-11-17 03:37:04', 2, 2),
+(8, 'SDFSDF', NULL, '2021-11-17 03:37:55', 2, 2),
+(9, 'SDFSDFsdfsdf', NULL, '2021-11-17 03:38:06', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -131,6 +135,14 @@ CREATE TABLE `interest` (
   `ID` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `interest`
+--
+
+INSERT INTO `interest` (`Group_subject`, `ID`) VALUES
+('8', 2),
+('9', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -140,7 +152,7 @@ CREATE TABLE `interest` (
 CREATE TABLE `notify` (
   `ID_notify` int(11) NOT NULL,
   `msg_notify` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `creat_by` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `create_by` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `from_post` int(11) NOT NULL,
   `status_notify` int(11) NOT NULL,
   `time_notify` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -151,8 +163,9 @@ CREATE TABLE `notify` (
 -- Dumping data for table `notify`
 --
 
-INSERT INTO `notify` (`ID_notify`, `msg_notify`, `creat_by`, `from_post`, `status_notify`, `time_notify`, `to_ID`) VALUES
-(1, 'rcytvuhbjlnjijk;', 'admin', 1, 0, '2021-11-16 22:35:47', 1);
+INSERT INTO `notify` (`ID_notify`, `msg_notify`, `create_by`, `from_post`, `status_notify`, `time_notify`, `to_ID`) VALUES
+(1, 'กรุณาตรวจสอบข้อความในโพสของคุณด้วยว่าผิดกฎหรือไม่?', 'admin', 2, 1, '2021-11-17 06:23:02', 3),
+(2, 'กรุณาตรวจสอบข้อความในโพสของคุณด้วยว่าผิดกฎหรือไม่?', 'admin', 3, 1, '2021-11-17 06:23:05', 1);
 
 -- --------------------------------------------------------
 
@@ -179,9 +192,8 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`ID_post`, `Group_subject`, `ID_subject`, `name_subject`, `type_post`, `title_post`, `msg_post`, `time_post`, `create_by`, `report`) VALUES
 (1, 'กลุ่มภาษาและการสื่อสาร', 90201003, 'ENGLISH FOR ACADEMIC PURPOSES', 1, 'test1', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-15 21:27:55', 2, 0),
-(2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test2', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-17 03:01:39', 3, 0),
-(7, 'กลุ่มภาษาและการสื่อสาร', 90106003, 'ARTS OF EMOTION DEVELOPMENT', 2, 'test', 'fd8oiawegfjiaslJFol', '2021-11-17 00:29:54', 1, 1),
-(8, 'กลุ่มคุณค่าแห่งชีวิต', 90591011, 'IMAGINATIVE ART', 1, 'asdasd', 'sdfg', '2021-11-17 00:32:53', 2, 0);
+(2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test2', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-17 04:10:26', 3, 1),
+(3, 'กลุ่มภาษาและการสื่อสาร', 90106003, 'ARTS OF EMOTION DEVELOPMENT', 2, 'test', 'fd8oiawegfjiaslJFol', '2021-11-17 06:21:46', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -408,19 +420,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `ID_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `ID_notify` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_notify` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `ID_post` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_post` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
