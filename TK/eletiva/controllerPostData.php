@@ -54,7 +54,6 @@ if (isset($_REQUEST['comment_post'])) {
 if (isset($_REQUEST['notify_id'])) {
     //Admin ---> user
     $from_post = $_REQUEST['notify_id'];
-    $creat_by = $_SESSION['status'];
     $msg_comment = 'กรุณาตรวจสอบข้อความในโพสของคุณด้วยว่าผิดกฎหรือไม่?';
 
     $find = "SELECT create_by FROM post WHERE ID_post = '$from_post'";
@@ -62,9 +61,9 @@ if (isset($_REQUEST['notify_id'])) {
     $row = mysqli_fetch_assoc($result);
     $to_ID = $row['create_by'];
 
-    $sql = "INSERT INTO notify(msg_notify,create_by,from_post,status_notify,to_ID) VALUES('$msg_comment','$creat_by','$from_post','1','$to_ID')";
+    $sql = "INSERT INTO notify(msg_notify,create_by,from_post,status_notify,to_ID) VALUES('$msg_comment','admin','$from_post','1','$to_ID')";
     mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
-    //echo "msg_comment : $msg_comment <br>creat_by : $creat_by <br>from_post : $from_post <br>to_ID : $to_ID<br>";
+    //echo "msg_comment : $msg_comment <br>from_post : $from_post <br>to_ID : $to_ID<br>";
     header("location: admin-post.php?id=$from_post");
 }
 
@@ -99,6 +98,15 @@ if(isset($_REQUEST['del_P_id'])){
         $del_c_id = $Resuut['ID_comment'];
         $Sql = "DELETE FROM comment WHERE ID_comment='$del_c_id'";
         mysqli_query($connect,$Sql); // สั่งรันคำสั่ง sql    
+    }
+
+    $SQL2 = "SELECT ID_notify FROM notify WHERE from_post='$del_P_id'";
+    $Query2 = mysqli_query($connect,$SQL2);
+    while($Resuut2 = mysqli_fetch_assoc($Query2))
+    {
+        $ID_notify = $Resuut2['ID_notify'];
+        $Sql2 = "DELETE FROM comment WHERE ID_notify='$ID_notify'";
+        mysqli_query($connect,$Sql2); // สั่งรันคำสั่ง sql    
     }
 
     $sql = "DELETE FROM post WHERE ID_post='$del_P_id'";

@@ -28,14 +28,14 @@ include "header.php";
             $result = mysqli_query($connect, $query);
 
             while($row =  mysqli_fetch_assoc($result)){
-                echo'<a <a href="post.php?id='.$row['from_post'].'" class="linkn">';
+                echo'<a href="controllernotify.php?id_notify='.$row['ID_notify'].'" class="linkn">';
                 echo'<div class="nof_btn">';
                 echo'    <div class="Lbox">';
                 echo'        <input type="checkbox" id="buttonN">';
                 echo'        <label for="buttonN" class="fas"></label>';
                 echo'    </div>';
                 echo'    <div class="Mbox">';
-                echo'    <p class="txtM">'.$row['creat_by'].' : '.$row['msg_notify'].'</p>';
+                echo'    <p class="txtM">'.$row['create_by'].' : '.$row['msg_notify'].'</p>';
                 echo'    <p class="txtT">'.$row['time_notify'].'</p>';
                 echo'    </div>';
                 echo'    <div class="Rbox">';
