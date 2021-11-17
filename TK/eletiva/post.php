@@ -117,7 +117,7 @@ if ($_GET['id']){
                     <form method="POST" action="controllerPostData.php">
                         <div class="modal-body ">
                             <textarea class="form-control form-control-sm " id="comment-item" placeholder="แสดงความคิดเห็น" name='msg_comment' rows="5" required> </textarea>
-                            <input type="text" style="display:none;" name="from_post" value="<?php echo $x; ?>">
+                            <input type="text" style="display:none;" name="comment_post" value="<?php echo $x; ?>">
                             <!--
                             <div class="review-choose float-end ">
                                 <span class="heading">ให้คะแนน</span>
