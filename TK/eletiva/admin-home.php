@@ -54,7 +54,7 @@ a:hover.swPage {
                 echo '        <div class="A_left">';
                 echo '            <i class="icon_next fas fa-chevron-circle-right"></i>';
                 echo '            <h4 class="textC" name="Post">'.$row['title_post'].'</h4>';
-                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].'</h6>';
+                echo '            <h6 class="textS" name="subject">'.$row['Group_subject'].' : '.$row['ID_subject'].'</h6>';
                 echo '            <br><p class="Timestamp">User:'.$row['create_by'].' Time:'.$row['time_post'].'</p>';
                 echo '        </div>';
                 echo '        <div  class="A_right">';
