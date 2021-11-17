@@ -51,6 +51,7 @@ if ($_GET['id']){
                         $queryP = "SELECT * FROM post WHERE ID_post = '$x'";
                         $resultpost = mysqli_query($connect, $queryP);
                         while($row = mysqli_fetch_assoc($resultpost)){
+                            $form_post = $row["ID_post"];
                             echo '<p class="title"><i class="fas fa-pen"></i>'.$row["title_post"].'
                             <br><span class="badge rounded-pill " id="code">'.$row["ID_subject"].'</span><span class="badge rounded-pill" id="category">'.$row["Group_subject"].'</span>
                             </p>';
@@ -161,8 +162,9 @@ if ($_GET['id']){
                                 </div>
                                 -->
                             </div>
+                            <input type="hidden" name="post_id" value="<?php echo $form_post; ?>">    
                             <div class="modal-footer ">
-                                <button type="button" name="comment_post">ส่งความคิดเห็น</button>
+                                <button type="submit" name="comment_post">ส่งความคิดเห็น</button>
                             </div>
                         </form>
                     </div>

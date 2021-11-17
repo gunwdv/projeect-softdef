@@ -36,25 +36,21 @@ if (isset($_REQUEST['creat_post'])) {
     }
 }
    
-if (isset($_REQUEST['comment_id'])) {
-    $msg_comment = mysqli_real_escape_string($connect, $_REQUEST["msg_comment"]); 
-    $create_by = $row['ID'];
-    $from_post = $_SESSION['postnow'];
-
-    if (empty($ID_subject) || empty($name_subject) || empty($name_subject)) {
-        array_push($errors, "Data is required");
-        $_SESSION['error'] = "Data is required";
-    }
+if (isset($_REQUEST['comment_post'])) {
+    $msg_comment = mysqli_real_escape_string($connect, $_REQUEST["msg_comment"]);     
+    $create_by = $_SESSION['postnow'];
+    $from_post = $_REQUEST['post_id'];
 
     if (count($errors) == 0) {
         $sql = "INSERT INTO comment(msg_comment,create_by,from_post) VALUES('$msg_comment','$create_by','$from_post')";
         mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
 
-        header('location: index.php');
+        header("location: post.php?id=$from_post");
     } else {
         echo myqli_errors($connect);
     }
 }
+
 if (isset($_REQUEST['yesnotify'])) {
     //Admin ---> user
     $from_post = $_SESSION['postnow'];
@@ -103,7 +99,7 @@ if(isset($_REQUEST['del_C_id'])){
     $Sql = "DELETE FROM comment WHERE ID_comment='$del_C_id'";
     mysqli_query($connect,$Sql); // สั่งรันคำสั่ง sql    
 
-    //header("location: post.php?id=$IDpost");
+    header("location: post.php?id=$IDpost");
 }
 
 if(isset($_REQUEST['del_P_id'])){
