@@ -51,37 +51,21 @@ if (isset($_REQUEST['comment_post'])) {
     }
 }
 
-if (isset($_REQUEST['yesnotify'])) {
+if (isset($_REQUEST['notify_id'])) {
     //Admin ---> user
-    $from_post = $_SESSION['postnow'];
+    $from_post = $_REQUEST['notify_id'];
+    $creat_by = $_SESSION['status'];
     $msg_comment = 'กรุณาตรวจสอบข้อความในโพสของคุณด้วยว่าผิดกฎหรือไม่?';
 
-    $find = "SELECT create_by FROM post WHERE from_post = '$from_post'";
+    $find = "SELECT create_by FROM post WHERE ID_post = '$from_post'";
     $result = mysqli_query($connect, $find);
     $row = mysqli_fetch_assoc($result);
     $to_ID = $row['create_by'];
 
-    $sql = "INSERT INTO notify(msg_notify,create_by,from_post,status_notify,to_ID) VALUES('$msg_comment','ADMIN','$from_post','1','$to_ID')";
-        mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
-
-    header("location: post.php?id='.$from_post.'");
-}
-if (isset($_REQUEST['yesdel'])) {
-    //Admin ---> user
-    $postdel = $_SESSION['postnow'];
-    $msg_comment = 'โพสของคุณถูกลบ';
-
-    $find = "SELECT create_by FROM post WHERE from_post = '$from_post'";
-    $result = mysqli_query($connect, $find);
-    $row = mysqli_fetch_assoc($result);
-    $to_ID = $row['create_by'];
-
-    $sqlA = "DELETE FROM post WHERE ID_post='$postdel'";
-    mysqli_query($connect,$sqlA); // สั่งรันคำสั่ง sql
-
-    $sql = "INSERT INTO notify(msg_notify,create_by,from_post,status_notify,to_ID) VALUES('$msg_comment','ADMIN','$from_post','1','$to_ID')";
+    $sql = "INSERT INTO notify(msg_notify,create_by,from_post,status_notify,to_ID) VALUES('$msg_comment','$creat_by','$from_post','1','$to_ID')";
     mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql
-    header('location: admin-home.php');
+    //echo "msg_comment : $msg_comment <br>creat_by : $creat_by <br>from_post : $from_post <br>to_ID : $to_ID<br>";
+    header("location: admin-post.php?id=$from_post");
 }
 
 if(isset($_REQUEST['delpageN'])){
@@ -119,9 +103,13 @@ if(isset($_REQUEST['del_P_id'])){
 
     $sql = "DELETE FROM post WHERE ID_post='$del_P_id'";
     mysqli_query($connect,$sql); // สั่งรันคำสั่ง sql    
-
-    header("location: index.php");
+    if($_SESSION['status']==3){
+        header("location: admin-home.php");
     }
+    else{
+        header("location: index.php");
+    }    
+}
 
 if(isset($_REQUEST['report_P_id'])){
     //POst Report
