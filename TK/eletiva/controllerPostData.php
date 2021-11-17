@@ -13,7 +13,7 @@ if (isset($_REQUEST['creat_post'])) {
 
 
     //DB: Post
-    $Group_subject = mysqli_real_escape_string($connect, $_REQUEST["category"]); 
+    $Group_subject = mysqli_real_escape_string($connect, $_REQUEST["Group_subject"]); 
     $ID_subject = mysqli_real_escape_string($connect, $_REQUEST['subject_ID']);
     $name_subject = mysqli_real_escape_string($connect, $_REQUEST['subject_Name']);
     $type_post = mysqli_real_escape_string($connect, $_REQUEST["post_type"]);

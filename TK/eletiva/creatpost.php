@@ -23,29 +23,15 @@ include "header.php";
                 <div class="box-post">
                     <h2>เขียนโพสต์</h2>
                     <form method="POST" action="controllerPostData.php">
-                        <label for="Category" class="form-label">หมวดหมู่</label>
-                        <select class="form-select form-select-sm" name="category" onchange="FuncGroup(this)" id="category">
-                            <option selected value="">-- เลือกหมวดหมู่ --</option>
-                            <option value="กลุ่มวิชาภาษา">กลุ่มวิชาภาษา</option>
-                            <option value="กลุ่มวิชามนุษย์ศาสตร์">กลุ่มวิชามนุษย์ศาสตร์</option>
-                            <option value="กลุ่มวิชาสังคมศาสตร์">กลุ่มวิชาสังคมศาสตร์</option>
-                            <option value="กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์">กลุ่มวิชาวิทยาศาสตร์กับคณิตศาสตร์</option>
-                            <option value="วิชาเลือกเสรี">วิชาเลือกเสรี</option>
-                            <option value="กลุ่มคุณค่าแห่งชีวิต">กลุ่มคุณค่าแห่งชีวิต</option>
-                            <option value="กลุ่มวิถีแห่งสังคม">กลุ่มวิถีแห่งสังคม</option>
-                            <option value="กลุ่มศาสตร์แห่งการคิด">กลุ่มศาสตร์แห่งการคิด</option>
-                            <option value="กลุ่มภาษาและการสื่อสาร">กลุ่มภาษาและการสื่อสาร</option>
-                            <option value="กลุ่มศิลปแห่งการจัดการ">กลุ่มศิลปแห่งการจัดการ</option>
-                            <option value="กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21">กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21</option>
-                            <option value="กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ">กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ</option>
-                            <option value="กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ">กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ</option>
-                            <option value="กลุ่มทักษะด้านภาษาและการสื่อสาร">กลุ่มทักษะด้านภาษาและการสื่อสาร</option>
-                        </select>
+                        <label for="Category" class="form-label">รหัสวิชา</label>                        
+                        <input class="form-control form-control-sm " list="codes" type="text" id="subject_ID" placeholder="subject ID" name="subject_ID" pattern="(?=.*[0-9]).{8}" title="The course code must be 8 digits only." required>
+                            
+                        
                         <!--<p id="demo"></p>-->
                         <div class="row ">
                             <div class="col-lg-6 ">
-                                <label for="subjectecode " class="form-label ">รหัสวิชา</label>
-                                <input class="form-control form-control-sm " list="codes" type="text" id="subject_ID" placeholder="subject ID" name="subject_ID" pattern="(?=.*[0-9]).{8}" title="The course code must be 8 digits only." required>
+                                <label for="subjectecode " class="form-label ">หมวดหมู่</label>
+                                <input class="form-control form-control-sm " type="text" id="Group_subject" placeholder="group name" name="Group_subject" readonly >                                
                             </div>
                             <div class="col-lg-6 ">
                                 <label for="subjectename" class="form-label ">ชื่อวิชา</label>
@@ -123,6 +109,36 @@ $(document).ready(function(){
 			success:function(data)
 			{		
                 document.getElementById("subjectename").value = data;
+			}
+		});
+	}
+	
+	$('#subject_ID').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+			load_data(search);
+		}
+		else
+		{
+			load_data();			
+		}
+	});
+});
+</script>
+
+<script>
+$(document).ready(function(){
+	load_data();
+	function load_data(queryG)
+	{
+		$.ajax({
+			url:"fetch_creatpost.php",
+			method:"post",
+			data:{queryG:queryG},
+			success:function(data)
+			{		
+                document.getElementById("Group_subject").value = data;
 			}
 		});
 	}

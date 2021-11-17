@@ -9,10 +9,23 @@ if ($_GET['id']){
     //echo $_GET['id'];
     $x = $_GET['id'];
     $_SESSION['postnow']  = $_GET['id'];
-    $queryP = "SELECT * FROM post WHERE ID_post = '$x'";
+    $queryP = "SELECT create_by FROM post WHERE ID_post = '$x'";
     $resultpost = mysqli_query($connect, $queryP);
+    $rowpost = mysqli_fetch_assoc($resultpost);
+    $IDpost = $rowpost["create_by"];
+
     $queryC = "SELECT * FROM comment WHERE from_post = '$x'";
-    $resultcom = mysqli_query($connect, $queryC);
+    $resultcom = mysqli_query($connect, $queryC);    
+    
+    $queryU = "SELECT * FROM users WHERE ID = '$IDpost'";
+    $result = mysqli_query($connect, $queryU);
+    $rowUser = mysqli_fetch_assoc($result);
+    $name = (empty($rowUser['name'])) ? 'ไม่ระบุ' : $rowUser["name"];
+    $sex = $rowUser["sex"];
+    $major = $rowUser["major"];
+    $img = (empty($rowUser['picture'])) ? 'avatar.jpg' : $rowUser["picture"];
+    $introduce = $rowUser["introduce"];
+   
 }
 ?>
 <?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] != 3) || empty($_SESSION['status'])) : ?>
@@ -32,17 +45,20 @@ if ($_GET['id']){
                             <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldel">ลบโพสต์</a></li>
                         </ul>
                         <?php 
+                        $queryP = "SELECT * FROM post WHERE ID_post = '$x'";
+                        $resultpost = mysqli_query($connect, $queryP);
                         while($row = mysqli_fetch_assoc($resultpost)){
+
                             echo '<p class="title"><i class="fas fa-pen"></i>'.$row["title_post"].'
                             <br><span class="badge rounded-pill " id="code">'.$row["ID_subject"].'</span><span class="badge rounded-pill" id="category">'.$row["Group_subject"].'</span>
                             </p>';
                             echo '<p class="post-item">'.$row["msg_post"].'</p>';
                             echo '<div class="d-flex align-items-center ">';
                             echo '  <div class="d-inline ">';
-                            echo '  <img src="images/avatar.jpg" alt="Avatar" class="avatar">';
+                            echo '  <img src="myfile/'.$img.'" alt="Avatar" class="avatar">';
                             echo '</div>';
                             echo '<div class="d-inline col-sm-6">';
-                            echo '  <strong>'.$row["create_by"].'</strong>';
+                            echo '  <strong>'.$name.'</strong>';
                             echo '  <span class="d-block" id="time">'.$row["time_post"].'></span>';
                             echo '</div>';
                             if(($_SESSION['status'] == 1) || ($_SESSION['status'] == 2)){
@@ -115,7 +131,7 @@ if ($_GET['id']){
                     </div>
                         <div class="modal-body ">
                             <textarea class="form-control form-control-sm " id="comment-item" placeholder="แสดงความคิดเห็น" name='msg_comment' rows="5" required> </textarea>
-                            <input type="text" style="display:none;" name="from_post" value="<?php echo $x; ?>">
+                            <input type="text" style="display:none;" name="comment_post" value="<?php echo $x; ?>">
                             <!--
                             <div class="review-choose float-end ">
                                 <span class="heading">ให้คะแนน</span>
