@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2021 at 03:20 AM
+-- Generation Time: Nov 17, 2021 at 04:02 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,9 +42,9 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`ID_comment`, `msg_comment`, `rate`, `time_comment`, `create_by`, `from_post`) VALUES
 (1, 'fgfahafharthmdsdgasfag', NULL, '2021-11-15 05:12:36', 2, 1),
-(2, 'gdgfhgjdkyjtery', NULL, '2021-11-15 05:12:36', 2, 2),
-(3, 'fgfshfdjsewgb', NULL, '2021-11-15 05:12:58', 2, 1),
-(4, 'gdgfhgjdkyjtery', NULL, '2021-11-15 05:12:42', 2, 2);
+(2, 'dsafsdfsdf', NULL, '2021-11-17 03:01:58', 3, 2),
+(3, 'fgfshfdjsewgb', NULL, '2021-11-17 03:02:25', 3, 1),
+(4, 'dfgdfgdfgdfgdfg', NULL, '2021-11-17 03:02:21', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,7 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`ID_post`, `Group_subject`, `ID_subject`, `name_subject`, `type_post`, `title_post`, `msg_post`, `time_post`, `create_by`, `report`) VALUES
 (1, 'กลุ่มภาษาและการสื่อสาร', 90201003, 'ENGLISH FOR ACADEMIC PURPOSES', 1, 'test1', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-15 21:27:55', 2, 0),
-(2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test2', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-15 21:27:55', 2, 0),
+(2, 'กลุ่มคุณค่าแห่งชีวิต', 90641001, 'CHARM SCHOOL', 1, 'test2', 'qwertyuiopasdfghjklzxcvbnm', '2021-11-17 03:01:39', 3, 0),
 (7, 'กลุ่มภาษาและการสื่อสาร', 90106003, 'ARTS OF EMOTION DEVELOPMENT', 2, 'test', 'fd8oiawegfjiaslJFol', '2021-11-17 00:29:54', 1, 1),
 (8, 'กลุ่มคุณค่าแห่งชีวิต', 90591011, 'IMAGINATIVE ART', 1, 'asdasd', 'sdfg', '2021-11-17 00:32:53', 2, 0);
 
@@ -343,7 +343,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `email`, `password`, `code`, `status`, `name`, `major`, `introduce`, `picture`, `sex`) VALUES
 (0, 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, 3, NULL, NULL, NULL, NULL, NULL),
 (1, 'teacher', '8d788385431273d11e8b43bb78f3aa41', NULL, 2, NULL, NULL, NULL, NULL, NULL),
-(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, 'วิศวกรรมคอมพิวเตอร์', NULL, NULL, 'M');
+(2, 'student', 'cd73502828457d15655bbd7a63fb0bc8', NULL, 1, NULL, 'วิศวกรรมคอมพิวเตอร์', NULL, NULL, 'M'),
+(3, 'student2', '213ee683360d88249109c2f92789dbc3', NULL, 1, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables

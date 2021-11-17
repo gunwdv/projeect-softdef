@@ -36,7 +36,7 @@ if (isset($_REQUEST['creat_post'])) {
     }
 }
    
-if (isset($_REQUEST['comment_post'])) {
+if (isset($_REQUEST['comment_id'])) {
     $msg_comment = mysqli_real_escape_string($connect, $_REQUEST["msg_comment"]); 
     $create_by = $row['ID'];
     $from_post = $_SESSION['postnow'];

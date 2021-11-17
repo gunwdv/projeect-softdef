@@ -42,7 +42,7 @@ if ($_GET['id']){
                         <i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li> <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>
-                            <?php if ($_SESSION['ID']==$IDpost OR ($_SESSION['status'] == 3)){
+                            <?php if ($_SESSION['ID']==$IDpost){
                             echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldel">ลบโพสต์</a></li>';
                             }
                             ?>
@@ -98,7 +98,7 @@ if ($_GET['id']){
             //echo '<div class="col-lg-4 col-sm-7">';
             echo '<div class="comment-review">';
             echo '<div class="comment-box">';
-            if ($_SESSION['ID']==$IDuser OR $_SESSION['ID']==$IDpost OR ($_SESSION['status'] == 3)){
+            if ($_SESSION['ID']==$IDuser OR $_SESSION['ID']==$IDpost){
                 echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
                 echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
                 echo '<li><a class="dropdown-item" href="controllerPostData.php?del_C_id='.$IDcomment.'">ลบโพสต์</a></li>';
@@ -134,35 +134,41 @@ if ($_GET['id']){
         </div>
         -->
         <!-- modal box -->
-        <form method="POST" action="controllerPostData.php">
-        <!-- modal comment รีวิว -->
-        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content ">
-                    <div class="modal-header ">
-                        <h5 class="modal-title " id="exampleModalLabel">แสดงความคิดเห็น</h5>
-                        <button type="button " class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                        <div class="modal-body ">
-                            <textarea class="form-control form-control-sm " id="comment-item" placeholder="แสดงความคิดเห็น" name='msg_comment' rows="5" required> </textarea>
-                            <input type="text" style="display:none;" name="comment_post" value="<?php echo $x; ?>">
-                            <!--
-                            <div class="review-choose float-end ">
-                                <span class="heading">ให้คะแนน</span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
+        
+            <!-- modal comment รีวิว -->
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content ">
+                        
+                  
+                        <div class="modal-header ">
+                            <h5 class="modal-title " id="exampleModalLabel">แสดงความคิดเห็น</h5>
+                            <button type="button " class="btn-close btn-close-white " data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form method="POST" action="controllerPostData.php" id="comment_post" enctype="multipart/form-data">
+                            <div class="modal-body ">
+                                <textarea class="form-control form-control-sm " id="comment-item" placeholder="แสดงความคิดเห็น" name='msg_comment' rows="5" required></textarea>
+                                
+                                <!--
+                                <input type="text" style="display:none;" name="comment_post">                                
+                                <div class="review-choose float-end ">
+                                    <span class="heading">ให้คะแนน</span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star "></span>
+                                </div>
+                                -->
                             </div>
-                            -->
-                        </div>
-                        <div class="modal-footer ">
-                            <button type="button" name="comment_post">ส่งความคิดเห็น</button>
-                        </div>
+                            <div class="modal-footer ">
+                                <button type="button" name="comment_post">ส่งความคิดเห็น</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+       
         <!-- modal รายงานโพสต์ -->
         <div class="modal fade " id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered ">
@@ -201,9 +207,8 @@ if ($_GET['id']){
                     </div>
                 </div>
             </div>
-        </div>
-                
-        </form>
+        </div>                
+        
     </div>
 </body>
 <?php else: ?>
