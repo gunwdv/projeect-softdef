@@ -23,7 +23,7 @@ include "header.php";
      <button class="btn <?php if($_GET["id"]=="กลุ่มศาสตร์แห่งการคิด") echo "active"; ?>" value="กลุ่มศาสตร์แห่งการคิด" name="id"><i class="fas fa-brain"></i>ศาสตร์แห่งการคิด</button>
      <button class="btn <?php if($_GET["id"]=="กลุ่มศิลปแห่งการจัดการ") echo "active"; ?>" value="กลุ่มศิลปแห่งการจัดการ" name="id"><i class="fas fa-chart-line"></i>ศิลปแห่งการจัดการ</button>
      <button class="btn <?php if($_GET["id"]=="กลุ่มภาษาและการสื่อสาร") echo "active"; ?>" value="กลุ่มภาษาและการสื่อสาร" name="id"><i class="fas fa-comments"></i>ภาษาและการสื่อสาร</button>
-     <button class="btn btn_L <?php if($_GET["id"]=="กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21") echo "active"; ?>" value="กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21" name="id1"><i class="fas fa-vr-cardboard"></i>หมวดทักษะที่จำเป็นในศตวรรษที่ 21</button>
+     <button class="btn btn_L <?php if($_GET["id"]=="กลุ่มทักษะที่จำเป็นในศตวรรษที่21") echo "active"; ?>" value="กลุ่มทักษะที่จำเป็นในศตวรรษที่21" name="id"><i class="fas fa-vr-cardboard"></i>หมวดทักษะที่จำเป็นในศตวรรษที่ 21</button>
      <button class="btn btn_L <?php if($_GET["id"]=="กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ") echo "active"; ?>" value="กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ" name="id"><i class="fas fa-user-tie"></i>ทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ</button>
      <button class="btn btn_L <?php if($_GET["id"]=="กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ") echo "active"; ?>" value="กลุ่มทักษะด้านการจัดการและภาวะความเป็นผู้นำ" name="id"><i class="fas fa-book-reader"></i>ทักษะด้านการจัดการและภาวะความเป็นผู้นำ</button>
      <button class="btn btn_L <?php if($_GET["id"]=="กลุ่มทักษะด้านภาษาและการสื่อสาร") echo "active"; ?>" value="กลุ่มทักษะด้านภาษาและการสื่อสาร" name="id"><i class="fas fa-globe-americas"></i>หมวดทักษะด้านภาษาและการสื่อสาร</button>
@@ -69,7 +69,7 @@ include "header.php";
     elseif($_GET["id"]=="กลุ่มภาษาและการสื่อสาร"){
         $query = "SELECT * FROM post WHERE Group_subject = 'กลุ่มภาษาและการสื่อสาร'";
     }
-    elseif($_GET["id"]=="กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21"){
+    elseif($_GET["id"]=="กลุ่มทักษะที่จำเป็นในศตวรรษที่21"){
         $query = "SELECT * FROM post WHERE Group_subject = 'กลุ่มทักษะที่จำเป็นในศตวรรษที่ 21'";
     }
     elseif($_GET["id"]=="กลุ่มทักษะด้านบุคคลและทักษะส่งเสริมวิชาชีพ"){

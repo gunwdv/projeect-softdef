@@ -18,7 +18,8 @@ include "header.php";
         <div class="container py-4">
             <ul class="nav nav-pills nav-fill" id="tabHistory" role="tablist">
               <li class="nav-item" role="presentation">
-                <a href="history.php"><button class="nav-link active" id="pills-create-tab" data-bs-toggle="pill" data-bs-target="#pills-create" type="button" role="tab" aria-controls="pills-create" aria-selected="true">โพสที่ฉันสร้าง</button></a>
+                
+                <button class="nav-link active" type="submit" onclick="window.location.href='history.php'" id="pills-create-tab" data-bs-toggle="pill" data-bs-target="#pills-create" type="button" role="tab" aria-controls="pills-create" aria-selected="true">โพสที่ฉันสร้าง</button>
               </li>
               <!--<li class="nav-item" role="presentation">
                 <button class="nav-link" id="pills-answer-tab" data-bs-toggle="pill" data-bs-target="#pills-answer" type="button" role="tab" aria-controls="pills-answer" aria-selected="false">โพสที่ฉันตอบ</button>
