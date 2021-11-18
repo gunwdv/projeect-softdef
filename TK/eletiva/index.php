@@ -49,7 +49,7 @@ a.swPage:hover {
             echo'<p class="mainC">โพสจากอาจารย์</p>';
             echo'</div>';
             while($row =  mysqli_fetch_assoc($result)){
-                $x = $row['ID_post'];
+                $x = $row['ID_post'];                
                 $findCA = "SELECT COUNT(ID_comment) FROM comment WHERE from_post='$x'";
                 $y = mysqli_query($connect, $findCA);
                 $z = $row['create_by'];

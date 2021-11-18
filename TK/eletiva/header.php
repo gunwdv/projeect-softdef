@@ -50,7 +50,11 @@ else{
     $result = mysqli_query($connect, $check);
     $row = mysqli_fetch_assoc($result);
     $ID = $row['ID'];
-
+    $e = explode("@", $email);    
+    $name = $e[0];
+    if ($name==""){
+        $name = $email;
+    }
     if(mysqli_num_rows($result) != 1){
         $_SESSION['status'] = 0;
         //echo 'Guest Mode!';
@@ -79,7 +83,7 @@ else{
         echo'<li class="item"><a href="search.php" title="Search"><i class="iconnav fas fa-search"><span class="navTitle">Search</span></i></a></li>';
         echo'<li class="item navlast"><a href="category.php" title="Category"><i class="iconnav fas fa-th-large"><span class="navTitle">Category</span></i></a></li>';
         echo'<li class="item has-submenu">';
-        echo'<a class="usernav" tabindex="0">My User</a>';
+        echo'<a class="usernav" tabindex="0">',$name,'</a>';
         echo'<ul class="submenu userlink">';
         echo'<li class="subitem"><a href="profile.php"><span class="Texthide">---</span>My Page<span class="Texthide">---</span></a></li>';
         echo'<li class="subitem"><a href="history.php">My Post</a></li>';

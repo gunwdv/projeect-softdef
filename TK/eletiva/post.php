@@ -31,7 +31,7 @@ if ($_GET['id']){
    
 }
 ?>
-<?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] != 3) || empty($_SESSION['status'])) : ?>
+<?php if((isset($_SESSION['status']) && !empty($_SESSION['status']) && $_SESSION['status'] >= 1 && $_SESSION['status'] <= 3) ) : ?>
     <style>
         .badge{
             color:black;
@@ -50,7 +50,7 @@ if ($_GET['id']){
                         <i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li> <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">รายงานโพสต์</a></li>
-                            <?php if ($_SESSION['ID']==$IDpost){
+                            <?php if ($_SESSION['ID']==$IDpost || $_SESSION['status'] == 3){
                             echo '<li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modaldel">ลบโพสต์</a></li>';
                             }
                             ?>
@@ -72,7 +72,7 @@ if ($_GET['id']){
                             echo '  <strong>'.$name.'</strong>';
                             echo '  <span class="d-block" id="time">'.$row["time_post"].'></span>';
                             echo '</div>';
-                            if(($_SESSION['status'] == 1) || ($_SESSION['status'] == 2)){
+                            if(($_SESSION['status'] == 1) || ($_SESSION['status'] == 2 )){
                             echo '<div class="d-grid col-lg-5 col-md-5 col-sm-4 float-end">';
                             echo '  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">แสดงความคิดเห็น</button>';
                             echo '  <i class="fas fa-comment-dots" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>';
@@ -107,7 +107,7 @@ if ($_GET['id']){
             //echo '<div class="col-lg-4 col-sm-7">';
             echo '<div class="comment-review">';
             echo '<div class="comment-box">';
-            if ($_SESSION['ID']==$IDuser OR $_SESSION['ID']==$IDpost){
+            if ($_SESSION['ID']==$IDuser OR $_SESSION['ID']==$IDpost || $_SESSION['status'] == 3){
                 echo '<i class="fas fa-ellipsis-h " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>';
                 echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
                 echo '<li><a class="dropdown-item" href="controllerPostData.php?del_C_id='.$IDcomment.'">ลบโพสต์</a></li>';

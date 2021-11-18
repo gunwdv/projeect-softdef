@@ -19,22 +19,30 @@ include "header.php";
         <div class="boxn">
         <form method="POST" action="controllerPostData.php">
             <?php
-            $check = "SELECT ID FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
-            $result = mysqli_query($connect, $check);
-            $row = mysqli_fetch_assoc($result);
-            $ID = $row['ID'];
+            $check2 = "SELECT ID FROM users WHERE email = '$email ' AND password = '$password' AND status = '$status'";
+            $result2 = mysqli_query($connect, $check2);
+            $row2 = mysqli_fetch_assoc($result2);
+            $ID = $row2['ID'];
             
             $query = "SELECT * FROM notify WHERE to_ID = '$ID'";
             $result = mysqli_query($connect, $query);
 
             while($row =  mysqli_fetch_assoc($result)){
+                $from_post = $row['from_post'];
+                $query3 = "SELECT title_post FROM post WHERE ID_post='$from_post'";
+                $result3 = mysqli_query($connect, $query3);
+                $row3 = mysqli_fetch_assoc($result3);           
                 echo'<a href="controllernotify.php?id_notify='.$row['ID_notify'].'" class="linkn">';
                 echo'<div class="nof_btn">';
                 echo'    <div class="Lbox">';
-                echo'        <input type="checkbox" id="buttonN">';
-                echo'        <label for="buttonN" class="fas"></label>';
+                echo'        <input type="checkbox" id="buttonN"';
+                if($row['status_notify']==0){
+                    echo 'checked';
+                }
+                echo'        ><label for="buttonN" class="fas"></label>';
                 echo'    </div>';
                 echo'    <div class="Mbox">';
+                echo '<h4 class="textC" name="Post">'.$row3["title_post"].'</h4>';
                 echo'    <p class="txtM">'.$row['create_by'].' : '.$row['msg_notify'].'</p>';
                 echo'    <p class="txtT">'.$row['time_notify'].'</p>';
                 echo'    </div>';
